@@ -30,9 +30,7 @@ export default class Main extends Component<any, any> {
         <MyTabBar.Item
           title="主页"
           icon={<Icon name={"myIcon|icon-home"} size={30} color={"#9b9b9b"} />}
-          selectedIcon={
-            <Icon name={"myIcon|icon-home"} size={30} color={"#5c87f1"} />
-          }
+          selectedIcon={<Icon name={"myIcon|icon-home"} size={30} color={"#5c87f1"} />}
           onPress={this._handleSelect.bind(this, "home")}
           selected={selected === "home"}
         >
@@ -43,12 +41,8 @@ export default class Main extends Component<any, any> {
 
         <MyTabBar.Item
           title="工作台"
-          icon={
-            <Icon name={"antDesign|appstore1"} size={26} color={"#9b9b9b"} />
-          }
-          selectedIcon={
-            <Icon name={"antDesign|appstore1"} size={26} color={"#5c87f1"} />
-          }
+          icon={<Icon name={"antDesign|appstore1"} size={26} color={"#9b9b9b"} />}
+          selectedIcon={<Icon name={"antDesign|appstore1"} size={26} color={"#5c87f1"} />}
           onPress={this._handleSelect.bind(this, "workspace")}
           selected={selected === "workspace"}
         >
@@ -57,12 +51,8 @@ export default class Main extends Component<any, any> {
 
         <MyTabBar.Item
           title="消息"
-          icon={
-            <Icon name={"antDesign|message1"} size={26} color={"#9b9b9b"} />
-          }
-          selectedIcon={
-            <Icon name={"antDesign|message1"} size={26} color={"#5c87f1"} />
-          }
+          icon={<Icon name={"antDesign|message1"} size={26} color={"#9b9b9b"} />}
+          selectedIcon={<Icon name={"antDesign|message1"} size={26} color={"#5c87f1"} />}
           onPress={this._handleSelect.bind(this, "message")}
           selected={selected === "message"}
         >
@@ -72,9 +62,7 @@ export default class Main extends Component<any, any> {
         <MyTabBar.Item
           title="我的"
           icon={<Icon name={"myIcon|icon-wode1"} size={30} color={"#9b9b9b"} />}
-          selectedIcon={
-            <Icon name={"myIcon|icon-wode1"} size={30} color={"#5c87f1"} />
-          }
+          selectedIcon={<Icon name={"myIcon|icon-wode1"} size={30} color={"#5c87f1"} />}
           onPress={this._handleSelect.bind(this, "mine")}
           selected={selected === "mine"}
         >
