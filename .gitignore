@@ -1,0 +1,9 @@
+node_modules/
+android/app/build/
+android/app/bin/
+android/app/build/outputs/
+ios/build/
+build/apps
+build/components
+build/typings
+.idea/
