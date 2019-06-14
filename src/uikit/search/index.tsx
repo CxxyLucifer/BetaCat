@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
-import { Icon } from 'AJIcon'
+import { Icon } from 'UIcon'
 
 export interface SerachProps {
     onPress?: () => {},

@@ -8,7 +8,7 @@ import {
     PixelRatio
 } from 'react-native';
 import { msg } from 'plume2';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 
 export default class BackToTop extends React.Component {
     constructor(props) {

@@ -12,7 +12,7 @@ import {
   StyleSheet,
   ViewStyle
 } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 import Text from '../text';
 import Theme from '../style/theme';
 

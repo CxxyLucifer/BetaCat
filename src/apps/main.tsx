@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, ViewStyle } from "react-native";
 import SafeAreaView from 'react-native-safe-area-view';
-import { TabBar, Theme } from 'AJKit';
-import { Icon } from 'AJIcon';
+import { TabBar, Theme } from 'UIKit';
+import { Icon } from 'UIcon';
 
 import Home from './home';
 import WorkSpace from './workspace';

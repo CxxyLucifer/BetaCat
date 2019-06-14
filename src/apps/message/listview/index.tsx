@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { AJListView, Toast, Scene } from 'AJKit'
+import { AJListView, Toast, Scene } from 'UIKit'
 import FlatListItem from './item'
 
 import styles from './styles'

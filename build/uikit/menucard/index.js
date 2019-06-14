@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { isObject, isEmpty } from 'lodash';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 import Toast from '../toast';
 export default class Index extends Component {
     constructor(props) {

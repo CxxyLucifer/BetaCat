@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { Search, PullToRefresh } from 'AJKit'
+import { Search, PullToRefresh } from 'UIKit'
 
 import Gallery from './component/gallery';
 import ToDo from './component/todo';

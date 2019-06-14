@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, ImageStyle } from 'react-native';
-import { Kit } from 'AJKit';
+import { Kit } from 'UIKit';
 import { msg } from 'plume2';
 
 export default class GuidePage extends Component<any, any> {

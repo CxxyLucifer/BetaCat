@@ -7,7 +7,7 @@ declare interface FetchData {
   err: any;
 }
 
-declare module 'AJKit'
+declare module 'UIKit'
 
 /**
  * fetch返回结果;
@@ -46,4 +46,4 @@ declare module 'TextInputState' {
 
 declare module 'crypto-js'
 
-declare module 'AJIcon'
+declare module 'UIcon'

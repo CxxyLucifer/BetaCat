@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ViewStyle, TouchableOpacity, TextStyle } from "react-native";
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 
 export default class ToDo extends Component<any, any> {
 

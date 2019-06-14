@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Animated } from 'react-native';
-import { AsyncStorageUtil, Kit } from 'AJKit';
+import { AsyncStorageUtil, Kit } from 'UIKit';
 import { msg } from 'plume2';
 
 const splashImg = require('img/loading.png');

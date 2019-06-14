@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 import Kit from './kit';
 import Text from './text';
 import Theme from './style/theme';

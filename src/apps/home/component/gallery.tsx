@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ViewStyle, ImageBackground } from "react-native";
-import { Carousel } from 'AJKit';
+import { Carousel } from 'UIKit';
 
 export default class Index extends Component<any, any> {
 

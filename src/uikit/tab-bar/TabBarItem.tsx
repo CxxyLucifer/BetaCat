@@ -2,7 +2,7 @@ import React, { isValidElement } from 'react';
 import { Image, ImageStyle, StyleProp, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { TabBarIcon } from './PropsType';
 import TabBarItemStyles from './style';
-import { Icon } from 'AJIcon'
+import { Icon } from 'UIcon'
 
 export interface TabBarItemProps {
   badge?: string | number;

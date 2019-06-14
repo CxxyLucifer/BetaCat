@@ -1,6 +1,6 @@
 import React, { isValidElement } from 'react';
 import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 export default class TabBarItem extends React.Component {
     render() {
         const { title, selected, tintColor, unselectedTintColor, icon, selectedIcon, onPress, badge, iconStyle, } = this.props;

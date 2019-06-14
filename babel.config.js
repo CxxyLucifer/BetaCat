@@ -5,8 +5,8 @@ module.exports = {
       "module-resolver",
       {
         "alias": {
-          "AJIcon": "./src/icon",
-          "AJKit": "./src/uikit",
+          "UIcon": "./src/icon",
+          "UIKit": "./src/uikit",
           "img": "./build/img"
         }
       }

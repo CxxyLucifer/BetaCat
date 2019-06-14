@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 import Kit from '../kit';
 export default class index extends React.Component {
     render() {

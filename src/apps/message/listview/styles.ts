@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions, ViewStyle } from 'react-native'
-import { Theme } from 'AJKit'
+import { Theme } from 'UIKit'
 
 
 const { width, height } = Dimensions.get('window')

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ActivityIndicator, Animated } from "react-native";
 import ToastContainerStyle from "./style/";
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 
 export interface ToastProps {
   content: string;

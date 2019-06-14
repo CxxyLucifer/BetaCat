@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ViewStyle, TouchableOpacity, Animated } from "react-native";
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 
 const cardHeight = 180, marginBottom = 14;
 const data = [{

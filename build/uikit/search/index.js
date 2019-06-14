@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 export default class Index extends Component {
     constructor(props) {
         super(props);

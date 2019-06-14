@@ -4,7 +4,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { View, Dimensions, ActivityIndicator, Animated, StyleSheet } from 'react-native';
-import { Icon } from 'AJIcon';
+import { Icon } from 'UIcon';
 import Text from '../text';
 import Theme from '../style/theme';
 const LOADING_HEIGHT = 40;

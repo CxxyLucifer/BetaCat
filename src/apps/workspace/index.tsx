@@ -6,7 +6,7 @@ import {
     StyleSheet,
     ViewStyle
 } from "react-native";
-import { Scene, MenuCard, Theme } from 'AJKit';
+import { Scene, MenuCard, Theme } from 'UIKit';
 
 import Gallery from './component/gallery';
 
