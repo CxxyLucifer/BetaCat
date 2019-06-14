@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, ImageStyle, Dimensions} from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, ImageStyle } from 'react-native';
+import { Kit } from 'AJKit';
 import { msg } from 'plume2';
 
 export default class GuidePage extends Component<any, any> {
@@ -36,11 +37,11 @@ export default class GuidePage extends Component<any, any> {
 
 const styles = StyleSheet.create({
     contentContainer: {
-        width: Dimensions.get('window').width * 3,
-        height: Dimensions.get('window').height,
+        width: Kit.Width * 3,
+        height: Kit.Height,
     },
     backgroundImage: {
-        width: Dimensions.get('window').width,
+        width: Kit.Width,
         height: '100%',
         flexDirection: 'column-reverse',
     } as ImageStyle,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 25
+        marginBottom: Kit.isAndroid() ? 45 : 25
     },
     btnText: {
         fontSize: 18,

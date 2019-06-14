@@ -11,6 +11,14 @@ const flatModules = (modules = []) => {
             modulesObj[v] = m[v];
         });
     }
+    // if (__DEV__) {
+    //   if (logger.contain('showAllRouteModule')) {
+    //     console.log(
+    //       "============loading all modules=========",
+    //       Object.keys(modulesObj)
+    //     );
+    //   }
+    // }
     return modulesObj;
 };
 /**
