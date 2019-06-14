@@ -15,9 +15,9 @@ export default class GuidePage extends Component<any, any> {
                 pagingEnabled={true}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}>
-                <ImageBackground source={require('../../img/guide1.png')} style={styles.backgroundImage} />
-                <ImageBackground source={require('../../img/guide1.png')} style={styles.backgroundImage} />
-                <ImageBackground source={require('../../img/guide1.png')} style={[styles.backgroundImage, styles.btnOut]} >
+                <ImageBackground source={require('img/guide1.png')} style={styles.backgroundImage} />
+                <ImageBackground source={require('img/guide1.png')} style={styles.backgroundImage} />
+                <ImageBackground source={require('img/guide1.png')} style={[styles.backgroundImage, styles.btnOut]} >
                     <TouchableOpacity
                         style={styles.btn}
                         onPress={() => {
