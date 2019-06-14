@@ -1,8 +1,7 @@
-import { StyleSheet, Dimensions, ViewStyle } from 'react-native'
-import { Theme } from 'UIKit'
+import { StyleSheet, Dimensions, ViewStyle } from "react-native";
+import { Theme } from "UIKit";
 
-
-const { width, height } = Dimensions.get('window')
+const { width, height } = Dimensions.get("window");
 
 export default {
   container: {
@@ -12,17 +11,17 @@ export default {
     width,
     height: 80,
     padding: 20,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    justifyContent: "flex-end",
+    alignItems: "center",
     borderBottomWidth: 0.5,
-    borderColor: 'lightgray',
-    backgroundColor: 'whitesmoke'
+    borderColor: "lightgray",
+    backgroundColor: "whitesmoke"
   },
   headerSegment: {
     width,
     height: 60,
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center"
   },
   row: {
     flex: 0,
@@ -37,7 +36,7 @@ export default {
   },
   rowAndroid: {
     flex: 0,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderTopWidth: 0,
     borderBottomWidth: 1,
     shadowOffset: { width: 0, height: 0 },
@@ -47,23 +46,21 @@ export default {
     marginBottom: 0,
     padding: 0
   },
-  rowHeader: {
-
-  },
+  rowHeader: {},
   rowBody: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
     height: height * 0.25,
     marginBottom: 0,
-    backgroundColor: 'whitesmoke'
+    backgroundColor: "whitesmoke"
   },
   image: {
     flex: 1,
     height: height * 0.25,
     marginBottom: 0,
-    resizeMode: 'cover',
-    backgroundColor: 'whitesmoke'
+    resizeMode: "cover",
+    backgroundColor: "whitesmoke"
   },
   rowFooter: {
     padding: 0
@@ -74,7 +71,7 @@ export default {
     borderRadius: 25
   },
   gridThumb: {
-    alignSelf: 'center',
+    alignSelf: "center",
     width: 50,
     height: 50,
     borderRadius: 25,
@@ -88,7 +85,7 @@ export default {
     fontSize: 11
   },
   rightBtnGroup: {
-    flexDirection: 'row',
+    flexDirection: "row",
     width: width * 0.3
   } as ViewStyle,
   rightBtn: {
@@ -96,24 +93,23 @@ export default {
     padding: 5
   },
   rightBtnIcon: {
-    color: 'dimgray'
+    color: "dimgray"
   },
   gridText: {
-    textAlign: 'center'
+    textAlign: "center"
   },
   gridBorder: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: width / 3 - 10,
     height: width / 3 - 10,
     borderWidth: 0.5,
-    borderColor: 'gray'
+    borderColor: "gray"
   },
   shortcut: {
-    position: 'absolute',
+    position: "absolute",
     right: 18,
     bottom: 40,
     width: 40
-  } as ViewStyle,
-
-}
+  } as ViewStyle
+};

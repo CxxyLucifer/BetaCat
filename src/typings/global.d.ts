@@ -7,14 +7,14 @@ declare interface FetchData {
   err: any;
 }
 
-declare module 'UIKit'
+declare module "UIKit";
 
 /**
  * fetch返回结果;
  */
 declare interface Result {
   res: Object; //返回的数据
-  err: any;   //出现的异常
+  err: any; //出现的异常
 }
 
 declare interface Unit {
@@ -25,25 +25,25 @@ declare interface Unit {
 }
 
 interface ListProps {
-  url: string, //搜索接口的地址
-  method?: string, //POST or GET
-  renderRow: Function //渲染列表的function
+  url: string; //搜索接口的地址
+  method?: string; //POST or GET
+  renderRow: Function; //渲染列表的function
 }
 
 declare interface SearchProps {
-  listProps: ListProps
-  queryName: string, //搜索项的name
-  storageKey: string //不能有下划线_
+  listProps: ListProps;
+  queryName: string; //搜索项的name
+  storageKey: string; //不能有下划线_
 }
 
-declare module 'dismissKeyboard' {
+declare module "dismissKeyboard" {
   export default function dismissKeyboard(): void;
 }
 
-declare module 'TextInputState' {
+declare module "TextInputState" {
   export function currentlyFocusedField();
 }
 
-declare module 'crypto-js'
+declare module "crypto-js";
 
-declare module 'UIcon'
+declare module "UIcon";

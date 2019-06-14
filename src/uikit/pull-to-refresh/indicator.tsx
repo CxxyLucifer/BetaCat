@@ -1,9 +1,9 @@
 /**
  * @flow
  */
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Dimensions,
@@ -11,17 +11,17 @@ import {
   Animated,
   StyleSheet,
   ViewStyle
-} from 'react-native';
-import { Icon } from 'UIcon';
-import Text from '../text';
-import Theme from '../style/theme';
+} from "react-native";
+import { Icon } from "UIcon";
+import Text from "../text";
+import Theme from "../style/theme";
 
 const LOADING_HEIGHT = 40;
-const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 class Indicator extends Component<any, any> {
   static defaultProps = {
-    mode: 'refresh',
+    mode: "refresh",
     height: 0
   };
 
@@ -50,13 +50,13 @@ class Indicator extends Component<any, any> {
     return (
       <Animated.View
         style={{
-          overflow: 'hidden',
-          alignItems: 'center',
-          justifyContent: 'center',
+          overflow: "hidden",
+          alignItems: "center",
+          justifyContent: "center",
           height: this.state.height
         }}
       >
-        {!mode || mode == 'refresh'
+        {!mode || mode == "refresh"
           ? this._renderRefresh()
           : this._renderPullOrPushTip()}
       </Animated.View>
@@ -77,10 +77,14 @@ class Indicator extends Component<any, any> {
 
     return (
       <View style={styles.refresh}>
-        {mode === 'push'
-          ? <Icon name="myIcon|icon-songshougengxin" size={20} color="#999" />
-          : <Icon name="myIcon|icon-xiala" size={20} color="#999" />}
-        <Text style={styles.text}>{mode === 'push' ? '松开刷新' : '下拉刷新'}</Text>
+        {mode === "push" ? (
+          <Icon name="myIcon|icon-songshougengxin" size={20} color="#999" />
+        ) : (
+          <Icon name="myIcon|icon-xiala" size={20} color="#999" />
+        )}
+        <Text style={styles.text}>
+          {mode === "push" ? "松开刷新" : "下拉刷新"}
+        </Text>
       </View>
     );
   }
@@ -89,16 +93,16 @@ class Indicator extends Component<any, any> {
 const styles = StyleSheet.create({
   refresh: {
     flex: 1,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderBottomWidth: Theme.border.widthSm,
     borderColor: Theme.border.split,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   } as ViewStyle,
   text: {
     fontSize: Theme.font.sizeBase,
-    color: '#999',
+    color: "#999",
     marginLeft: 5
   }
 });

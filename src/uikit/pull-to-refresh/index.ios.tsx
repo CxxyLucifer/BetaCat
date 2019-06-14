@@ -1,9 +1,9 @@
 /**
  * @flow
  */
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ScrollView,
   Animated,
@@ -12,14 +12,14 @@ import {
   addons,
   UIManager,
   StyleSheet
-} from 'react-native';
-import TimeMixin from 'react-timer-mixin';
-import reactMixin from 'react-mixin';
-import QMLoading from '../loading';
-import { Indicator, LOADING_HEIGHT } from './indicator';
+} from "react-native";
+import TimeMixin from "react-timer-mixin";
+import reactMixin from "react-mixin";
+import QMLoading from "../loading";
+import { Indicator, LOADING_HEIGHT } from "./indicator";
 //do nothing.
-const noop = () => { };
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+const noop = () => {};
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const MyScrollView: any = ScrollView;
 
@@ -49,7 +49,7 @@ export default class PullToRefresh extends React.Component<any, any> {
 
     this.state = {
       //当前提示框的状态
-      mode: 'refresh',
+      mode: "refresh",
       //当前的提示的高度
       height: 0,
       //是不是可以滚动
@@ -99,7 +99,6 @@ export default class PullToRefresh extends React.Component<any, any> {
         onResponderRelease={this._handleResponseRelease}
         onMomentumScrollEnd={this._handleScrollEnd}
       >
-
         {/*指示器*/}
         <Indicator
           mode={this.state.mode}
@@ -163,13 +162,13 @@ export default class PullToRefresh extends React.Component<any, any> {
     if (offsetY <= 0 && this._isTouch) {
       if (Math.abs(offsetY) >= LOADING_HEIGHT) {
         //如果不是push状态,更新
-        if (this.state.mode != 'push') {
+        if (this.state.mode != "push") {
           this.setState(
             {
-              mode: 'push',
+              mode: "push",
               height: LOADING_HEIGHT
             },
-            () => this.props.onModeChange('push')
+            () => this.props.onModeChange("push")
           );
         }
       } else {
@@ -177,18 +176,18 @@ export default class PullToRefresh extends React.Component<any, any> {
         if (this.state.height != LOADING_HEIGHT) {
           this.setState(
             {
-              mode: 'pull',
+              mode: "pull",
               height: Math.abs(offsetY)
             },
-            () => this.props.onModeChange('pull')
+            () => this.props.onModeChange("pull")
           );
-        } else if (this.state.mode != 'pull') {
+        } else if (this.state.mode != "pull") {
           //上拉的pull状态,只更新mode
           this.setState(
             {
-              mode: 'pull'
+              mode: "pull"
             },
-            () => this.props.onModeChange('pull')
+            () => this.props.onModeChange("pull")
           );
         }
       }
@@ -205,10 +204,10 @@ export default class PullToRefresh extends React.Component<any, any> {
     if (this.state.height === LOADING_HEIGHT) {
       this.setState(
         {
-          mode: 'refresh'
+          mode: "refresh"
         },
         () => {
-          this.props.onModeChange('refresh');
+          this.props.onModeChange("refresh");
           // 通知外界正在刷新
           this.props.onRefresh && this.props.onRefresh(this.onRefreshEnd);
         }
@@ -221,7 +220,7 @@ export default class PullToRefresh extends React.Component<any, any> {
         {
           height: 0
         },
-        () => this.props.onModeChange('')
+        () => this.props.onModeChange("")
       );
     }
   };
@@ -233,12 +232,12 @@ export default class PullToRefresh extends React.Component<any, any> {
    */
   _handleResponseRelease = (e: Object) => {
     //不是刷新状态,直接消失
-    if (this.state.mode === 'pull') {
+    if (this.state.mode === "pull") {
       this.setState(
         {
           height: 0
         },
-        () => this.props.onModeChange('')
+        () => this.props.onModeChange("")
       );
     }
   };
@@ -255,7 +254,7 @@ export default class PullToRefresh extends React.Component<any, any> {
         () => {
           //结束之后通知父组件已经结束,可以做些后续的工作
           this.props.onRefreshEnd && this.props.onRefreshEnd();
-          this.props.onModeChange('');
+          this.props.onModeChange("");
         }
       );
     }

@@ -2,9 +2,9 @@
  * Created by hufeng on 3/22/16.
  * android pull-to-refresh
  */
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ScrollView,
   ViewStyle,
@@ -12,15 +12,14 @@ import {
   RefreshControl,
   StyleSheet,
   Dimensions
-} from 'react-native';
-import TimerMixin from 'react-timer-mixin';
-import reactMixin from 'react-mixin';
+} from "react-native";
+import TimerMixin from "react-timer-mixin";
+import reactMixin from "react-mixin";
 
 const MyScrollView: any = ScrollView;
 
-const noop = () => { };
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
-
+const noop = () => {};
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 export interface FactoryPullToRefreshProps {
   /**
@@ -79,8 +78,10 @@ export interface FactoryPullToRefreshProps {
   autoResize?: boolean;
 }
 
-
-export default class PullToRefresh extends Component<FactoryPullToRefreshProps, any> {
+export default class PullToRefresh extends Component<
+  FactoryPullToRefreshProps,
+  any
+> {
   requestAnimationFrame: any;
   _swipeRefreshView: any;
 
@@ -125,7 +126,7 @@ export default class PullToRefresh extends Component<FactoryPullToRefreshProps, 
         style={styles.container}
         refreshControl={
           <RefreshControl
-            colors={['#1e90ff', '#40e0d0', '#ff69b4']}
+            colors={["#1e90ff", "#40e0d0", "#ff69b4"]}
             refreshing={this.state.isRefreshing}
             onRefresh={this._handleOnRefresh}
           />
@@ -185,10 +186,10 @@ export default class PullToRefresh extends Component<FactoryPullToRefreshProps, 
   };
 
   /**
-	 * 处理滚动
-	 * @param e
-	 * @private
-	 */
+   * 处理滚动
+   * @param e
+   * @private
+   */
   _handleScroll = e => {
     this.props.onScroll && this.props.onScroll(e);
   };

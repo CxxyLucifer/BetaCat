@@ -1,10 +1,9 @@
 //@flow
 import React from "react";
 import { Dimensions, Platform, ListView } from "react-native";
-import { isIphoneX as iphoneX_helper } from 'react-native-iphone-x-helper';
+import { isIphoneX as iphoneX_helper } from "react-native-iphone-x-helper";
 
 const MyPlatform: any = Platform;
-
 
 /**
  * flatModues and return a module mapper
@@ -13,7 +12,7 @@ const flatModules = (modules: Array<Object | Function> = []): Object => {
   let modulesObj = {};
 
   for (let m of modules) {
-    Object.keys(m).forEach((v) => {
+    Object.keys(m).forEach(v => {
       modulesObj[v] = m[v];
     });
   }
@@ -30,27 +29,25 @@ const flatModules = (modules: Array<Object | Function> = []): Object => {
   return modulesObj;
 };
 
-
 /**
  * 不四舍五入的取两位小数
  */
 function _toFixed2(number) {
-  if (typeof number != 'string') {
+  if (typeof number != "string") {
     number = number.toString();
   }
-  let numberArray = number.split('.');
+  let numberArray = number.split(".");
   if (numberArray[1]) {
     if (numberArray[1].length == 1) {
-      numberArray[1] = numberArray[1] + '0';
+      numberArray[1] = numberArray[1] + "0";
     } else if (numberArray[1].length > 2) {
       numberArray[1] = numberArray[1].substring(0, 2);
     }
   } else {
-    numberArray[1] = '00';
+    numberArray[1] = "00";
   }
-  return parseFloat(numberArray.join('.'));
+  return parseFloat(numberArray.join("."));
 }
-
 
 function _toRound2(x) {
   var f = parseFloat(x);
@@ -62,7 +59,6 @@ function _toRound2(x) {
   return f;
 }
 
-
 /**
  * 格式成大单位显示; 如4箱1件
  * @param unit
@@ -70,19 +66,25 @@ function _toRound2(x) {
  * @param unitConversionNum
  * @private
  */
-function _formatUnitStr({ unit, containerUnit, unitConversionNum, buyCount }: Unit) {
+function _formatUnitStr({
+  unit,
+  containerUnit,
+  unitConversionNum,
+  buyCount
+}: Unit) {
   if (buyCount > 0) {
     let smallUnit: number = buyCount % unitConversionNum;
     let bigUnit: number = buyCount / unitConversionNum;
     bigUnit = Math.floor(bigUnit);
     if (bigUnit >= 1) {
-      return bigUnit + containerUnit + (smallUnit > 0 ? ('+' + smallUnit + unit) : '');  // 4箱1件
+      return (
+        bigUnit + containerUnit + (smallUnit > 0 ? "+" + smallUnit + unit : "")
+      ); // 4箱1件
     }
   }
 
-  return '';
+  return "";
 }
-
 
 /**
  * 显示大小单位关系;
@@ -92,7 +94,7 @@ function _formatUnitStr({ unit, containerUnit, unitConversionNum, buyCount }: Un
  * @private
  */
 function _formatUnitStr2({ unit, containerUnit, unitConversionNum }) {
-  return '1' + containerUnit + '=' + unitConversionNum + unit;
+  return "1" + containerUnit + "=" + unitConversionNum + unit;
 }
 
 /**
@@ -104,10 +106,10 @@ function _getWebp(source, width, height) {
   let cleanSrc = _cleanUrl(source);
   //__DEV__ && console.log('_getWebp:cleanSrc=', cleanSrc);
   let newUrl = source;
-  if (Platform.OS === 'android') {
-    newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "webp")
-  } else if (Platform.OS === 'ios') {
-    newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "jpg")
+  if (Platform.OS === "android") {
+    newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "webp");
+  } else if (Platform.OS === "ios") {
+    newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "jpg");
   }
   //__DEV__ && console.log('_getWebp:newUrl=', newUrl);
   return newUrl;
@@ -120,37 +122,34 @@ function _getWebp(source, width, height) {
  * @private
  */
 function _cleanUrl(source) {
-  source = (source || '');
+  source = source || "";
   let p = source.lastIndexOf("@");
   if (p != -1) {
-    return source.substring(0, p)
+    return source.substring(0, p);
   }
   return source;
 }
-
 
 //格式化策略
 //例如: oss策略为 x-oss-process=image/resize,m_fixed,h_100,w_100/format,jpg
 function _format(src, width, height, format) {
   var f = [src, "?x-oss-process=image"];
   if (width || height) {
-    f.push('/resize,m_fixed,');
+    f.push("/resize,m_fixed,");
     if (width) {
-      f.push(`,w_${width}`)
+      f.push(`,w_${width}`);
     }
     if (height) {
-      f.push(`,h_${height}`)
+      f.push(`,h_${height}`);
     }
   }
   if (format) {
-    f.push(`/format,${format}`)
+    f.push(`/format,${format}`);
   }
-  return f.join('')
+  return f.join("");
 }
 
-const noop = () => {
-};
-
+const noop = () => {};
 
 /**
  *
@@ -166,7 +165,10 @@ const noop = () => {
  * ]
  * @private
  */
-function _getPriceInAreaPrice(buyCount: number, stepPriceArea: Array<Array<number>>) {
+function _getPriceInAreaPrice(
+  buyCount: number,
+  stepPriceArea: Array<Array<number>>
+) {
   for (let i = 0; i < stepPriceArea.length; i++) {
     if (buyCount <= stepPriceArea[i][0] && buyCount <= stepPriceArea[i][1]) {
       return stepPriceArea[i][2];
@@ -178,8 +180,8 @@ const KIT = {
   /**
    *
    */
-  Width: Dimensions.get('window').width,
-  Height: Dimensions.get('window').height,
+  Width: Dimensions.get("window").width,
+  Height: Dimensions.get("window").height,
 
   /**
    *
@@ -201,7 +203,7 @@ const KIT = {
    * @returns {boolean}
    */
   isAndroid(): boolean {
-    return Platform.OS === 'android';
+    return Platform.OS === "android";
   },
 
   /**
@@ -213,7 +215,7 @@ const KIT = {
   },
 
   isIphoneX(): boolean {
-    return iphoneX_helper()
+    return iphoneX_helper();
   },
 
   /**
@@ -246,12 +248,10 @@ const KIT = {
    */
   getWebp: _getWebp,
 
-
   /**
    * 获取阶梯价中实际购买价格;
    */
-  getPriceInAreaPrice: _getPriceInAreaPrice,
-
+  getPriceInAreaPrice: _getPriceInAreaPrice
 };
 
 export default KIT;

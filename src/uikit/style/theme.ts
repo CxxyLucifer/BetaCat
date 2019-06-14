@@ -275,8 +275,8 @@ const modal = {
   fontSizeBase: font.sizeBase,
   colorBase: colors.textSecondary,
   colorLink: colors.brandPrimary,
-  colorCaption: colors.textCaption,
-}
+  colorCaption: colors.textCaption
+};
 
 //通用属性值
 const values = {
@@ -289,8 +289,8 @@ const values = {
 };
 
 const pages = {
-  content_default_bg: '#f9f9f9',
-}
+  content_default_bg: "#f9f9f9"
+};
 
 export default {
   border,

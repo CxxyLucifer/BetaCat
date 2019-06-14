@@ -1,5 +1,5 @@
-import React from 'react';
-import { ImageRequireSource, ImageURISource } from 'react-native';
+import React from "react";
+import { ImageRequireSource, ImageURISource } from "react-native";
 
 export interface TabBarProps {
   barTintColor?: string;
@@ -13,7 +13,7 @@ export type TabBarIcon =
   | ImageURISource[]
   | ImageRequireSource
   | React.ReactNode;
-  export interface TabBarItemProps {
+export interface TabBarItemProps {
   badge?: string | number;
   onPress?: () => void;
   selected?: boolean;

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ActivityIndicator, Animated } from "react-native";
 import ToastContainerStyle from "./style/";
-import { Icon } from 'UIcon';
+import { Icon } from "UIcon";
 
 export interface ToastProps {
   content: string;
@@ -11,14 +11,14 @@ export interface ToastProps {
   type?: string;
   onAnimationEnd?: () => void;
   styles?: any;
-  multipleStyle?: boolean
+  multipleStyle?: boolean;
 }
 
 export default class ToastContainer extends React.Component<ToastProps, any> {
   static defaultProps = {
     duration: 2,
     mask: true,
-    onClose() { },
+    onClose() {},
     styles: ToastContainerStyle,
     multipleStyle: false
   };
@@ -70,9 +70,9 @@ export default class ToastContainer extends React.Component<ToastProps, any> {
   render() {
     const { type = "", content, styles, mask, multipleStyle } = this.props;
     const iconType = {
-      success: 'antDesign|checkcircleo',
-      fail: 'antDesign|closecircleo',
-      offline: 'antDesign|frowno'
+      success: "antDesign|checkcircleo",
+      fail: "antDesign|closecircleo",
+      offline: "antDesign|frowno"
     };
 
     let iconDom: React.ReactElement<any> | null = null;
@@ -112,7 +112,10 @@ export default class ToastContainer extends React.Component<ToastProps, any> {
               ]}
             >
               {iconDom}
-              <Text allowFontScaling={false} style={multipleStyle ? styles.contentMultiple : styles.content}>
+              <Text
+                allowFontScaling={false}
+                style={multipleStyle ? styles.contentMultiple : styles.content}
+              >
                 {content}
               </Text>
             </View>

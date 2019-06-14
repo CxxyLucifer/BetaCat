@@ -7,6 +7,6 @@ import { Text } from "react-native";
 
 export default class TextComponent extends Component<any, any> {
   render() {
-    return <Text allowFontScaling={false} {... this.props} />;
+    return <Text allowFontScaling={false} {...this.props} />;
   }
 }

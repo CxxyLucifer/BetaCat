@@ -1,7 +1,6 @@
-
-import React from 'react';
-import DrawerLayout from 'react-native-drawer-layout';
-import { DrawerProps } from './PropsType';
+import React from "react";
+import DrawerLayout from "react-native-drawer-layout";
+import { DrawerProps } from "./PropsType";
 
 export interface DrawerNativeProps extends DrawerProps {
   drawerRef?: (el: DrawerLayout | null) => void;
@@ -10,9 +9,9 @@ export interface DrawerNativeProps extends DrawerProps {
 }
 export default class Drawer extends React.Component<DrawerNativeProps, any> {
   static defaultProps = {
-    position: 'left',
+    position: "left",
     open: false,
-    drawerWidth: 300,
+    drawerWidth: 300
   };
 
   drawer: DrawerLayout | null;
@@ -25,7 +24,7 @@ export default class Drawer extends React.Component<DrawerNativeProps, any> {
 
   componentWillReceiveProps(nextProps: DrawerNativeProps) {
     if (nextProps.open !== this.props.open && this.drawer) {
-      this.drawer[nextProps.open ? 'openDrawer' : 'closeDrawer']();
+      this.drawer[nextProps.open ? "openDrawer" : "closeDrawer"]();
     }
   }
 
@@ -44,11 +43,11 @@ export default class Drawer extends React.Component<DrawerNativeProps, any> {
       ...restProps
     } = this.props;
     [
-      'onOpenChange',
-      'onDrawerOpen',
-      'onDrawerClose',
-      'drawerPosition',
-      'renderNavigationView',
+      "onOpenChange",
+      "onDrawerOpen",
+      "onDrawerClose",
+      "drawerPosition",
+      "renderNavigationView"
     ].forEach(prop => {
       if (restProps.hasOwnProperty(prop)) {
         delete (restProps as any)[prop];
@@ -56,7 +55,7 @@ export default class Drawer extends React.Component<DrawerNativeProps, any> {
     });
     // tslint:disable-next-line:variable-name
     let _position = (DrawerLayout as any).positions.Left;
-    if (position === 'right') {
+    if (position === "right") {
       _position = (DrawerLayout as any).positions.Right;
     }
     return (

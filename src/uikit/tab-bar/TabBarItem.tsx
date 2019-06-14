@@ -1,8 +1,15 @@
-import React, { isValidElement } from 'react';
-import { Image, ImageStyle, StyleProp, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { TabBarIcon } from './PropsType';
-import TabBarItemStyles from './style';
-import { Icon } from 'UIcon'
+import React, { isValidElement } from "react";
+import {
+  Image,
+  ImageStyle,
+  StyleProp,
+  Text,
+  TouchableWithoutFeedback,
+  View
+} from "react-native";
+import { TabBarIcon } from "./PropsType";
+import TabBarItemStyles from "./style";
+import { Icon } from "UIcon";
 
 export interface TabBarItemProps {
   badge?: string | number;
@@ -19,7 +26,7 @@ export interface TabBarItemProps {
 }
 export default class TabBarItem extends React.Component<TabBarItemProps, any> {
   static defaultProps = {
-    onPress() { },
+    onPress() {}
   };
   render() {
     const {
@@ -31,7 +38,7 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
       selectedIcon,
       onPress,
       badge,
-      iconStyle,
+      iconStyle
     } = this.props;
     const styles = this.props.styles!;
     const itemSelectedStyle = selected ? styles.barItemSelected : null;
@@ -45,13 +52,13 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
       selected && selectedIcon !== undefined
         ? selectedIcon
         : icon !== undefined
-          ? icon
-          : null;
+        ? icon
+        : null;
     const color = selected ? tintColor : unselectedTintColor;
     const isIcon =
       source &&
       (source as any).type &&
-      (source as any).type.displayName === 'Icon';
+      (source as any).type.displayName === "Icon";
     return (
       <TouchableWithoutFeedback onPress={onPress}>
         <View style={[styles.barItem, itemSelectedStyle]}>
@@ -60,11 +67,11 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
               isIcon ? (
                 <Icon color={color} {...source.props} />
               ) : (
-                  source
-                )
+                source
+              )
             ) : (
-                <Image source={source} style={[styles.barIcon, iconStyle]} />
-              )}
+              <Image source={source} style={[styles.barIcon, iconStyle]} />
+            )}
             {badgeDom}
           </View>
           <Text style={[styles.barItemTitle, { color }]}>{title}</Text>

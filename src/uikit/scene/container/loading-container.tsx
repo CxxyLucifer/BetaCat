@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
-import { View, Dimensions, StyleSheet, ViewStyle } from 'react-native';
-import Loading from '../../loading';
-import { START, END } from './loading-status';
+import React, { Component } from "react";
+import { View, Dimensions, StyleSheet, ViewStyle } from "react-native";
+import Loading from "../../loading";
+import { START, END } from "./loading-status";
 
 export default class LoadingContainer extends Component<any, any> {
   static defaultProps = {

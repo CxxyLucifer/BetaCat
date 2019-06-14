@@ -7,6 +7,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "clean": "rm -rf ./node_modules && yarn",
     "format": "./node_modules/.bin/prettier --write './src/**/*.{ts,tsx}'",
+    "precommit": "npm run format",
     "build_apk": "cd android && ./gradlew assembleRelease",
     "android": "node node_modules/react-native/local-cli/cli.js run-android && ./node_modules/.bin/tsc -w",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator 'iPhone X' && ./node_modules/.bin/tsc -w"
@@ -52,10 +53,5 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }

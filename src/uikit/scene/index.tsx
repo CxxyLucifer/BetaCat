@@ -1,17 +1,17 @@
-('use strict');
+("use strict");
 // @flow
 
 /**
  * Navigator导航中心
  */
-import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { msg } from 'plume2';
-import Header from '../header';
-import Body from './body';
-import Kit from '../kit';
-import PullToRefresh from '../pull-to-refresh/index.ios';
-import noop from '../noop';
+import React from "react";
+import { View, StyleSheet, Image } from "react-native";
+import { msg } from "plume2";
+import Header from "../header";
+import Body from "./body";
+import Kit from "../kit";
+import PullToRefresh from "../pull-to-refresh/index.ios";
+import noop from "../noop";
 
 export default class Scene extends React.Component<any, any> {
   static Body = null;
@@ -36,9 +36,9 @@ export default class Scene extends React.Component<any, any> {
     onModeChange: noop,
 
     //头部
-    header: '',
+    header: "",
     hasBack: true,
-    renderHeader: '',
+    renderHeader: "",
     onBackHandler: null,
     isChangingView: false,
     backOut: false
@@ -70,9 +70,7 @@ export default class Scene extends React.Component<any, any> {
     if (this.props.backgroundImage) {
       return (
         <View style={{ flex: 1 }}>
-          <Image
-            source={this.props.backgroundImage}
-          >
+          <Image source={this.props.backgroundImage}>
             {this._renderHeader()}
             {this._renderBody()}
           </Image>
@@ -133,9 +131,9 @@ export default class Scene extends React.Component<any, any> {
     if (this.props.onBackHandler) {
       this.props.onBackHandler();
     } else if (this.props.backOut) {
-      msg.emit('app:backOut');
+      msg.emit("app:backOut");
     } else if (this.props.hasBack) {
-      msg.emit('route:backToLast');
+      msg.emit("route:backToLast");
     }
   };
 }
@@ -153,9 +151,9 @@ const styles = StyleSheet.create({
   },
   mask: {
     flex: 1,
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    backgroundColor: '#FFcccc04',
+    backgroundColor: "#FFcccc04",
     width: Kit.Width,
     height: Kit.Height
   }

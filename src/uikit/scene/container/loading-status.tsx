@@ -9,13 +9,13 @@
  * 开始loading
  * @type {string}
  */
-export const START = 'START';
+export const START = "START";
 
 /**
  * 结束loading
  * @type {string}
  */
-export const END = 'END';
+export const END = "END";
 
 export default {
   START,

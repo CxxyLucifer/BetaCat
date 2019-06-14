@@ -1,7 +1,18 @@
-import React from 'react';
-import { InteractionManager, LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView, StyleProp, Text, View, ViewStyle } from 'react-native';
-import { WithTheme, WithThemeStyles } from '../style';
-import CarouselStyles, { CarouselStyle } from './style/index';
+import React from "react";
+import {
+  InteractionManager,
+  LayoutChangeEvent,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Platform,
+  ScrollView,
+  StyleProp,
+  Text,
+  View,
+  ViewStyle
+} from "react-native";
+import { WithTheme, WithThemeStyles } from "../style";
+import CarouselStyles, { CarouselStyle } from "./style/index";
 export interface CarouselPropsType extends WithThemeStyles<CarouselStyle> {
   selectedIndex?: number;
   dots?: boolean;
@@ -17,12 +28,12 @@ export interface CarouselProps extends CarouselPropsType {
   onScrollBeginDrag?: (
     event: NativeSyntheticEvent<NativeScrollEvent>,
     state: CarouselState,
-    carousel: Carousel,
+    carousel: Carousel
   ) => void;
   onMomentumScrollEnd?: (
     event: NativeSyntheticEvent<NativeScrollEvent>,
     state: CarouselState,
-    carousel: Carousel,
+    carousel: Carousel
   ) => void;
   style?: StyleProp<ViewStyle>;
   dotStyle?: StyleProp<ViewStyle>;
@@ -55,8 +66,8 @@ export interface PaginationProps {
 
 const defaultPagination = (props: PaginationProps) => {
   const { styles, current, vertical, count, dotStyle, dotActiveStyle } = props;
-  const positionStyle = vertical ? 'paginationY' : 'paginationX';
-  const flexDirection = vertical ? 'column' : 'row';
+  const positionStyle = vertical ? "paginationY" : "paginationX";
+  const flexDirection = vertical ? "column" : "row";
   const arr: any = [];
   for (let i = 0; i < count; i++) {
     arr.push(
@@ -67,9 +78,9 @@ const defaultPagination = (props: PaginationProps) => {
           styles.spaceStyle,
           dotStyle,
           i === current && styles.pointActiveStyle,
-          i === current && dotActiveStyle,
+          i === current && dotActiveStyle
         ]}
-      />,
+      />
     );
   }
   return (
@@ -90,7 +101,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     vertical: false,
     pagination: defaultPagination,
     dotStyle: {},
-    dotActiveStyle: {},
+    dotActiveStyle: {}
   };
 
   private scrollviewRef: any;
@@ -110,7 +121,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
       autoplayEnd: false,
       loopJump: false,
       selectedIndex: index,
-      offset: { x: 0, y: 0 },
+      offset: { x: 0, y: 0 }
     };
   }
   getChildrenCount = (children: React.ReactNode) => {
@@ -131,7 +142,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     const { loopJump, selectedIndex, width, height } = this.state;
     const { infinite, vertical } = this.props;
     // iOS 通过 contentOffet 可以平滑过度，不需要做处理
-    if (loopJump && Platform.OS === 'android') {
+    if (loopJump && Platform.OS === "android") {
       const index = selectedIndex + (infinite ? 1 : 0);
       let x = 0;
       let y = 0;
@@ -172,13 +183,13 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
   onScrollBegin = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     this.setState(
       {
-        isScrolling: true,
+        isScrolling: true
       },
       () => {
         if (this.props.onScrollBeginDrag) {
           this.props.onScrollBeginDrag(e, this.state, this);
         }
-      },
+      }
     );
   };
 
@@ -190,7 +201,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
       const position = (e.nativeEvent as any).position;
       (e.nativeEvent as any).contentOffset = {
         x: position * this.state.width,
-        y: position * this.state.height,
+        y: position * this.state.height
       };
     }
 
@@ -220,7 +231,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
       (selectedIndex === 0 || selectedIndex === count - 1)
     ) {
       this.setState({
-        isScrolling: false,
+        isScrolling: false
       });
     }
 
@@ -233,21 +244,21 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
   paging = (offsetY: number) => {
     const { height } = this.state;
     const { vertical, infinite } = this.props;
-    if (Platform.OS === 'android' && vertical) {
+    if (Platform.OS === "android" && vertical) {
       const selectedIndex = Math.round(offsetY / height) - (infinite ? 1 : 0);
       // tslint:disable-next-line:no-unused-expression
       this.scrollviewRef &&
         this.scrollviewRef.scrollTo({
           x: 0,
-          y: (selectedIndex + (infinite ? 1 : 0)) * height,
+          y: (selectedIndex + (infinite ? 1 : 0)) * height
         });
 
       // if drag ScrollView, not slide ScrollView, onScrollEnd is not triggered, so need to manually trigger onScrollEnd
-      if (Platform.OS === 'android' && vertical) {
+      if (Platform.OS === "android" && vertical) {
         this.onScrollEnd({
           nativeEvent: {
-            position: selectedIndex + (infinite ? 1 : 0),
-          },
+            position: selectedIndex + (infinite ? 1 : 0)
+          }
         } as any);
       }
     }
@@ -258,7 +269,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     const {
       offset: { x, y },
       height,
-      width,
+      width
     } = this.state;
     let { selectedIndex } = this.state;
 
@@ -298,7 +309,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     this.setState({
       selectedIndex,
       offset,
-      loopJump,
+      loopJump
     });
 
     if (afterChange) {
@@ -328,16 +339,16 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
 
     this.setState({
       isScrolling: true,
-      autoplayEnd: false,
+      autoplayEnd: false
     });
 
     // trigger onScrollEnd manually in android
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       this.androidScrollEndTimer = setTimeout(() => {
         this.onScrollEnd({
           nativeEvent: {
-            position: diff,
-          },
+            position: diff
+          }
         } as any);
       }, 0);
     }
@@ -347,7 +358,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     const others = {
       onScrollBeginDrag: this.onScrollBegin,
       onMomentumScrollEnd: this.onScrollEnd,
-      onScrollEndDrag: this.onScrollEndDrag,
+      onScrollEndDrag: this.onScrollEndDrag
     };
     return (
       <ScrollView
@@ -377,7 +388,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
       vertical,
       pagination,
       dotStyle,
-      dotActiveStyle,
+      dotActiveStyle
     } = this.props;
     if (!pagination) {
       return null;
@@ -392,7 +403,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
             current: index,
             count,
             dotStyle,
-            dotActiveStyle,
+            dotActiveStyle
           });
         }}
       </WithTheme>
@@ -415,10 +426,10 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     this.setState(
       {
         width,
-        offset: { x: offsetX, y: offsetY },
+        offset: { x: offsetX, y: offsetY }
       },
       () => {
-        if (Platform.OS === 'android') {
+        if (Platform.OS === "android") {
           // scrollview has a layout animation when create, must delay to call scrollTo after the animation
           InteractionManager.runAfterInteractions(
             () =>
@@ -426,11 +437,11 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
               this.scrollviewRef.scrollTo({
                 x: offsetX,
                 y: offsetY,
-                animated: false,
-              }),
+                animated: false
+              })
           );
         }
-      },
+      }
     );
   };
 
@@ -446,7 +457,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
 
     if (!children) {
       return (
-        <Text style={{ backgroundColor: 'white' }}>
+        <Text style={{ backgroundColor: "white" }}>
           You are supposed to add children inside Carousel
         </Text>
       );
