@@ -7,7 +7,6 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "clean": "rm -rf ./node_modules && yarn",
     "format": "./node_modules/.bin/prettier --write './src/**/*.{ts,tsx}'",
-    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "build_apk": "cd android && ./gradlew assembleRelease",
     "android": "node node_modules/react-native/local-cli/cli.js run-android && ./node_modules/.bin/tsc -w",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator 'iPhone X' && ./node_modules/.bin/tsc -w"
@@ -50,9 +49,6 @@
     "pretty-quick": "^1.11.0",
     "react-test-renderer": "16.8.3",
     "tslib": "^1.10.0",
-    "tslint": "^5.17.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^4.0.0",
     "typescript": "^3.5.2"
   },
   "jest": {
@@ -60,13 +56,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "npm run format",
-      "git add"
-    ]
   }
 }
