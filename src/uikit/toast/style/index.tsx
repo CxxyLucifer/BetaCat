@@ -1,53 +1,53 @@
-import variables from "../../style/themes/default";
-import { StyleSheet, Platform } from "react-native";
+import variables from '../../style/themes/default';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    position: "absolute",
-    top: Platform.OS === "ios" ? 64 : 54,
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 64 : 54,
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: "transparent",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: variables.toast_zindex
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: variables.toast_zindex,
   },
   innerContainer: {
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent',
   },
   innerWrap: {
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: variables.fill_overlay_inverse,
-    minWidth: 100
+    minWidth: 100,
   },
   iconToast: {
     borderRadius: variables.radius_lg,
-    padding: variables.v_spacing_lg
+    padding: variables.v_spacing_lg,
   },
   textToast: {
     borderRadius: variables.radius_sm,
     paddingVertical: variables.v_spacing_md,
-    paddingHorizontal: variables.v_spacing_lg
+    paddingHorizontal: variables.v_spacing_lg,
   },
   content: {
     color: variables.color_text_base_inverse,
-    fontSize: variables.font_size_subhead
+    fontSize: variables.font_size_subhead,
   },
   contentMultiple: {
     width: 250,
-    textAlign: "center",
+    textAlign: 'center',
     color: variables.color_text_base_inverse,
-    fontSize: variables.font_size_subhead
+    fontSize: variables.font_size_subhead,
   },
   image: {
     width: variables.icon_size_lg,
     height: variables.icon_size_lg,
-    marginBottom: variables.v_spacing_xs
+    marginBottom: variables.v_spacing_xs,
   },
   centering: {
-    alignItems: "center",
-    justifyContent: "center",
-    padding: variables.v_spacing_md
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: variables.v_spacing_md,
+  },
 });

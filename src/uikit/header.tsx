@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
-import { View, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
-import { Icon } from "UIcon";
-import Kit from "./kit";
-import Text from "./text";
-import Theme from "./style/theme";
-import emptyFn from "./empty-fn";
+import React, { Component } from 'react';
+import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { Icon } from 'UIcon';
+import Kit from './kit';
+import Text from './text';
+import Theme from './style/theme';
+import emptyFn from './empty-fn';
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 /**
  * header模块
@@ -18,7 +18,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window");
  */
 export default class Header extends Component<any, any> {
   state = {
-    isEdit: false
+    isEdit: false,
   };
 
   static defaultProps = {
@@ -31,8 +31,8 @@ export default class Header extends Component<any, any> {
     showSettingBtn: false,
     edit: false,
     showEdit: false,
-    brandName: "",
-    leftTitle: "",
+    brandName: '',
+    leftTitle: '',
     onGroupPress: emptyFn,
     onLeftMenuPress: emptyFn,
     onSearchPress: emptyFn,
@@ -41,7 +41,7 @@ export default class Header extends Component<any, any> {
     onHomePress: emptyFn,
     onShoppingCartPress: emptyFn,
     onEditPress: emptyFn,
-    onShowSettingPress: emptyFn
+    onShowSettingPress: emptyFn,
   };
 
   render() {
@@ -56,7 +56,7 @@ export default class Header extends Component<any, any> {
         </View>
         {this.props.brandName ? (
           <View>
-            <Text>{""}</Text>
+            <Text>{''}</Text>
           </View>
         ) : (
           <TouchableOpacity
@@ -67,11 +67,7 @@ export default class Header extends Component<any, any> {
             style={styles.leftBack}
             onPress={this.props.onLeftMenuPress}
           >
-            <Icon
-              name={"antDesign|left"}
-              size={20}
-              color={Theme.colors.textSecondary}
-            />
+            <Icon name={'antDesign|left'} size={20} color={Theme.colors.textSecondary} />
           </TouchableOpacity>
         )}
       </View>
@@ -82,13 +78,7 @@ export default class Header extends Component<any, any> {
     if (this.props.brandName) {
       return (
         <View style={styles.leftMenu}>
-          <Text
-            numberOfLines={1}
-            style={[
-              styles.leftTitle,
-              { width: SCREEN_WIDTH - 60, textAlign: "center" }
-            ]}
-          >
+          <Text numberOfLines={1} style={[styles.leftTitle, { width: SCREEN_WIDTH - 60, textAlign: 'center' }]}>
             {this.props.brandName}
           </Text>
         </View>
@@ -115,7 +105,7 @@ export default class Header extends Component<any, any> {
           style={styles.group}
           onPress={this.props.onGroupPress}
         >
-          <Icon name={"antDesign|left"} size={20} color={"red"} />
+          <Icon name={'antDesign|left'} size={20} color={'red'} />
         </TouchableOpacity>
       );
     }
@@ -133,7 +123,7 @@ export default class Header extends Component<any, any> {
           style={styles.right}
           onPress={this.props.onSearchPress}
         >
-          <Icon name={"antDesign|left"} size={20} color={"red"} />
+          <Icon name={'antDesign|left'} size={20} color={'red'} />
         </TouchableOpacity>
       );
     }
@@ -146,12 +136,12 @@ export default class Header extends Component<any, any> {
         <TouchableOpacity
           activeOpacity={0.8}
           accessible={false}
-          accessibilityLabel={""}
+          accessibilityLabel={''}
           hitSlop={{ top: 0, bottom: 0, left: 10, right: 10 }}
           style={styles.right}
           onPress={this.props.onAddPress}
         >
-          <Icon name={"antDesign|left"} size={20} color={"red"} />
+          <Icon name={'antDesign|left'} size={20} color={'red'} />
         </TouchableOpacity>
       );
     }
@@ -164,7 +154,7 @@ export default class Header extends Component<any, any> {
         <TouchableOpacity
           activeOpacity={0.8}
           accessible={false}
-          accessibilityLabel={""}
+          accessibilityLabel={''}
           hitSlop={{ top: 0, bottom: 0, left: 10, right: 10 }}
           style={styles.right}
           onPress={this.props.onCustomizePress}
@@ -182,57 +172,57 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingTop: Kit.isAndroid() ? 10 : Kit.isIphoneX() ? 40 : 20,
     paddingLeft: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: Theme.colors.fillBase,
     borderBottomWidth: Theme.border.widthSm,
-    borderColor: Theme.border.split
+    borderColor: Theme.border.split,
   },
   group: {
-    position: "absolute",
+    position: 'absolute',
     top: 5,
     left: 0,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingLeft: 10,
     height: 40,
-    width: 34
+    width: 34,
   },
   leftBack: {
-    position: "absolute",
+    position: 'absolute',
     top: 5,
     left: 0,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingLeft: 10,
     height: 40,
-    width: 30
+    width: 30,
   },
   leftMenu: {
     flex: 1,
     height: 40,
     paddingBottom: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent"
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
   },
   leftTitle: {
     width: SCREEN_WIDTH - 60,
-    textAlign: "center",
+    textAlign: 'center',
     color: Theme.colors.textSecondary,
-    fontSize: 18
+    fontSize: 18,
   },
   rightContainer: {
-    position: "absolute",
+    position: 'absolute',
     top: 5,
     right: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    height: 40
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    height: 40,
   },
   right: {
     height: 40,
-    justifyContent: "center"
-  }
+    justifyContent: 'center',
+  },
 });

@@ -1,19 +1,19 @@
-import React from "react";
-import { View } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
-import { WithTheme } from "../style";
-import { TabBarProps } from "./PropsType";
-import TabBarStyles, { TabBarStyle } from "./style/index";
-import TabBarItem from "./TabBarItem";
+import React from 'react';
+import { View } from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
+import { WithTheme } from '../style';
+import { TabBarProps } from './PropsType';
+import TabBarStyles, { TabBarStyle } from './style/index';
+import TabBarItem from './TabBarItem';
 export interface TabBarNativeProps extends TabBarProps {
   styles?: TabBarStyle;
 }
 
 class TabBar extends React.Component<TabBarNativeProps, any> {
   static defaultProps = {
-    barTintColor: "white",
-    tintColor: "#108ee9",
-    unselectedTintColor: "#888"
+    barTintColor: 'white',
+    tintColor: '#108ee9',
+    unselectedTintColor: '#888',
   };
 
   static Item = TabBarItem;
@@ -31,15 +31,9 @@ class TabBar extends React.Component<TabBarNativeProps, any> {
     React.Children.map(children, (child: any, idx) => {
       if (content && selectedIndex === idx) {
         newChildren.push(
-          <View
-            key={idx}
-            style={[
-              styles.contentItem,
-              idx === selectedIndex ? styles.contentItemSelected : undefined
-            ]}
-          >
+          <View key={idx} style={[styles.contentItem, idx === selectedIndex ? styles.contentItemSelected : undefined]}>
             {child.props.children}
-          </View>
+          </View>,
         );
       } else {
         newChildren.push(
@@ -47,8 +41,8 @@ class TabBar extends React.Component<TabBarNativeProps, any> {
             key: idx,
             tintColor,
             unselectedTintColor,
-            styles
-          })
+            styles,
+          }),
         );
       }
     });
@@ -62,17 +56,12 @@ class TabBar extends React.Component<TabBarNativeProps, any> {
   render() {
     const style = { backgroundColor: this.props.barTintColor };
     return (
-      <SafeAreaView
-        forceInset={{ bottom: "always", top: "never" }}
-        style={[{ flex: 1 }, style]}
-      >
+      <SafeAreaView forceInset={{ bottom: 'always', top: 'never' }} style={[{ flex: 1 }, style]}>
         <WithTheme styles={this.props.styles} themeStyles={TabBarStyles}>
           {styles => (
             <View style={styles.tabbar}>
               <View style={styles.content}>{this.getPanes(styles, true)}</View>
-              <View style={[style, styles.tabs]}>
-                {this.getPanes(styles, false)}
-              </View>
+              <View style={[style, styles.tabs]}>{this.getPanes(styles, false)}</View>
             </View>
           )}
         </WithTheme>

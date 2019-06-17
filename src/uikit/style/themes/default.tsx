@@ -1,41 +1,41 @@
-const brandPrimary = "#108ee9";
-const brandPrimaryTap = "#1284d6";
+const brandPrimary = '#108ee9';
+const brandPrimaryTap = '#1284d6';
 
 export default {
   // 文字色
-  color_text_base: "#000000", // 基本
-  color_text_base_inverse: "#ffffff", // 基本 _ 反色
-  color_text_secondary: "#a4a9b0", // 辅助色
-  color_text_placeholder: "#bbbbbb", // 文本框提示
-  color_text_disabled: "#bbbbbb", // 失效
-  color_text_caption: "#888888", // 辅助描述
-  color_text_paragraph: "#333333", // 段落
+  color_text_base: '#000000', // 基本
+  color_text_base_inverse: '#ffffff', // 基本 _ 反色
+  color_text_secondary: '#a4a9b0', // 辅助色
+  color_text_placeholder: '#bbbbbb', // 文本框提示
+  color_text_disabled: '#bbbbbb', // 失效
+  color_text_caption: '#888888', // 辅助描述
+  color_text_paragraph: '#333333', // 段落
   color_link: brandPrimary, // 链接
-  fill_overlay_inverse: "rgba(0, 0, 0, .8)", // 浮层背景 _ 反色，用于 toast
+  fill_overlay_inverse: 'rgba(0, 0, 0, .8)', // 浮层背景 _ 反色，用于 toast
 
   // 背景色
-  fill_base: "#ffffff", // 组件默认背景
-  fill_body: "#f5f5f9", // 页面背景
-  fill_tap: "#dddddd", // 组件默认背景 _ 按下
-  fill_disabled: "#dddddd", // 通用失效背景
-  fill_mask: "rgba(0, 0, 0, .4)", // 遮罩背景
-  color_icon_base: "#cccccc", // 许多小图标的背景，比如一些小圆点，加减号
-  fill_grey: "#f7f7f7",
+  fill_base: '#ffffff', // 组件默认背景
+  fill_body: '#f5f5f9', // 页面背景
+  fill_tap: '#dddddd', // 组件默认背景 _ 按下
+  fill_disabled: '#dddddd', // 通用失效背景
+  fill_mask: 'rgba(0, 0, 0, .4)', // 遮罩背景
+  color_icon_base: '#cccccc', // 许多小图标的背景，比如一些小圆点，加减号
+  fill_grey: '#f7f7f7',
 
   // 透明度
-  opacity_disabled: "0.3", // switch checkbox radio 等组件禁用的透明度
+  opacity_disabled: '0.3', // switch checkbox radio 等组件禁用的透明度
 
   // 全局/品牌色
   brand_primary: brandPrimary,
   brand_primary_tap: brandPrimaryTap,
-  brand_success: "#6abf47",
-  brand_warning: "#f4333c",
-  brand_error: "#f4333c",
-  brand_important: "#ff5b05", // 用于小红点
-  brand_wait: "#108ee9",
+  brand_success: '#6abf47',
+  brand_warning: '#f4333c',
+  brand_error: '#f4333c',
+  brand_important: '#ff5b05', // 用于小红点
+  brand_wait: '#108ee9',
 
   // 边框色
-  border_color_base: "#dddddd",
+  border_color_base: '#dddddd',
 
   // 字体尺寸
   // ---
@@ -88,7 +88,7 @@ export default {
 
   // 动画缓动
   // ---
-  ease_in_out_quint: "cubic_bezier(0.86, 0, 0.07, 1)",
+  ease_in_out_quint: 'cubic_bezier(0.86, 0, 0.07, 1)',
 
   // 组件变量
   // ---
@@ -104,15 +104,15 @@ export default {
   button_font_size_sm: 12,
 
   primary_button_fill: brandPrimary,
-  primary_button_fill_tap: "#0e80d2",
+  primary_button_fill_tap: '#0e80d2',
 
   ghost_button_color: brandPrimary, // 同时应用于背景、文字颜色、边框色
   ghost_button_fill_tap: `${brandPrimary}99`, // alpha 60%  https://codepen.io/chriscoyier/pen/XjbzAW
 
-  warning_button_fill: "#e94f4f",
-  warning_button_fill_tap: "#d24747",
+  warning_button_fill: '#e94f4f',
+  warning_button_fill_tap: '#d24747',
 
-  link_button_fill_tap: "#dddddd",
+  link_button_fill_tap: '#dddddd',
   link_button_font_size: 16,
 
   // modal
@@ -128,7 +128,7 @@ export default {
   // input
   input_label_width: 17, // InputItem、TextareaItem 文字长度基础值
   input_font_size: 17,
-  input_color_icon: "#cccccc",
+  input_color_icon: '#cccccc',
   input_color_icon_tap: brandPrimary,
 
   // tabs
@@ -142,25 +142,25 @@ export default {
   segmented_control_fill_tap: `${brandPrimary}10`,
 
   // tab_bar
-  tab_bar_fill: "#ebeeef",
+  tab_bar_fill: '#ebeeef',
   tab_bar_height: 50,
 
   // toast
-  toast_fill: "rgba(0, 0, 0, .8)",
+  toast_fill: 'rgba(0, 0, 0, .8)',
 
   // search_bar
-  search_bar_fill: "#efeff4",
+  search_bar_fill: '#efeff4',
   search_bar_height: 44,
   search_bar_input_height: 28,
   search_bar_font_size: 15,
-  search_color_icon: "#bbbbbb", // input search icon 的背景色
+  search_color_icon: '#bbbbbb', // input search icon 的背景色
 
   // notice_bar
-  notice_bar_fill: "#fffada",
+  notice_bar_fill: '#fffada',
   notice_bar_height: 36,
 
   // switch
-  switch_fill: "#4dd865",
+  switch_fill: '#4dd865',
 
   // tag
   tag_height: 25,
@@ -172,5 +172,5 @@ export default {
   toast_zindex: 1999,
   action_sheet_zindex: 1000,
   popup_zindex: 999,
-  modal_zindex: 999
+  modal_zindex: 999,
 };

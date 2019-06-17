@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { AJListView, Toast, Scene } from "UIKit";
-import FlatListItem from "./item";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { AJListView, Toast, Scene } from 'UIKit';
+import FlatListItem from './item';
 
-import styles from "./styles";
+import styles from './styles';
 
 export default class Example extends Component<any, any> {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class Example extends Component<any, any> {
 
   render() {
     return (
-      <Scene header={"消息"} hasBack={false} style={styles.container}>
+      <Scene header={'消息'} hasBack={false} style={styles.container}>
         <AJListView onFetch={this._onFetch} item={this._renderItem} />
       </Scene>
     );
@@ -24,10 +24,7 @@ export default class Example extends Component<any, any> {
       let pageLimit = 14;
       const skip = (page - 1) * pageLimit;
 
-      let rowData = Array.from(
-        { length: pageLimit },
-        (value, index) => `item -> ${index + skip}`
-      );
+      let rowData = Array.from({ length: pageLimit }, (value, index) => `item -> ${index + skip}`);
 
       if (page > 4) {
         rowData = [];
@@ -47,8 +44,6 @@ export default class Example extends Component<any, any> {
   };
 
   _renderItem = (item, index, separator) => {
-    return (
-      <FlatListItem item={item} index={index} onPress={this._onPressItem} />
-    );
+    return <FlatListItem item={item} index={index} onPress={this._onPressItem} />;
   };
 }

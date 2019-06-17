@@ -1,6 +1,6 @@
 interface ButtonProps {
-  type?: "primary" | "ghost";
-  size?: "small" | "middle";
+  type?: 'primary' | 'ghost';
+  size?: 'small' | 'middle';
   activeStyle?: boolean | Object;
   disabled?: boolean;
   loading?: boolean;

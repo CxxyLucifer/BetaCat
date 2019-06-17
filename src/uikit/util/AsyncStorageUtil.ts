@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from 'react-native';
 
 /**
  * 异步保存
@@ -32,5 +32,5 @@ const getItem = key => {
 
 export default {
   setItem,
-  getItem
+  getItem,
 };

@@ -1,6 +1,6 @@
-import deepmerge from "deepmerge";
-import React, { useContext } from "react";
-import defaultTheme from "./themes/default";
+import deepmerge from 'deepmerge';
+import React, { useContext } from 'react';
+import defaultTheme from './themes/default';
 export const ThemeContext = React.createContext(defaultTheme);
 export type Theme = typeof defaultTheme & { [key: string]: any };
 export type PartialTheme = Partial<Theme>;
@@ -10,11 +10,7 @@ export interface ThemeProviderProps {
 }
 export const ThemeProvider = (props: ThemeProviderProps) => {
   const theme = { ...defaultTheme, ...props.value };
-  return (
-    <ThemeContext.Provider value={theme}>
-      {props.children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={theme}>{props.children}</ThemeContext.Provider>;
 };
 export interface UseThemeContextProps {
   theme?: PartialTheme;
@@ -30,7 +26,7 @@ export interface WithThemeProps<T, S> {
   children: (
     // fix: styles[`${size}RawText`]
     styles: T & { [key: string]: any },
-    theme: Theme
+    theme: Theme,
   ) => React.ReactNode;
 }
 
@@ -40,7 +36,7 @@ export interface WithThemeProps<T, S> {
 export type WithThemeStyles<T> = { styles?: Partial<T> };
 export class WithTheme<T, S> extends React.Component<WithThemeProps<T, S>> {
   static defaultProps = {
-    themeStyles: () => {}
+    themeStyles: () => {},
   };
   getStyles = (theme: Theme) => {
     const { themeStyles, styles } = this.props;
@@ -53,10 +49,6 @@ export class WithTheme<T, S> extends React.Component<WithThemeProps<T, S>> {
     return defaultThemeStyles;
   };
   render() {
-    return (
-      <ThemeContext.Consumer>
-        {theme => this.props.children(this.getStyles(theme), theme)}
-      </ThemeContext.Consumer>
-    );
+    return <ThemeContext.Consumer>{theme => this.props.children(this.getStyles(theme), theme)}</ThemeContext.Consumer>;
   }
 }

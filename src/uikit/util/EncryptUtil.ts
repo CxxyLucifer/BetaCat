@@ -1,4 +1,4 @@
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 
 /**
  * MD5加密
@@ -18,5 +18,5 @@ const HmacMD5 = (data: string, key: string) => {
 
 export default {
   MD5,
-  HmacMD5
+  HmacMD5,
 };

@@ -7,7 +7,7 @@ declare interface FetchData {
   err: any;
 }
 
-declare module "UIKit";
+declare module 'UIKit';
 
 /**
  * fetch返回结果;
@@ -36,14 +36,14 @@ declare interface SearchProps {
   storageKey: string; //不能有下划线_
 }
 
-declare module "dismissKeyboard" {
+declare module 'dismissKeyboard' {
   export default function dismissKeyboard(): void;
 }
 
-declare module "TextInputState" {
+declare module 'TextInputState' {
   export function currentlyFocusedField();
 }
 
-declare module "crypto-js";
+declare module 'crypto-js';
 
-declare module "UIcon";
+declare module 'UIcon';

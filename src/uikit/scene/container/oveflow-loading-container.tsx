@@ -2,18 +2,18 @@
  * Created by hufeng on 3/22/16.
  * 悬浮loading的效果
  */
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
-import { View, Dimensions, StyleSheet, ViewStyle } from "react-native";
-import Loading from "../../loading";
-import { START, END } from "./loading-status";
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
+import React, { Component } from 'react';
+import { View, Dimensions, StyleSheet, ViewStyle } from 'react-native';
+import Loading from '../../loading';
+import { START, END } from './loading-status';
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default class OverflowLoadingContainer extends Component<any, any> {
   static defaultProps = {
     loading: END,
-    style: null
+    style: null,
   };
 
   render() {
@@ -33,6 +33,6 @@ export default class OverflowLoadingContainer extends Component<any, any> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  } as ViewStyle
+    flex: 1,
+  } as ViewStyle,
 });

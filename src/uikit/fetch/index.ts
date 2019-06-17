@@ -1,6 +1,6 @@
-import Toast from "../toast";
-import { Platform } from "react-native";
-import objectAssign from "object-assign";
+import Toast from '../toast';
+import { Platform } from 'react-native';
+import objectAssign from 'object-assign';
 
 import { RequestParam } from './index.d';
 
@@ -12,23 +12,23 @@ import { RequestParam } from './index.d';
  * @param {*} param
  */
 const Fetch = (url: string, param?: RequestParam) => {
-  if (param && param.body && typeof param.body == "object") {
+  if (param && param.body && typeof param.body == 'object') {
     param.body = JSON.stringify(param.body);
   }
 
   //判断是不是上传图片
-  const contentType = param && param.isUpload ? "multipart/form-data" : "application/json; charset=utf-8";
+  const contentType = param && param.isUpload ? 'multipart/form-data' : 'application/json; charset=utf-8';
 
   let req = {
-    method: "GET",
-    credentials: "include",
-    mode: "cors",
+    method: 'GET',
+    credentials: 'include',
+    mode: 'cors',
     headers: {
       Platform: Platform.OS,
-      Authorization: "",
-      Accept: "application/json; charset=utf-8",
-      "Content-Type": contentType
-    }
+      Authorization: '',
+      Accept: 'application/json; charset=utf-8',
+      'Content-Type': contentType,
+    },
   };
 
   const promise = new Promise((resolve, reject) => {
@@ -36,8 +36,8 @@ const Fetch = (url: string, param?: RequestParam) => {
     const merge = objectAssign(req, param);
     const timeout = merge.timeout || 10,
       timeoutId = setTimeout(() => {
-        Toast.fail("网络超时,请联系管理员");
-        resolve({ res: {}, err: new Error("timeout") });
+        Toast.fail('网络超时,请联系管理员');
+        resolve({ res: {}, err: new Error('timeout') });
       }, timeout * 1000);
 
     fetch(url, merge)
@@ -52,11 +52,10 @@ const Fetch = (url: string, param?: RequestParam) => {
       })
       .then(json => {
         if (__DEV__) {
-          console.log("\n", "---------- fetch url:", url);
-          param &&
-            console.log("----------- fetch param:", JSON.stringify(param));
-          console.log("----------- fetch success:", success);
-          console.log("----------- fetch result:", json);
+          console.log('\n', '---------- fetch url:', url);
+          param && console.log('----------- fetch param:', JSON.stringify(param));
+          console.log('----------- fetch success:', success);
+          console.log('----------- fetch result:', json);
         }
         if (success) {
           resolve(json);
@@ -67,7 +66,7 @@ const Fetch = (url: string, param?: RequestParam) => {
       })
       .catch(error => {
         clearTimeout(timeoutId);
-        Toast.fail("请求失败，请稍后重试");
+        Toast.fail('请求失败，请稍后重试');
         reject(error);
       });
   });

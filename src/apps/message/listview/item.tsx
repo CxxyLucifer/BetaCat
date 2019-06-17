@@ -1,19 +1,10 @@
-import React, { PureComponent } from "react";
-import { View } from "react-native";
-import {
-  Button,
-  ListItem,
-  Left,
-  Right,
-  Body,
-  Thumbnail,
-  Text,
-  Icon
-} from "native-base";
-import styles from "./styles";
+import React, { PureComponent } from 'react';
+import { View } from 'react-native';
+import { Button, ListItem, Left, Right, Body, Thumbnail, Text, Icon } from 'native-base';
+import styles from './styles';
 
 const MyButton: any = Button;
-const logo = require("../../../img/default-portrait.png");
+const logo = require('../../../img/default-portrait.png');
 
 export default class Example extends PureComponent<any, any> {
   constructor(props) {
@@ -25,7 +16,7 @@ export default class Example extends PureComponent<any, any> {
     const rowData = this.props.item;
 
     return (
-      <ListItem style={{ backgroundColor: "white" }} thumbnail>
+      <ListItem style={{ backgroundColor: 'white' }} thumbnail>
         <Left>
           <Thumbnail square source={logo} style={styles.thumb} />
         </Left>
@@ -39,7 +30,7 @@ export default class Example extends PureComponent<any, any> {
               small
               transparent
               title="view"
-              onPress={() => this.props.onPress("chat", rowID, rowData)}
+              onPress={() => this.props.onPress('chat', rowID, rowData)}
               style={styles.rightBtn}
             >
               <Icon name="chatbubbles" style={styles.rightBtnIcon} />
@@ -48,7 +39,7 @@ export default class Example extends PureComponent<any, any> {
               small
               transparent
               title="view"
-              onPress={() => this.props.onPress("like", rowID, rowData)}
+              onPress={() => this.props.onPress('like', rowID, rowData)}
               style={styles.rightBtn}
             >
               <Icon name="heart" style={styles.rightBtnIcon} />
@@ -57,7 +48,7 @@ export default class Example extends PureComponent<any, any> {
               small
               transparent
               title="view"
-              onPress={() => this.props.onPress("share", rowID, rowData)}
+              onPress={() => this.props.onPress('share', rowID, rowData)}
               style={styles.rightBtn}
             >
               <Icon name="share" style={styles.rightBtnIcon} />

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { StyleSheet } from "react-native";
-import { Search, PullToRefresh } from "UIKit";
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { Search, PullToRefresh } from 'UIKit';
 
-import Gallery from "./component/gallery";
-import ToDo from "./component/todo";
-import Summary from "./component/summary";
+import Gallery from './component/gallery';
+import ToDo from './component/todo';
+import Summary from './component/summary';
 
 export default class Index extends Component<any, any> {
   constructor(props) {
@@ -37,6 +37,6 @@ export default class Index extends Component<any, any> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

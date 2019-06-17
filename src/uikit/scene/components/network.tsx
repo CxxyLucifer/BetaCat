@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Image, StyleSheet, ViewStyle, ImageStyle } from "react-native";
-import Kit from "../../kit";
-import Button from "../../button";
-import Text from "../../text";
+import React from 'react';
+import { View, Image, StyleSheet, ViewStyle, ImageStyle } from 'react-native';
+import Kit from '../../kit';
+import Button from '../../button';
+import Text from '../../text';
 
 export default class NoNetwork extends React.Component<any, any> {
   static defaultProps = {
-    onPress: Kit.noop
+    onPress: Kit.noop,
   };
 
   render() {
@@ -26,21 +26,21 @@ export default class NoNetwork extends React.Component<any, any> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   body: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   } as ViewStyle,
   bodyText: {
     fontSize: 14,
-    color: "#999",
+    color: '#999',
     lineHeight: 20,
-    marginBottom: 5
+    marginBottom: 5,
   } as ViewStyle,
   btn: {
     marginTop: 15,
-    width: 180
-  } as ViewStyle
+    width: 180,
+  } as ViewStyle,
 });

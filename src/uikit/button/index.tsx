@@ -3,16 +3,10 @@
  * 组件和样式参考ant mobile的代码
  */
 
-import React from "react";
-import {
-  TouchableHighlight,
-  Text,
-  StyleSheet,
-  View,
-  ActivityIndicator
-} from "react-native";
-import buttonStyles from "./style/index";
-import PropsType from "./propstype";
+import React from 'react';
+import { TouchableHighlight, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
+import buttonStyles from './style/index';
+import PropsType from './propstype';
 
 export default class QMButton extends React.Component<PropsType, any> {
   styles = buttonStyles;
@@ -24,7 +18,7 @@ export default class QMButton extends React.Component<PropsType, any> {
     onPressIn: (_x?: any) => {},
     onPressOut: (_x?: any) => {},
     onShowUnderlay: (_x?: any) => {},
-    onHideUnderlay: (_x?: any) => {}
+    onHideUnderlay: (_x?: any) => {},
   };
 
   constructor(props) {
@@ -32,7 +26,7 @@ export default class QMButton extends React.Component<PropsType, any> {
     this.state = {
       pressIn: false,
       touchIt: false,
-      clicking: true
+      clicking: true,
     };
   }
 
@@ -89,8 +83,8 @@ export default class QMButton extends React.Component<PropsType, any> {
   render() {
     // TODO: replace `TouchableHighlight` with `TouchableWithoutFeedback` in version 1.1.0
     const {
-      size = "normal",
-      type = "default",
+      size = 'normal',
+      type = 'default',
       disabled,
       activeStyle,
       onPress,
@@ -100,14 +94,14 @@ export default class QMButton extends React.Component<PropsType, any> {
     } = this.props;
 
     [
-      "activeOpacity",
-      "delayPressOut",
-      "underlayColor",
-      "onPress",
-      "onPressIn",
-      "onPressOut",
-      "onShowUnderlay",
-      "onHideUnderlay"
+      'activeOpacity',
+      'delayPressOut',
+      'underlayColor',
+      'onPress',
+      'onPressIn',
+      'onPressOut',
+      'onShowUnderlay',
+      'onHideUnderlay',
     ].forEach(prop => {
       if (restProps.hasOwnProperty(prop)) {
         delete restProps[prop];
@@ -119,7 +113,7 @@ export default class QMButton extends React.Component<PropsType, any> {
       styles[`${size}RawText`],
       styles[`${type}RawText`],
       disabled && styles.disabledRawText && styles[`${type}DisabledText`],
-      this.state.pressIn && styles[`${type}HighlightText`]
+      this.state.pressIn && styles[`${type}HighlightText`],
     ];
 
     const wrapperStyle = [
@@ -129,17 +123,14 @@ export default class QMButton extends React.Component<PropsType, any> {
       disabled && styles.disabledRaw && styles[`${type}Disabled`],
       this.state.pressIn && activeStyle && styles[`${type}Highlight`],
       this.state.touchIt && activeStyle,
-      style
+      style,
     ];
 
-    const underlayColor = (StyleSheet.flatten(
-      styles[activeStyle ? `${type}Highlight` : `${type}Raw`]
-    ) as any).backgroundColor;
+    const underlayColor = (StyleSheet.flatten(styles[activeStyle ? `${type}Highlight` : `${type}Raw`]) as any)
+      .backgroundColor;
 
     const indicatorColor = (StyleSheet.flatten(
-      this.state.pressIn
-        ? styles[`${type}HighlightText`]
-        : styles[`${type}RawText`]
+      this.state.pressIn ? styles[`${type}HighlightText`] : styles[`${type}RawText`],
     ) as any).color;
 
     return (
@@ -158,12 +149,7 @@ export default class QMButton extends React.Component<PropsType, any> {
       >
         <View style={styles.container}>
           {loading ? (
-            <ActivityIndicator
-              style={styles.indicator}
-              animating
-              color={indicatorColor}
-              size="small"
-            />
+            <ActivityIndicator style={styles.indicator} animating color={indicatorColor} size="small" />
           ) : null}
           <Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
             {this.props.children}

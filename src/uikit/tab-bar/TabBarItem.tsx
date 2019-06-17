@@ -1,15 +1,8 @@
-import React, { isValidElement } from "react";
-import {
-  Image,
-  ImageStyle,
-  StyleProp,
-  Text,
-  TouchableWithoutFeedback,
-  View
-} from "react-native";
-import { TabBarIcon } from "./PropsType";
-import TabBarItemStyles from "./style";
-import { Icon } from "UIcon";
+import React, { isValidElement } from 'react';
+import { Image, ImageStyle, StyleProp, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { TabBarIcon } from './PropsType';
+import TabBarItemStyles from './style';
+import { Icon } from 'UIcon';
 
 export interface TabBarItemProps {
   badge?: string | number;
@@ -26,7 +19,7 @@ export interface TabBarItemProps {
 }
 export default class TabBarItem extends React.Component<TabBarItemProps, any> {
   static defaultProps = {
-    onPress() {}
+    onPress() {},
   };
   render() {
     const {
@@ -38,7 +31,7 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
       selectedIcon,
       onPress,
       badge,
-      iconStyle
+      iconStyle,
     } = this.props;
     const styles = this.props.styles!;
     const itemSelectedStyle = selected ? styles.barItemSelected : null;
@@ -48,17 +41,9 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
       </View>
     ) : null;
     // icon
-    const source =
-      selected && selectedIcon !== undefined
-        ? selectedIcon
-        : icon !== undefined
-        ? icon
-        : null;
+    const source = selected && selectedIcon !== undefined ? selectedIcon : icon !== undefined ? icon : null;
     const color = selected ? tintColor : unselectedTintColor;
-    const isIcon =
-      source &&
-      (source as any).type &&
-      (source as any).type.displayName === "Icon";
+    const isIcon = source && (source as any).type && (source as any).type.displayName === 'Icon';
     return (
       <TouchableWithoutFeedback onPress={onPress}>
         <View style={[styles.barItem, itemSelectedStyle]}>

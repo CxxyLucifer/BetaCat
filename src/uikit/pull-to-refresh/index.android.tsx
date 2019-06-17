@@ -2,24 +2,17 @@
  * Created by hufeng on 3/22/16.
  * android pull-to-refresh
  */
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
-import {
-  ScrollView,
-  ViewStyle,
-  UIManager,
-  RefreshControl,
-  StyleSheet,
-  Dimensions
-} from "react-native";
-import TimerMixin from "react-timer-mixin";
-import reactMixin from "react-mixin";
+import React, { Component } from 'react';
+import { ScrollView, ViewStyle, UIManager, RefreshControl, StyleSheet, Dimensions } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
 
 const MyScrollView: any = ScrollView;
 
 const noop = () => {};
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export interface FactoryPullToRefreshProps {
   /**
@@ -78,17 +71,14 @@ export interface FactoryPullToRefreshProps {
   autoResize?: boolean;
 }
 
-export default class PullToRefresh extends Component<
-  FactoryPullToRefreshProps,
-  any
-> {
+export default class PullToRefresh extends Component<FactoryPullToRefreshProps, any> {
   requestAnimationFrame: any;
   _swipeRefreshView: any;
 
   static defaultProps = {
     onRefresh: noop,
     autoResize: true,
-    contentContainerStyle: null
+    contentContainerStyle: null,
   };
 
   constructor(props) {
@@ -96,7 +86,7 @@ export default class PullToRefresh extends Component<
 
     this.state = {
       isRefreshing: false,
-      contentContainerStyle: null
+      contentContainerStyle: null,
     };
   }
 
@@ -119,14 +109,11 @@ export default class PullToRefresh extends Component<
       <MyScrollView
         ref={scrollView => (this._swipeRefreshView = scrollView)}
         onScroll={this._handleScroll}
-        contentContainerStyle={[
-          contentContainerStyle,
-          this.state.contentContainerStyle
-        ]}
+        contentContainerStyle={[contentContainerStyle, this.state.contentContainerStyle]}
         style={styles.container}
         refreshControl={
           <RefreshControl
-            colors={["#1e90ff", "#40e0d0", "#ff69b4"]}
+            colors={['#1e90ff', '#40e0d0', '#ff69b4']}
             refreshing={this.state.isRefreshing}
             onRefresh={this._handleOnRefresh}
           />
@@ -145,35 +132,32 @@ export default class PullToRefresh extends Component<
   _updateContentContainerStyle = () => {
     if (this._swipeRefreshView) {
       this.requestAnimationFrame(() => {
-        UIManager.measure(
-          this._swipeRefreshView.getInnerViewNode(),
-          (x, y, width, height, pageX, pageY) => {
-            //avoid re-redner
-            if (height <= SCREEN_HEIGHT) {
-              if (!this.state.contentContainerStyle) {
-                this.setState({
-                  contentContainerStyle: {
-                    flex: 1
-                  }
-                });
-              }
-            } else {
-              //avoid re-render
-              if (this.state.contentContainerStyle) {
-                this.setState({
-                  contentContainerStyle: null
-                });
-              }
+        UIManager.measure(this._swipeRefreshView.getInnerViewNode(), (x, y, width, height, pageX, pageY) => {
+          //avoid re-redner
+          if (height <= SCREEN_HEIGHT) {
+            if (!this.state.contentContainerStyle) {
+              this.setState({
+                contentContainerStyle: {
+                  flex: 1,
+                },
+              });
+            }
+          } else {
+            //avoid re-render
+            if (this.state.contentContainerStyle) {
+              this.setState({
+                contentContainerStyle: null,
+              });
             }
           }
-        );
+        });
       });
     }
   };
 
   _handleOnRefresh = () => {
     this.setState({
-      isRefreshing: true
+      isRefreshing: true,
     });
 
     this.props.onRefresh(this.onEnd);
@@ -181,7 +165,7 @@ export default class PullToRefresh extends Component<
 
   onEnd = () => {
     this.setState({
-      isRefreshing: false
+      isRefreshing: false,
     });
   };
 
@@ -195,9 +179,7 @@ export default class PullToRefresh extends Component<
   };
 
   getScrollResponder: Function = () => {
-    return (
-      this._swipeRefreshView && this._swipeRefreshView.getScrollResponder()
-    );
+    return this._swipeRefreshView && this._swipeRefreshView.getScrollResponder();
   };
 }
 
@@ -205,6 +187,6 @@ reactMixin(PullToRefresh.prototype, TimerMixin);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

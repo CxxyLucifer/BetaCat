@@ -1,24 +1,16 @@
 // @flow
-("use strict");
+('use strict');
 
 /**
  * Navigator导航中心
  */
-import React, { Component } from "react";
-import {
-  Platform,
-  ToastAndroid,
-  InteractionManager,
-  StyleSheet,
-  View,
-  NetInfo,
-  ViewStyle
-} from "react-native";
-import LoadingContainer from "./container/loading-container";
-import OverflowLoadingContainer from "./container/oveflow-loading-container";
-import Network from "./components/network";
-import Kit from "../kit";
-import noop from "../noop";
+import React, { Component } from 'react';
+import { Platform, ToastAndroid, InteractionManager, StyleSheet, View, NetInfo, ViewStyle } from 'react-native';
+import LoadingContainer from './container/loading-container';
+import OverflowLoadingContainer from './container/oveflow-loading-container';
+import Network from './components/network';
+import Kit from '../kit';
+import noop from '../noop';
 
 interface State {
   hasNetwork: boolean;
@@ -37,13 +29,13 @@ export default class Body extends Component<any, any> {
     overflowLoading: null,
     style: null,
     onNetworkBreak: noop,
-    onNetworkBack: noop //网络恢复
+    onNetworkBack: noop, //网络恢复
   };
 
   state: State = {
     hasNetwork: true,
     timeoutId: -1,
-    loading: this.props.loading
+    loading: this.props.loading,
   };
 
   constructor(props: Object = {}) {
@@ -51,11 +43,11 @@ export default class Body extends Component<any, any> {
   }
 
   componentDidMount() {
-    NetInfo.isConnected.addEventListener("change", this._onNetChangeHandler);
+    NetInfo.isConnected.addEventListener('change', this._onNetChangeHandler);
   }
 
   componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener("change", this._onNetChangeHandler);
+    NetInfo.isConnected.removeEventListener('change', this._onNetChangeHandler);
   }
 
   render() {
@@ -108,7 +100,7 @@ export default class Body extends Component<any, any> {
   _onCheckNetwork = () => {
     NetInfo.isConnected.fetch().then(isConnected => {
       if (__DEV__) {
-        console.log("检查网络 => ", isConnected);
+        console.log('检查网络 => ', isConnected);
       }
       this._onNetChangeHandler(isConnected);
     });
@@ -117,14 +109,14 @@ export default class Body extends Component<any, any> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   model: {
     width: Kit.Width,
     height: Kit.Height,
-    backgroundColor: "rgba(0,0,0,0.3)",
-    position: "absolute",
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    position: 'absolute',
     left: 0,
-    top: 0
-  } as ViewStyle
+    top: 0,
+  } as ViewStyle,
 });

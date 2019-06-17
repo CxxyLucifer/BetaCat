@@ -1,27 +1,27 @@
-import { StyleSheet, Dimensions, ViewStyle } from "react-native";
-import { Theme } from "UIKit";
+import { StyleSheet, Dimensions, ViewStyle } from 'react-native';
+import { Theme } from 'UIKit';
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
 export default {
   container: {
-    backgroundColor: Theme.pages.content_default_bg
+    backgroundColor: Theme.pages.content_default_bg,
   },
   header: {
     width,
     height: 80,
     padding: 20,
-    justifyContent: "flex-end",
-    alignItems: "center",
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     borderBottomWidth: 0.5,
-    borderColor: "lightgray",
-    backgroundColor: "whitesmoke"
+    borderColor: 'lightgray',
+    backgroundColor: 'whitesmoke',
   },
   headerSegment: {
     width,
     height: 60,
-    flexDirection: "row",
-    alignItems: "center"
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   row: {
     flex: 0,
@@ -32,11 +32,11 @@ export default {
     marginRight: -1,
     marginTop: 0,
     marginBottom: 0,
-    padding: 0
+    padding: 0,
   },
   rowAndroid: {
     flex: 0,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderTopWidth: 0,
     borderBottomWidth: 1,
     shadowOffset: { width: 0, height: 0 },
@@ -44,72 +44,72 @@ export default {
     marginRight: -1,
     marginTop: 0,
     marginBottom: 0,
-    padding: 0
+    padding: 0,
   },
   rowHeader: {},
   rowBody: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: 'column',
+    justifyContent: 'center',
     height: height * 0.25,
     marginBottom: 0,
-    backgroundColor: "whitesmoke"
+    backgroundColor: 'whitesmoke',
   },
   image: {
     flex: 1,
     height: height * 0.25,
     marginBottom: 0,
-    resizeMode: "cover",
-    backgroundColor: "whitesmoke"
+    resizeMode: 'cover',
+    backgroundColor: 'whitesmoke',
   },
   rowFooter: {
-    padding: 0
+    padding: 0,
   },
   thumb: {
     width: 50,
     height: 50,
-    borderRadius: 25
+    borderRadius: 25,
   },
   gridThumb: {
-    alignSelf: "center",
+    alignSelf: 'center',
     width: 50,
     height: 50,
     borderRadius: 25,
-    marginBottom: 10
+    marginBottom: 10,
   },
   cardTitle: {
-    fontSize: 14
+    fontSize: 14,
   },
   cardSubTitle: {
     marginTop: 3,
-    fontSize: 11
+    fontSize: 11,
   },
   rightBtnGroup: {
-    flexDirection: "row",
-    width: width * 0.3
+    flexDirection: 'row',
+    width: width * 0.3,
   } as ViewStyle,
   rightBtn: {
     margin: 0,
-    padding: 5
+    padding: 5,
   },
   rightBtnIcon: {
-    color: "dimgray"
+    color: 'dimgray',
   },
   gridText: {
-    textAlign: "center"
+    textAlign: 'center',
   },
   gridBorder: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     width: width / 3 - 10,
     height: width / 3 - 10,
     borderWidth: 0.5,
-    borderColor: "gray"
+    borderColor: 'gray',
   },
   shortcut: {
-    position: "absolute",
+    position: 'absolute',
     right: 18,
     bottom: 40,
-    width: 40
-  } as ViewStyle
+    width: 40,
+  } as ViewStyle,
 };

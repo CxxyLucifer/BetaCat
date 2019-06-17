@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Animated } from "react-native";
-import { AsyncStorageUtil, Kit } from "UIKit";
-import { msg } from "plume2";
+import React, { Component } from 'react';
+import { Animated } from 'react-native';
+import { AsyncStorageUtil, Kit } from 'UIKit';
+import { msg } from 'plume2';
 
-const splashImg = require("img/loading.png");
+const splashImg = require('img/loading.png');
 
 export default class SplashPage extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      bounceValue: new Animated.Value(1)
+      bounceValue: new Animated.Value(1),
     };
   }
 
@@ -17,24 +17,24 @@ export default class SplashPage extends Component<any, any> {
   componentDidMount() {
     Animated.timing(this.state.bounceValue, {
       toValue: 1.2,
-      duration: 1000
+      duration: 1000,
     }).start();
     this.timer = setTimeout(() => {
-      AsyncStorageUtil.getItem("isFrist")
+      AsyncStorageUtil.getItem('isFrist')
         .then(result => {
-          if (result == null || result == "") {
-            AsyncStorageUtil.setItem("isFrist", "true");
-            msg.emit("route:replaceRoute", {
-              sceneName: "GuidePage"
+          if (result == null || result == '') {
+            AsyncStorageUtil.setItem('isFrist', 'true');
+            msg.emit('route:replaceRoute', {
+              sceneName: 'GuidePage',
             });
           } else {
-            msg.emit("route:replaceRoute", {
-              sceneName: "Main"
+            msg.emit('route:replaceRoute', {
+              sceneName: 'Main',
             });
           }
         })
         .catch(error => {
-          console.log("系统异常" + error);
+          console.log('系统异常' + error);
         });
     }, 1000);
   }
@@ -49,7 +49,7 @@ export default class SplashPage extends Component<any, any> {
         style={{
           width: Kit.Width,
           height: Kit.Height,
-          transform: [{ scale: this.state.bounceValue }]
+          transform: [{ scale: this.state.bounceValue }],
         }}
         source={splashImg}
       />

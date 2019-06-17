@@ -1,17 +1,13 @@
-import React from "react";
-import { BackHandler, Platform, NativeModules } from "react-native";
-import {
-  createAppContainer,
-  createStackNavigator,
-  NavigationActions
-} from "react-navigation";
-import { msg } from "plume2";
-import { List } from "immutable";
-import Routes from "./route";
+import React from 'react';
+import { BackHandler, Platform, NativeModules } from 'react-native';
+import { createAppContainer, createStackNavigator, NavigationActions } from 'react-navigation';
+import { msg } from 'plume2';
+import { List } from 'immutable';
+import Routes from './route';
 
 const noop = () => {};
 
-const backOutPages = List(["Login"]);
+const backOutPages = List(['Login']);
 
 export default class Index extends React.Component<any, any> {
   Routes: any;
@@ -30,28 +26,25 @@ export default class Index extends React.Component<any, any> {
     super(props);
 
     //直接跳转到最顶层,销毁其它所有页面
-    msg.on("route:popToTop", this._popToTop);
+    msg.on('route:popToTop', this._popToTop);
     // 跳转页面
-    msg.on("route:goToNext", this._goToNext);
+    msg.on('route:goToNext', this._goToNext);
     // 回上一个页面
-    msg.on("route:backToLast", this._backToLast);
+    msg.on('route:backToLast', this._backToLast);
     // 回上第一个页面
-    msg.on("route:backToTop", this._backToTop);
+    msg.on('route:backToTop', this._backToTop);
     // 回指定页面，根据路由位置
-    msg.on("route:popToRoute", this._popToRoute);
+    msg.on('route:popToRoute', this._popToRoute);
     // 替换页面，根据路由名称
-    msg.on("route:replaceRoute", this._replaceRoute);
+    msg.on('route:replaceRoute', this._replaceRoute);
     // 替换页面，根据路由位置
-    msg.on("route:replaceAtIndex", this._replaceAtIndex);
+    msg.on('route:replaceAtIndex', this._replaceAtIndex);
     // 退出应用
-    msg.on("app:backOut", this._handleBackOut);
+    msg.on('app:backOut', this._handleBackOut);
 
     //监听Android的实体物理键的返回
-    if (Platform.OS === "android") {
-      BackHandler.addEventListener(
-        "hardwareBackPress",
-        this._handleBackAndroid
-      );
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', this._handleBackAndroid);
     }
 
     // 初始化_sceneName
@@ -66,27 +59,27 @@ export default class Index extends React.Component<any, any> {
   }
 
   componentWillUnmount() {
-    msg.off("route:popToTop", noop);
-    msg.off("route:goToNext", noop);
-    msg.off("route:backToLast", noop);
-    msg.off("route:backToTop", noop);
-    msg.off("route:popToRoute", noop);
-    msg.off("route:replaceRoute", noop);
-    msg.off("route:replaceAtIndex", noop);
-    msg.on("app:backOut", noop);
-    if (Platform.OS === "android") {
-      msg.off("hardwareBackPress", noop);
+    msg.off('route:popToTop', noop);
+    msg.off('route:goToNext', noop);
+    msg.off('route:backToLast', noop);
+    msg.off('route:backToTop', noop);
+    msg.off('route:popToRoute', noop);
+    msg.off('route:replaceRoute', noop);
+    msg.off('route:replaceAtIndex', noop);
+    msg.on('app:backOut', noop);
+    if (Platform.OS === 'android') {
+      msg.off('hardwareBackPress', noop);
     }
   }
 
   render() {
     const AppStackNavigator = createStackNavigator(Routes, {
-      initialRouteName: this.props.initialRoute || "Login",
-      headerMode: "none",
+      initialRouteName: this.props.initialRoute || 'Login',
+      headerMode: 'none',
       navigationOptions: {
         header: null,
-        gesturesEnabled: true
-      }
+        gesturesEnabled: true,
+      },
     });
 
     const AppContainer = createAppContainer(AppStackNavigator);
@@ -160,7 +153,7 @@ export default class Index extends React.Component<any, any> {
     const navigateAction = NavigationActions.navigate({
       routeName: sceneName,
       params: props,
-      action: NavigationActions.navigate({ routeName: sceneName })
+      action: NavigationActions.navigate({ routeName: sceneName }),
     });
 
     this.navigation.dispatch(navigateAction);
@@ -174,7 +167,7 @@ export default class Index extends React.Component<any, any> {
     const resetAction = this.navigation.reset({
       //Replace current state with a new state
       index: 0,
-      actions: [NavigationActions.navigate({ routeName })]
+      actions: [NavigationActions.navigate({ routeName })],
     });
     this.navigation.dispatch(resetAction);
   };
@@ -198,12 +191,12 @@ export default class Index extends React.Component<any, any> {
    */
   _handleBackAndroid = () => {
     if (__DEV__) {
-      console.log("current sceneName", this._sceneName);
+      console.log('current sceneName', this._sceneName);
     }
 
     // if popup is top remove it;
     if (this.props.isShowPopup) {
-      msg.emit("pop-up-close", true);
+      msg.emit('pop-up-close', true);
       return false;
     }
 
@@ -211,11 +204,8 @@ export default class Index extends React.Component<any, any> {
       this._backToLast();
 
       // 退出时释放监听;
-      if (Platform.OS === "android") {
-        BackHandler.removeEventListener(
-          "hardwareBackPress",
-          this._handleBackAndroid
-        );
+      if (Platform.OS === 'android') {
+        BackHandler.removeEventListener('hardwareBackPress', this._handleBackAndroid);
       }
 
       this._handleBackOut();
@@ -231,7 +221,7 @@ export default class Index extends React.Component<any, any> {
    */
   _handlePopUpClose = () => {
     this.setState({
-      isPopUpVisible: false
+      isPopUpVisible: false,
     });
   };
 
@@ -241,7 +231,7 @@ export default class Index extends React.Component<any, any> {
   _handlePopUp = (popUpConfig: Object) => {
     this.setState({
       isPopUpVisible: true,
-      popUpConfig: popUpConfig
+      popUpConfig: popUpConfig,
     });
   };
 

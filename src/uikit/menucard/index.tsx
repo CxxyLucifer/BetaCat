@@ -1,14 +1,8 @@
-import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TouchableOpacity
-} from "react-native";
-import { isObject, isEmpty } from "lodash";
-import { Icon } from "UIcon";
-import Toast from "../toast";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, ViewStyle, TouchableOpacity } from 'react-native';
+import { isObject, isEmpty } from 'lodash';
+import { Icon } from 'UIcon';
+import Toast from '../toast';
 
 export interface funProps {
   data: {
@@ -22,7 +16,7 @@ export default class Index extends Component<funProps, any> {
     super(props);
     this.state = {
       showMore: false,
-      funName: ""
+      funName: '',
     };
   }
 
@@ -38,20 +32,13 @@ export default class Index extends Component<funProps, any> {
       <View style={styles.wrapper}>
         <View style={styles.nameView}>
           <View style={[styles.flex1, styles.funName]}>
-            <View style={{ flex: 1, justifyContent: "center" }}>
-              <Text style={{ fontSize: 16, color: "#333333", marginLeft: 5 }}>
-                {data.menuName || ""}
-              </Text>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 16, color: '#333333', marginLeft: 5 }}>{data.menuName || ''}</Text>
             </View>
           </View>
           {!isEmpty(data.childs) && data.childs.length > 4 ? (
-            <TouchableOpacity
-              onPress={this._showMore}
-              style={[styles.flex1, styles.more]}
-            >
-              <Text style={{ color: "#9b9b9b", fontSize: 12 }}>
-                {showMore ? "收起更多" : "展开更多"}
-              </Text>
+            <TouchableOpacity onPress={this._showMore} style={[styles.flex1, styles.more]}>
+              <Text style={{ color: '#9b9b9b', fontSize: 12 }}>{showMore ? '收起更多' : '展开更多'}</Text>
             </TouchableOpacity>
           ) : (
             <View style={styles.flex1} />
@@ -63,7 +50,7 @@ export default class Index extends Component<funProps, any> {
   }
 
   _onMenuPress = () => {
-    Toast.info("========test");
+    Toast.info('========test');
   };
 
   _showMore = () => {
@@ -77,72 +64,52 @@ export default class Index extends Component<funProps, any> {
     if (showMore && !isEmpty(data.childs)) {
       data.childs.forEach((v, i) => {
         menus.push(
-          <TouchableOpacity
-            onPress={this._onMenuPress}
-            key={v.menuId + "_" + i}
-            style={styles.menuItem}
-          >
+          <TouchableOpacity onPress={this._onMenuPress} key={v.menuId + '_' + i} style={styles.menuItem}>
             <View
               style={{
                 flex: 2,
-                justifyContent: "center",
-                alignItems: "center"
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              <Icon
-                name={"myIcon|icon-stock-taking"}
-                size={45}
-                color={"#FBB074"}
-              />
+              <Icon name={'myIcon|icon-stock-taking'} size={45} color={'#FBB074'} />
             </View>
             <View
               style={{
                 flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              <Text style={{ fontSize: 13, color: "#333333" }}>
-                {v.menuName}
-              </Text>
+              <Text style={{ fontSize: 13, color: '#333333' }}>{v.menuName}</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity>,
         );
       });
     } else if (!showMore && !isEmpty(data.childs)) {
       data.childs.forEach((v, i) => {
         if (i < 4) {
           menus.push(
-            <TouchableOpacity
-              onPress={this._onMenuPress}
-              key={v.menuId + "_" + i}
-              style={styles.menuItem}
-            >
+            <TouchableOpacity onPress={this._onMenuPress} key={v.menuId + '_' + i} style={styles.menuItem}>
               <View
                 style={{
                   flex: 2,
-                  justifyContent: "center",
-                  alignItems: "center"
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
-                <Icon
-                  name={"myIcon|icon-stock-taking"}
-                  size={45}
-                  color={"#FBB074"}
-                />
+                <Icon name={'myIcon|icon-stock-taking'} size={45} color={'#FBB074'} />
               </View>
               <View
                 style={{
                   flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
-                <Text style={{ fontSize: 13, color: "#333333" }}>
-                  {v.menuName}
-                </Text>
+                <Text style={{ fontSize: 13, color: '#333333' }}>{v.menuName}</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity>,
           );
         }
       });
@@ -153,46 +120,46 @@ export default class Index extends Component<funProps, any> {
 
 const styles = StyleSheet.create({
   flex1: {
-    flex: 1
+    flex: 1,
   },
   wrapper: {
     marginTop: 10,
     paddingBottom: 5,
     marginBottom: 10,
     borderTopWidth: 1,
-    borderTopColor: "#f9f9f9",
+    borderTopColor: '#f9f9f9',
     borderBottomWidth: 1,
-    borderBottomColor: "#f9f9f9",
-    backgroundColor: "white"
+    borderBottomColor: '#f9f9f9',
+    backgroundColor: 'white',
   } as ViewStyle,
   nameView: {
     height: 40,
     borderBottomWidth: 1,
-    borderBottomColor: "#f9f9f9",
-    flexDirection: "row"
+    borderBottomColor: '#f9f9f9',
+    flexDirection: 'row',
   },
   menuView: {
     marginLeft: 10,
     marginRight: 10,
-    flexWrap: "wrap",
-    flexDirection: "row"
+    flexWrap: 'wrap',
+    flexDirection: 'row',
   },
   menuItem: {
-    width: "25%",
+    width: '25%',
     height: 80,
     marginBottom: 5,
-    alignItems: "center"
+    alignItems: 'center',
   } as ViewStyle,
   funName: {
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 10,
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   more: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingRight: 15,
-    justifyContent: "flex-end"
-  }
+    justifyContent: 'flex-end',
+  },
 });

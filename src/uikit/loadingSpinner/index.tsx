@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Dimensions, ActivityIndicator, View, Text } from "react-native";
+import React, { Component } from 'react';
+import { Dimensions, ActivityIndicator, View, Text } from 'react-native';
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
 export default class LoadingSpinner extends Component<any, any> {
   static defaultProps = {
     width,
     height,
-    spinnerColor: "dimgray",
-    textColor: "dimgray",
-    text: ""
+    spinnerColor: 'dimgray',
+    textColor: 'dimgray',
+    text: '',
   };
 
   render() {
@@ -18,8 +18,8 @@ export default class LoadingSpinner extends Component<any, any> {
         style={{
           width: this.props.width,
           height: this.props.height,
-          justifyContent: "center",
-          alignItems: "center"
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <ActivityIndicator color={this.props.spinnerColor} />

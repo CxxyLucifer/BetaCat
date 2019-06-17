@@ -1,25 +1,17 @@
 /**
  * @flow
  */
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
-import {
-  ScrollView,
-  Animated,
-  View,
-  Dimensions,
-  addons,
-  UIManager,
-  StyleSheet
-} from "react-native";
-import TimeMixin from "react-timer-mixin";
-import reactMixin from "react-mixin";
-import QMLoading from "../loading";
-import { Indicator, LOADING_HEIGHT } from "./indicator";
+import React, { Component } from 'react';
+import { ScrollView, Animated, View, Dimensions, addons, UIManager, StyleSheet } from 'react-native';
+import TimeMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
+import QMLoading from '../loading';
+import { Indicator, LOADING_HEIGHT } from './indicator';
 //do nothing.
 const noop = () => {};
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const MyScrollView: any = ScrollView;
 
@@ -36,7 +28,7 @@ export default class PullToRefresh extends React.Component<any, any> {
     duration: 600,
     scrollRenderAheadDistance: 800,
     onModeChange: noop,
-    onScrollEnd: noop
+    onScrollEnd: noop,
   };
 
   _swipeRefreshView: any;
@@ -49,12 +41,12 @@ export default class PullToRefresh extends React.Component<any, any> {
 
     this.state = {
       //当前提示框的状态
-      mode: "refresh",
+      mode: 'refresh',
       //当前的提示的高度
       height: 0,
       //是不是可以滚动
       scrollEnabled: true,
-      contentContainerStyle: null
+      contentContainerStyle: null,
     };
   }
 
@@ -92,19 +84,12 @@ export default class PullToRefresh extends React.Component<any, any> {
         scrollEnabled={this.state.scrollEnabled}
         showsVerticalScrollIndicator={true}
         automaticallyAdjustContentInsets={false}
-        contentContainerStyle={[
-          this.state.contentContainerStyle,
-          this.props.contentContainerStyle
-        ]}
+        contentContainerStyle={[this.state.contentContainerStyle, this.props.contentContainerStyle]}
         onResponderRelease={this._handleResponseRelease}
         onMomentumScrollEnd={this._handleScrollEnd}
       >
         {/*指示器*/}
-        <Indicator
-          mode={this.state.mode}
-          duration={this.props.duration}
-          height={this.state.height}
-        />
+        <Indicator mode={this.state.mode} duration={this.props.duration} height={this.state.height} />
 
         {/*子元素*/}
         {this.props.children}
@@ -120,28 +105,25 @@ export default class PullToRefresh extends React.Component<any, any> {
   _updateContentContainerStyle = () => {
     if (this._swipeRefreshView) {
       this.requestAnimationFrame(() => {
-        UIManager.measure(
-          this._swipeRefreshView.getInnerViewNode(),
-          (x, y, width, height, pageX, pageY) => {
-            if (height <= SCREEN_HEIGHT) {
-              //avoid re-render
-              if (!this.state.contentContainerStyle) {
-                this.setState({
-                  contentContainerStyle: {
-                    flex: 1
-                  }
-                });
-              }
-            } else {
-              //avoid re-render
-              if (this.state.contentContainerStyle) {
-                this.setState({
-                  contentContainerStyle: null
-                });
-              }
+        UIManager.measure(this._swipeRefreshView.getInnerViewNode(), (x, y, width, height, pageX, pageY) => {
+          if (height <= SCREEN_HEIGHT) {
+            //avoid re-render
+            if (!this.state.contentContainerStyle) {
+              this.setState({
+                contentContainerStyle: {
+                  flex: 1,
+                },
+              });
+            }
+          } else {
+            //avoid re-render
+            if (this.state.contentContainerStyle) {
+              this.setState({
+                contentContainerStyle: null,
+              });
             }
           }
-        );
+        });
       });
     }
   };
@@ -157,18 +139,17 @@ export default class PullToRefresh extends React.Component<any, any> {
 
     //得到当前的下拉距离
     //下拉距离+初始偏移量
-    const offsetY =
-      e.nativeEvent.contentOffset.y + e.nativeEvent.contentInset.top;
+    const offsetY = e.nativeEvent.contentOffset.y + e.nativeEvent.contentInset.top;
     if (offsetY <= 0 && this._isTouch) {
       if (Math.abs(offsetY) >= LOADING_HEIGHT) {
         //如果不是push状态,更新
-        if (this.state.mode != "push") {
+        if (this.state.mode != 'push') {
           this.setState(
             {
-              mode: "push",
-              height: LOADING_HEIGHT
+              mode: 'push',
+              height: LOADING_HEIGHT,
             },
-            () => this.props.onModeChange("push")
+            () => this.props.onModeChange('push'),
           );
         }
       } else {
@@ -176,18 +157,18 @@ export default class PullToRefresh extends React.Component<any, any> {
         if (this.state.height != LOADING_HEIGHT) {
           this.setState(
             {
-              mode: "pull",
-              height: Math.abs(offsetY)
+              mode: 'pull',
+              height: Math.abs(offsetY),
             },
-            () => this.props.onModeChange("pull")
+            () => this.props.onModeChange('pull'),
           );
-        } else if (this.state.mode != "pull") {
+        } else if (this.state.mode != 'pull') {
           //上拉的pull状态,只更新mode
           this.setState(
             {
-              mode: "pull"
+              mode: 'pull',
             },
-            () => this.props.onModeChange("pull")
+            () => this.props.onModeChange('pull'),
           );
         }
       }
@@ -204,13 +185,13 @@ export default class PullToRefresh extends React.Component<any, any> {
     if (this.state.height === LOADING_HEIGHT) {
       this.setState(
         {
-          mode: "refresh"
+          mode: 'refresh',
         },
         () => {
-          this.props.onModeChange("refresh");
+          this.props.onModeChange('refresh');
           // 通知外界正在刷新
           this.props.onRefresh && this.props.onRefresh(this.onRefreshEnd);
-        }
+        },
       );
     } else {
       this.props.onScrollEnd && this.props.onScrollEnd();
@@ -218,9 +199,9 @@ export default class PullToRefresh extends React.Component<any, any> {
       // 如查不刷新,就消失;
       this.setState(
         {
-          height: 0
+          height: 0,
         },
-        () => this.props.onModeChange("")
+        () => this.props.onModeChange(''),
       );
     }
   };
@@ -232,12 +213,12 @@ export default class PullToRefresh extends React.Component<any, any> {
    */
   _handleResponseRelease = (e: Object) => {
     //不是刷新状态,直接消失
-    if (this.state.mode === "pull") {
+    if (this.state.mode === 'pull') {
       this.setState(
         {
-          height: 0
+          height: 0,
         },
-        () => this.props.onModeChange("")
+        () => this.props.onModeChange(''),
       );
     }
   };
@@ -249,27 +230,25 @@ export default class PullToRefresh extends React.Component<any, any> {
     if (this.state.height) {
       this.setState(
         {
-          height: 0
+          height: 0,
         },
         () => {
           //结束之后通知父组件已经结束,可以做些后续的工作
           this.props.onRefreshEnd && this.props.onRefreshEnd();
-          this.props.onModeChange("");
-        }
+          this.props.onModeChange('');
+        },
       );
     }
   };
 
   changeScrollEnable: Function = enabled => {
     this.setState({
-      scrollEnabled: enabled
+      scrollEnabled: enabled,
     });
   };
 
   getScrollResponder: Function = () => {
-    return (
-      this._swipeRefreshView && this._swipeRefreshView.getScrollResponder()
-    );
+    return this._swipeRefreshView && this._swipeRefreshView.getScrollResponder();
   };
 }
 
@@ -277,6 +256,6 @@ reactMixin(PullToRefresh.prototype, TimeMixin);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

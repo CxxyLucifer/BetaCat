@@ -1,6 +1,5 @@
-
-export interface RequestParam{
-    isUpload?: boolean;
-    method?: string;
-    body?: any;
+export interface RequestParam {
+  isUpload?: boolean;
+  method?: string;
+  body?: any;
 }
