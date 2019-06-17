@@ -25,7 +25,9 @@ export default class Main extends Component<any, any> {
       <MyTabBar style={styles.flex1} tintColor={Theme.colors.brandPrimary} barTintColor={Theme.colors.fillBase}>
         <MyTabBar.Item
           title="主页"
-          icon={<Icon name={'myIcon|icon-home'} size={30} color={'#9b9b9b'} />}
+          icon={
+            <Icon name={'myIcon|icon-home'} size={30} color={'#9b9b9b'} />
+          }
           selectedIcon={<Icon name={'myIcon|icon-home'} size={30} color={'#5c87f1'} />}
           onPress={this._handleSelect.bind(this, 'home')}
           selected={selected === 'home'}
