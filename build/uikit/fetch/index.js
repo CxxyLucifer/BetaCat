@@ -9,19 +9,19 @@ import objectAssign from 'object-assign';
  * @param {*} param
  */
 const Fetch = (url, param) => {
-    if (param && param['body'] && typeof param['body'] == 'object') {
-        param['body'] = JSON.stringify(param['body']);
+    if (param && param.body && typeof param.body == 'object') {
+        param.body = JSON.stringify(param.body);
     }
     //判断是不是上传图片
-    const contentType = param && param.isUpload ? "multipart/form-data" : "application/json; charset=utf-8";
+    const contentType = param && param.isUpload ? 'multipart/form-data' : 'application/json; charset=utf-8';
     let req = {
         method: 'GET',
         credentials: 'include',
         mode: 'cors',
         headers: {
-            'Platform': Platform.OS,
-            'Authorization': '',
-            'Accept': 'application/json; charset=utf-8',
+            Platform: Platform.OS,
+            Authorization: '',
+            Accept: 'application/json; charset=utf-8',
             'Content-Type': contentType,
         },
     };
@@ -29,8 +29,8 @@ const Fetch = (url, param) => {
         let success;
         const merge = objectAssign(req, param);
         const timeout = merge.timeout || 10, timeoutId = setTimeout(() => {
-            Toast.fail("网络超时,请联系管理员");
-            resolve({ res: {}, err: new Error("timeout") });
+            Toast.fail('网络超时,请联系管理员');
+            resolve({ res: {}, err: new Error('timeout') });
         }, timeout * 1000);
         fetch(url, merge)
             .then(response => {

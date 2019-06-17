@@ -22,72 +22,67 @@ export default class Header extends Component {
         this._renderLeft = () => {
             if (this.props.brandName) {
                 return (<View style={styles.leftMenu}>
-					<Text numberOfLines={1} style={[styles.leftTitle, { width: SCREEN_WIDTH - 60, textAlign: 'center' }]}>
-						{this.props.brandName}
-					</Text>
-				</View>);
+          <Text numberOfLines={1} style={[styles.leftTitle, { width: SCREEN_WIDTH - 60, textAlign: 'center' }]}>
+            {this.props.brandName}
+          </Text>
+        </View>);
             }
             else {
                 return (<View style={styles.leftMenu}>
-					<Text numberOfLines={1} style={styles.leftTitle}>
-						{this.props.leftTitle}
-					</Text>
-				</View>);
+          <Text numberOfLines={1} style={styles.leftTitle}>
+            {this.props.leftTitle}
+          </Text>
+        </View>);
             }
         };
         this._renderGroup = () => {
             if (this.props.group) {
                 return (<TouchableOpacity activeOpacity={0.8} accessible={true} accessibilityLabel={`aj-header:group-btn`} hitSlop={{ top: 0, bottom: 0, left: 10, right: 20 }} style={styles.group} onPress={this.props.onGroupPress}>
-					<Icon name={'antDesign|left'} size={20} color={'red'}/>
-				</TouchableOpacity>);
+          <Icon name={'antDesign|left'} size={20} color={'red'}/>
+        </TouchableOpacity>);
             }
             return null;
         };
         this._renderSearch = () => {
             if (this.props.search) {
                 return (<TouchableOpacity activeOpacity={0.8} accessible={true} accessibilityLabel={`aj-header:search-btn`} hitSlop={{ top: 0, bottom: 0, left: 10, right: 10 }} style={styles.right} onPress={this.props.onSearchPress}>
-					<Icon name={'antDesign|left'} size={20} color={'red'}/>
-				</TouchableOpacity>);
+          <Icon name={'antDesign|left'} size={20} color={'red'}/>
+        </TouchableOpacity>);
             }
             return null;
         };
         this._renderAdd = () => {
             if (this.props.add) {
                 return (<TouchableOpacity activeOpacity={0.8} accessible={false} accessibilityLabel={''} hitSlop={{ top: 0, bottom: 0, left: 10, right: 10 }} style={styles.right} onPress={this.props.onAddPress}>
-					<Icon name={'antDesign|left'} size={20} color={'red'}/>
-				</TouchableOpacity>);
+          <Icon name={'antDesign|left'} size={20} color={'red'}/>
+        </TouchableOpacity>);
             }
             return null;
         };
         this._renderCustomize = () => {
             if (this.props.customize) {
                 return (<TouchableOpacity activeOpacity={0.8} accessible={false} accessibilityLabel={''} hitSlop={{ top: 0, bottom: 0, left: 10, right: 10 }} style={styles.right} onPress={this.props.onCustomizePress}>
-					{this.props.customize}
-				</TouchableOpacity>);
+          {this.props.customize}
+        </TouchableOpacity>);
             }
             return null;
         };
     }
     render() {
         return (<View style={[styles.container, this.props.style]}>
-				{this._renderLeft()}
-				{this._renderGroup()}
-				<View style={styles.rightContainer}>
-					{this._renderSearch()}
-					{this._renderAdd()}
-					{this._renderCustomize()}
-				</View>
-				{this.props.brandName
-            ? <View>
-						<Text>
-							{''}
-						</Text>
-					</View>
-            :
-                <TouchableOpacity activeOpacity={0.8} accessible={true} accessibilityLabel={`aj-header:back-btn`} hitSlop={{ top: 0, bottom: 0, left: 0, right: 20 }} style={styles.leftBack} onPress={this.props.onLeftMenuPress}>
-						<Icon name={'antDesign|left'} size={20} color={Theme.colors.textSecondary}/>
-					</TouchableOpacity>}
-			</View>);
+        {this._renderLeft()}
+        {this._renderGroup()}
+        <View style={styles.rightContainer}>
+          {this._renderSearch()}
+          {this._renderAdd()}
+          {this._renderCustomize()}
+        </View>
+        {this.props.brandName ? (<View>
+            <Text>{''}</Text>
+          </View>) : (<TouchableOpacity activeOpacity={0.8} accessible={true} accessibilityLabel={`aj-header:back-btn`} hitSlop={{ top: 0, bottom: 0, left: 0, right: 20 }} style={styles.leftBack} onPress={this.props.onLeftMenuPress}>
+            <Icon name={'antDesign|left'} size={20} color={Theme.colors.textSecondary}/>
+          </TouchableOpacity>)}
+      </View>);
     }
 }
 Header.defaultProps = {

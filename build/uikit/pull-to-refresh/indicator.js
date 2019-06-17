@@ -13,14 +13,14 @@ class Indicator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            height: new Animated.Value(0)
+            height: new Animated.Value(0),
         };
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.height != this.props.height) {
             Animated.timing(this.state.height, {
                 toValue: nextProps.height,
-                duration: nextProps.height == 0 ? this.props.duration : 20
+                duration: nextProps.height == 0 ? this.props.duration : 20,
             }).start();
         }
     }
@@ -33,11 +33,9 @@ class Indicator extends Component {
             overflow: 'hidden',
             alignItems: 'center',
             justifyContent: 'center',
-            height: this.state.height
+            height: this.state.height,
         }}>
-        {!mode || mode == 'refresh'
-            ? this._renderRefresh()
-            : this._renderPullOrPushTip()}
+        {!mode || mode == 'refresh' ? this._renderRefresh() : this._renderPullOrPushTip()}
       </Animated.View>);
     }
     _renderRefresh() {
@@ -49,16 +47,14 @@ class Indicator extends Component {
     _renderPullOrPushTip() {
         const mode = this.props.mode;
         return (<View style={styles.refresh}>
-        {mode === 'push'
-            ? <Icon name="myIcon|icon-songshougengxin" size={20} color="#999"/>
-            : <Icon name="myIcon|icon-xiala" size={20} color="#999"/>}
+        {mode === 'push' ? (<Icon name="myIcon|icon-songshougengxin" size={20} color="#999"/>) : (<Icon name="myIcon|icon-xiala" size={20} color="#999"/>)}
         <Text style={styles.text}>{mode === 'push' ? '松开刷新' : '下拉刷新'}</Text>
       </View>);
     }
 }
 Indicator.defaultProps = {
     mode: 'refresh',
-    height: 0
+    height: 0,
 };
 const styles = StyleSheet.create({
     refresh: {
@@ -73,7 +69,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: Theme.font.sizeBase,
         color: '#999',
-        marginLeft: 5
-    }
+        marginLeft: 5,
+    },
 });
 export { Indicator, LOADING_HEIGHT };

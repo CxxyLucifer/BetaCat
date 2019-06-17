@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractionManager, Platform, ScrollView, Text, View } from 'react-native';
+import { InteractionManager, Platform, ScrollView, Text, View, } from 'react-native';
 import { WithTheme } from '../style';
 import CarouselStyles from './style/index';
 const defaultPagination = (props) => {
@@ -44,8 +44,7 @@ class Carousel extends React.Component {
                 // FIXME: not work well in android when horizontal
                 setTimeout(() => {
                     // tslint:disable-next-line:no-unused-expression
-                    this.scrollviewRef &&
-                        this.scrollviewRef.scrollTo({ x, y, animated: false });
+                    this.scrollviewRef && this.scrollviewRef.scrollTo({ x, y, animated: false });
                 }, 10);
             }
         };
@@ -98,12 +97,9 @@ class Carousel extends React.Component {
             const { offset, selectedIndex } = this.state;
             const { vertical, children } = this.props;
             const previousOffset = vertical ? offset.y : offset.x;
-            const newOffset = vertical
-                ? e.nativeEvent.contentOffset.y
-                : e.nativeEvent.contentOffset.x;
+            const newOffset = vertical ? e.nativeEvent.contentOffset.y : e.nativeEvent.contentOffset.x;
             const count = this.getChildrenCount(children);
-            if (previousOffset === newOffset &&
-                (selectedIndex === 0 || selectedIndex === count - 1)) {
+            if (previousOffset === newOffset && (selectedIndex === 0 || selectedIndex === count - 1)) {
                 this.setState({
                     isScrolling: false,
                 });
@@ -188,13 +184,11 @@ class Carousel extends React.Component {
             const diff = (infinite ? 1 : 0) + selectedIndex + 1;
             if (vertical) {
                 // tslint:disable-next-line:no-unused-expression
-                this.scrollviewRef &&
-                    this.scrollviewRef.scrollTo({ x: 0, y: diff * height });
+                this.scrollviewRef && this.scrollviewRef.scrollTo({ x: 0, y: diff * height });
             }
             else {
                 // tslint:disable-next-line:no-unused-expression
-                this.scrollviewRef &&
-                    this.scrollviewRef.scrollTo({ x: diff * width, y: 0 });
+                this.scrollviewRef && this.scrollviewRef.scrollTo({ x: diff * width, y: 0 });
             }
             this.setState({
                 isScrolling: true,
@@ -222,7 +216,7 @@ class Carousel extends React.Component {
       </ScrollView>);
         };
         this.renderDots = (index) => {
-            const { children, vertical, pagination, dotStyle, dotActiveStyle, } = this.props;
+            const { children, vertical, pagination, dotStyle, dotActiveStyle } = this.props;
             if (!pagination) {
                 return null;
             }
@@ -248,9 +242,7 @@ class Carousel extends React.Component {
             const selectedIndex = count > 1 ? Math.min(this.props.selectedIndex, count - 1) : 0;
             const width = e.nativeEvent.layout.width;
             const offsetX = vertical ? 0 : width * (selectedIndex + (infinite ? 1 : 0));
-            const offsetY = vertical
-                ? this.state.height * (selectedIndex + (infinite ? 1 : 0))
-                : 0;
+            const offsetY = vertical ? this.state.height * (selectedIndex + (infinite ? 1 : 0)) : 0;
             this.setState({
                 width,
                 offset: { x: offsetX, y: offsetY },
@@ -296,9 +288,7 @@ class Carousel extends React.Component {
         const { width, height, selectedIndex } = this.state;
         const { dots, infinite, children } = this.props;
         if (!children) {
-            return (<Text style={{ backgroundColor: 'white' }}>
-          You are supposed to add children inside Carousel
-        </Text>);
+            return <Text style={{ backgroundColor: 'white' }}>You are supposed to add children inside Carousel</Text>;
         }
         const pageStyle = { width };
         const count = this.getChildrenCount(children);

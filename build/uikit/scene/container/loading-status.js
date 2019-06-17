@@ -16,5 +16,5 @@ export const START = 'START';
 export const END = 'END';
 export default {
     START,
-    END
+    END,
 };

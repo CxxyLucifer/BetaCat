@@ -24,10 +24,10 @@ export default class Body extends Component {
             loading: this.props.loading,
         };
         /**
-       *
-       * @param hasNetwork
-       * @private
-       */
+         *
+         * @param hasNetwork
+         * @private
+         */
         this._onNetChangeHandler = (hasNetwork) => {
             let { onNetworkBack, onNetworkBreak } = this.props;
             if (hasNetwork && this.props.onNetworkBack) {
@@ -41,8 +41,8 @@ export default class Body extends Component {
             this.setState({ hasNetwork });
         };
         /**
-       * @private
-       */
+         * @private
+         */
         this._onCheckNetwork = () => {
             NetInfo.isConnected.fetch().then(isConnected => {
                 if (__DEV__) {
@@ -68,19 +68,17 @@ export default class Body extends Component {
             const { loading, overflowLoading, style, children } = this.props;
             //如果都没有设置loading或者overflowLoading,直接返回children
             if (!loading && !overflowLoading) {
-                return (<View style={[styles.container, style]}>
-						{children}
-					</View>);
+                return <View style={[styles.container, style]}>{children}</View>;
             }
             else if (loading) {
                 return (<LoadingContainer style={style} loading={loading}>
-						{children}
-					</LoadingContainer>);
+            {children}
+          </LoadingContainer>);
             }
             else {
                 return (<OverflowLoadingContainer style={style} loading={overflowLoading}>
-						{children}
-					</OverflowLoadingContainer>);
+            {children}
+          </OverflowLoadingContainer>);
             }
         }
     }

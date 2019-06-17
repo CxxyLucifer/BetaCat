@@ -6,17 +6,15 @@ import { START, END } from './loading-status';
 export default class LoadingContainer extends Component {
     render() {
         const { loading, children } = this.props;
-        return (<View style={[styles.container, this.props.style]}>
-        {loading === START ? <Loading /> : children}
-      </View>);
+        return <View style={[styles.container, this.props.style]}>{loading === START ? <Loading /> : children}</View>;
     }
 }
 LoadingContainer.defaultProps = {
     loading: END,
-    style: null
+    style: null,
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+    },
 });

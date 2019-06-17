@@ -4,7 +4,10 @@ const { width, height } = Dimensions.get('window');
 export default class LoadingSpinner extends Component {
     render() {
         return (<View style={{
-            width: this.props.width, height: this.props.height, justifyContent: 'center', alignItems: 'center'
+            width: this.props.width,
+            height: this.props.height,
+            justifyContent: 'center',
+            alignItems: 'center',
         }}>
         <ActivityIndicator color={this.props.spinnerColor}/>
         <View style={{ height: 10 }}/>
@@ -17,5 +20,5 @@ LoadingSpinner.defaultProps = {
     height,
     spinnerColor: 'dimgray',
     textColor: 'dimgray',
-    text: ''
+    text: '',
 };

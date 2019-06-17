@@ -15,5 +15,5 @@ const HmacMD5 = (data, key) => {
 };
 export default {
     MD5,
-    HmacMD5
+    HmacMD5,
 };

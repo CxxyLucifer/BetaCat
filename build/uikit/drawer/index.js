@@ -19,13 +19,7 @@ export default class Drawer extends React.Component {
     }
     render() {
         const _a = this.props, { sidebar, position, drawerRef, drawerWidth = 300 } = _a, restProps = tslib_1.__rest(_a, ["sidebar", "position", "drawerRef", "drawerWidth"]);
-        [
-            'onOpenChange',
-            'onDrawerOpen',
-            'onDrawerClose',
-            'drawerPosition',
-            'renderNavigationView',
-        ].forEach(prop => {
+        ['onOpenChange', 'onDrawerOpen', 'onDrawerClose', 'drawerPosition', 'renderNavigationView'].forEach(prop => {
             if (restProps.hasOwnProperty(prop)) {
                 delete restProps[prop];
             }

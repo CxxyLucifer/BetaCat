@@ -97,15 +97,13 @@ export default class QMButton extends React.Component {
             .backgroundColor;
         const indicatorColor = StyleSheet.flatten(this.state.pressIn ? styles[`${type}HighlightText`] : styles[`${type}RawText`]).color;
         return (<TouchableHighlight activeOpacity={1} delayPressOut={1} underlayColor={underlayColor} style={wrapperStyle} onPress={this.onPress} onPressIn={this.onPressIn} onPressOut={this.onPressOut} onShowUnderlay={this.onShowUnderlay} onHideUnderlay={this.onHideUnderlay} disabled={disabled} {...restProps}>
-				<View style={styles.container}>
-					{loading
-            ? <ActivityIndicator style={styles.indicator} animating color={indicatorColor} size="small"/>
-            : null}
-					<Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
-						{this.props.children}
-					</Text>
-				</View>
-			</TouchableHighlight>);
+        <View style={styles.container}>
+          {loading ? (<ActivityIndicator style={styles.indicator} animating color={indicatorColor} size="small"/>) : null}
+          <Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
+            {this.props.children}
+          </Text>
+        </View>
+      </TouchableHighlight>);
     }
 }
 QMButton.defaultProps = {

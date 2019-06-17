@@ -1,4 +1,4 @@
-import { Dimensions, Platform, ListView } from "react-native";
+import { Dimensions, Platform, ListView } from 'react-native';
 import { isIphoneX as iphoneX_helper } from 'react-native-iphone-x-helper';
 const MyPlatform = Platform;
 /**
@@ -7,7 +7,7 @@ const MyPlatform = Platform;
 const flatModules = (modules = []) => {
     let modulesObj = {};
     for (let m of modules) {
-        Object.keys(m).forEach((v) => {
+        Object.keys(m).forEach(v => {
             modulesObj[v] = m[v];
         });
     }
@@ -63,7 +63,7 @@ function _formatUnitStr({ unit, containerUnit, unitConversionNum, buyCount }) {
         let bigUnit = buyCount / unitConversionNum;
         bigUnit = Math.floor(bigUnit);
         if (bigUnit >= 1) {
-            return bigUnit + containerUnit + (smallUnit > 0 ? ('+' + smallUnit + unit) : ''); // 4箱1件
+            return bigUnit + containerUnit + (smallUnit > 0 ? '+' + smallUnit + unit : ''); // 4箱1件
         }
     }
     return '';
@@ -88,10 +88,10 @@ function _getWebp(source, width, height) {
     //__DEV__ && console.log('_getWebp:cleanSrc=', cleanSrc);
     let newUrl = source;
     if (Platform.OS === 'android') {
-        newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "webp");
+        newUrl = _format(cleanSrc, parseInt(width), parseInt(height), 'webp');
     }
     else if (Platform.OS === 'ios') {
-        newUrl = _format(cleanSrc, parseInt(width), parseInt(height), "jpg");
+        newUrl = _format(cleanSrc, parseInt(width), parseInt(height), 'jpg');
     }
     //__DEV__ && console.log('_getWebp:newUrl=', newUrl);
     return newUrl;
@@ -103,8 +103,8 @@ function _getWebp(source, width, height) {
  * @private
  */
 function _cleanUrl(source) {
-    source = (source || '');
-    let p = source.lastIndexOf("@");
+    source = source || '';
+    let p = source.lastIndexOf('@');
     if (p != -1) {
         return source.substring(0, p);
     }
@@ -113,7 +113,7 @@ function _cleanUrl(source) {
 //格式化策略
 //例如: oss策略为 x-oss-process=image/resize,m_fixed,h_100,w_100/format,jpg
 function _format(src, width, height, format) {
-    var f = [src, "?x-oss-process=image"];
+    var f = [src, '?x-oss-process=image'];
     if (width || height) {
         f.push('/resize,m_fixed,');
         if (width) {
@@ -128,8 +128,7 @@ function _format(src, width, height, format) {
     }
     return f.join('');
 }
-const noop = () => {
-};
+const noop = () => { };
 /**
  *
  * 获取阶梯设价的价格;
@@ -166,7 +165,7 @@ const KIT = {
      */
     simpleDataSource() {
         const dataSource = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 != r2
+            rowHasChanged: (r1, r2) => r1 != r2,
         });
         return dataSource;
     },

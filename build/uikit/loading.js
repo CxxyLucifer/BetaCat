@@ -2,9 +2,9 @@
  * @flow
  * loading组件
  */
-"use strict";
-import React, { Component } from "react";
-import { View, ActivityIndicator, StyleSheet, Platform } from "react-native";
+'use strict';
+import React, { Component } from 'react';
+import { View, ActivityIndicator, StyleSheet, Platform } from 'react-native';
 /**
  * Usage
  * var {Loading} = require('qmkit');
@@ -15,16 +15,13 @@ export default class QMLoading extends Component {
     render() {
         const { overflow } = this.props;
         return (<View style={[styles.loading, overflow && styles.overflow, this.props.style]}>
-        {Platform.OS === 'ios' ?
-            <ActivityIndicator size='small'/>
-            :
-                <ActivityIndicator size='small' color='#3d85cc' style={styles.progress}/>}
+        {Platform.OS === 'ios' ? (<ActivityIndicator size="small"/>) : (<ActivityIndicator size="small" color="#3d85cc" style={styles.progress}/>)}
       </View>);
     }
 }
 QMLoading.defaultProps = {
     //是否悬浮loading
-    overflow: false
+    overflow: false,
 };
 /**
  * style
@@ -33,11 +30,11 @@ const styles = StyleSheet.create({
     loading: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     progress: {
         width: 30,
-        height: 30
+        height: 30,
     },
     overflow: {
         position: 'absolute',
@@ -47,6 +44,6 @@ const styles = StyleSheet.create({
         bottom: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.1)'
-    }
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    },
 });

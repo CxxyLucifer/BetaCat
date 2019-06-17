@@ -21,10 +21,10 @@ export default class OverflowLoadingContainer extends Component {
 }
 OverflowLoadingContainer.defaultProps = {
     loading: END,
-    style: null
+    style: null,
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+    },
 });

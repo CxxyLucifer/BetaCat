@@ -1,12 +1,12 @@
-import { Dimensions, PixelRatio } from "react-native";
+import { Dimensions, PixelRatio } from 'react-native';
 //UI主色
 //const brand-theme = '#f23030';//换肤色
-const brandPrimary = "#5491de";
-const brandPrimaryTap = "#487FCA";
-const brandPrimaryLighter = "#d5e8ff";
+const brandPrimary = '#5491de';
+const brandPrimaryTap = '#487FCA';
+const brandPrimaryLighter = '#d5e8ff';
 //屏幕宽高
-const deviceWidth = Dimensions.get("window").width; //屏幕可视宽度
-const deviceHeight = Dimensions.get("window").height; //屏幕可视高度
+const deviceWidth = Dimensions.get('window').width; //屏幕可视宽度
+const deviceHeight = Dimensions.get('window').height; //屏幕可视高度
 const navigationBarHeight = 45; //顶部导航高度
 //UI主COLOR基调
 const colors = {
@@ -14,46 +14,46 @@ const colors = {
     brandPrimary: brandPrimary,
     brandPrimaryTap: brandPrimaryTap,
     brandPrimaryLighter: brandPrimaryLighter,
-    brandAssist: "#ff0000",
-    brandSecondary: "#323641",
-    brandHot: "#f43530",
-    brandImportant: "#f43530",
-    brandSuccess: "#09bb07",
-    brandWarning: "#ffbe00",
-    brandError: "#f76260",
+    brandAssist: '#ff0000',
+    brandSecondary: '#323641',
+    brandHot: '#f43530',
+    brandImportant: '#f43530',
+    brandSuccess: '#09bb07',
+    brandWarning: '#ffbe00',
+    brandError: '#f76260',
     //文字色
-    textBase: "#666",
-    textBaseInverse: "#fff",
-    textSecondary: "#333",
-    textPlaceholder: "#999",
-    textDisabled: "#ccc",
-    textCaption: "#999",
-    textParagraph: "#666",
+    textBase: '#666',
+    textBaseInverse: '#fff',
+    textSecondary: '#333',
+    textPlaceholder: '#999',
+    textDisabled: '#ccc',
+    textCaption: '#999',
+    textParagraph: '#666',
     textHighlight: brandPrimary,
     textLink: brandPrimary,
-    iconBase: "#999",
+    iconBase: '#999',
     // 阴影色
-    shadow: "rgba(0, 0, 0, .21)",
+    shadow: 'rgba(0, 0, 0, .21)',
     // 背景色
-    fillBody: "#f4f5f7",
-    fillBase: "#fff",
-    fillBaseLight: "#f4f5f7",
-    fillTap: "#f9f9f9",
-    fillDisabled: "#b8b8b8",
-    fillMask: "rgba(0, 0, 0, .5)",
-    fillOverlayInverse: "rgba(0, 0, 0, .7)",
+    fillBody: '#f4f5f7',
+    fillBase: '#fff',
+    fillBaseLight: '#f4f5f7',
+    fillTap: '#f9f9f9',
+    fillDisabled: '#b8b8b8',
+    fillMask: 'rgba(0, 0, 0, .5)',
+    fillOverlayInverse: 'rgba(0, 0, 0, .7)',
     // 透明度
     opacityDisabled: 0.6,
-    topBackgroundColor: "#2b3643",
+    topBackgroundColor: '#2b3643',
     // 边框色
-    borderBase: "#d9d9d9",
-    borderSplit: "#eee" //分隔线颜色
+    borderBase: '#d9d9d9',
+    borderSplit: '#eee',
 };
 //字体
 const font = {
     // 字体家族
     familyBase: '_apple_system,"SF UI Text",Roboto,Noto,"Helvetica Neue",`elvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans_serif',
-    familyCode: "Consolas,Menlo,Courier,monospace",
+    familyCode: 'Consolas,Menlo,Courier,monospace',
     // 字体尺寸
     textBase: 12,
     sizeXs: 10,
@@ -69,7 +69,7 @@ const font = {
     sizeLg: 24,
     sizeXl: 30,
     //背景
-    fillBase: "transparent" //rn的text默认带有白底
+    fillBase: 'transparent',
 };
 //边框
 const border = {
@@ -83,7 +83,7 @@ const border = {
     widthLg: 4 / PixelRatio.get(),
     //边框颜色
     color: colors.borderBase,
-    split: colors.borderSplit
+    split: colors.borderSplit,
 };
 // 间距
 const spacing = {
@@ -99,7 +99,7 @@ const spacing = {
     verticalMd: 10,
     verticalLg: 15,
     verticalXl: 20,
-    verticalXxl: 30
+    verticalXxl: 30,
 };
 // 字体图标大小
 const icon = {
@@ -107,7 +107,7 @@ const icon = {
     sizeXs: 16,
     sizeSm: 18,
     sizeMd: 22,
-    sizeLg: 36
+    sizeLg: 36,
 };
 //按钮Button
 const button = {
@@ -125,9 +125,9 @@ const button = {
     ghostColor: brandPrimary,
     ghostColorTap: brandPrimaryTap,
     defaultColor: colors.borderBase,
-    defaultFillTap: "#ddd",
+    defaultFillTap: '#ddd',
     linkFontColor: brandPrimary,
-    linkFontSize: font.sizeBase
+    linkFontSize: font.sizeBase,
 };
 //输入框TextInput
 const inputItem = {
@@ -136,13 +136,13 @@ const inputItem = {
     fontSize: font.sizeSecondary,
     fontExtraSize: font.sizeSecondary,
     textColor: colors.textSecondary,
-    iconColor: "#999",
-    extraColor: colors.textSecondary
+    iconColor: '#999',
+    extraColor: colors.textSecondary,
 };
 //searchBar
 const searchBar = {
     height: 36,
-    fontSize: font.sizeBase
+    fontSize: font.sizeBase,
 };
 //dropDown
 const dropDown = {
@@ -150,19 +150,19 @@ const dropDown = {
     horizontalSpacing: 15,
     fontSize: font.sizeBase,
     textColor: colors.textBase,
-    textSelectedColor: colors.textSecondary
+    textSelectedColor: colors.textSecondary,
 };
 //TabBarIOS
 const tabBar = {
     height: 44,
     fontColor: colors.textSecondary,
     fontColorSelected: brandPrimary,
-    fill: "#ebeeef"
+    fill: '#ebeeef',
 };
 //tabs
 const tabs = {
     height: 44,
-    fontSize: font.sizeSecondary
+    fontSize: font.sizeSecondary,
 };
 //tag
 const tag = {
@@ -188,20 +188,20 @@ const tag = {
     successFill: colors.brandSuccess,
     successBorderColor: colors.brandSuccess,
     successTextColor: colors.textBaseInverse,
-    color: brandPrimary
+    color: brandPrimary,
 };
 //noticeBar，如：公告
 const noticeBar = {
     height: 36,
     fill: brandPrimaryLighter,
-    color: brandPrimary
+    color: brandPrimary,
 };
 //segmentedControl，如：商品详情中图文详情和属性参数切换
 const segmentedControl = {
     height: 40,
-    fontColor: "#fff",
+    fontColor: '#fff',
     fill: brandPrimary,
-    borderColor: brandPrimary
+    borderColor: brandPrimary,
 };
 const list = {
     lineHeight: 22,
@@ -209,13 +209,13 @@ const list = {
     textSizeSmall: 13,
     textSizeBase: 15,
     textBaseColor: colors.textSecondary,
-    textExtraColor: "#999",
+    textExtraColor: '#999',
     textCaptionColor: colors.textCaption,
     fillTap: colors.fillTap,
     verticalSpacing: 10,
     horizontalSpacing: 15,
     listItemHeight: 50,
-    briefHeight: 10
+    briefHeight: 10,
 };
 const modal = {
     zindex: 999,
@@ -240,7 +240,7 @@ const values = {
     navigationBarHeight: navigationBarHeight,
     //device
     deviceWidth: deviceWidth,
-    deviceHeight: deviceHeight
+    deviceHeight: deviceHeight,
 };
 const pages = {
     content_default_bg: '#f9f9f9',
@@ -263,5 +263,5 @@ export default {
     tabs,
     tag,
     values,
-    pages
+    pages,
 };

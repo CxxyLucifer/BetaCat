@@ -27,8 +27,8 @@ export default class PullToRefresh extends Component {
                             if (!this.state.contentContainerStyle) {
                                 this.setState({
                                     contentContainerStyle: {
-                                        flex: 1
-                                    }
+                                        flex: 1,
+                                    },
                                 });
                             }
                         }
@@ -36,7 +36,7 @@ export default class PullToRefresh extends Component {
                             //avoid re-render
                             if (this.state.contentContainerStyle) {
                                 this.setState({
-                                    contentContainerStyle: null
+                                    contentContainerStyle: null,
                                 });
                             }
                         }
@@ -46,29 +46,29 @@ export default class PullToRefresh extends Component {
         };
         this._handleOnRefresh = () => {
             this.setState({
-                isRefreshing: true
+                isRefreshing: true,
             });
             this.props.onRefresh(this.onEnd);
         };
         this.onEnd = () => {
             this.setState({
-                isRefreshing: false
+                isRefreshing: false,
             });
         };
         /**
-           * 处理滚动
-           * @param e
-           * @private
-           */
+         * 处理滚动
+         * @param e
+         * @private
+         */
         this._handleScroll = e => {
             this.props.onScroll && this.props.onScroll(e);
         };
         this.getScrollResponder = () => {
-            return (this._swipeRefreshView && this._swipeRefreshView.getScrollResponder());
+            return this._swipeRefreshView && this._swipeRefreshView.getScrollResponder();
         };
         this.state = {
             isRefreshing: false,
-            contentContainerStyle: null
+            contentContainerStyle: null,
         };
     }
     componentDidMount() {
@@ -83,10 +83,7 @@ export default class PullToRefresh extends Component {
     }
     render() {
         const { contentContainerStyle } = this.props;
-        return (<MyScrollView ref={scrollView => (this._swipeRefreshView = scrollView)} onScroll={this._handleScroll} contentContainerStyle={[
-            contentContainerStyle,
-            this.state.contentContainerStyle
-        ]} style={styles.container} refreshControl={<RefreshControl colors={['#1e90ff', '#40e0d0', '#ff69b4']} refreshing={this.state.isRefreshing} onRefresh={this._handleOnRefresh}/>}>
+        return (<MyScrollView ref={scrollView => (this._swipeRefreshView = scrollView)} onScroll={this._handleScroll} contentContainerStyle={[contentContainerStyle, this.state.contentContainerStyle]} style={styles.container} refreshControl={<RefreshControl colors={['#1e90ff', '#40e0d0', '#ff69b4']} refreshing={this.state.isRefreshing} onRefresh={this._handleOnRefresh}/>}>
         {this.props.children}
       </MyScrollView>);
     }
@@ -94,11 +91,11 @@ export default class PullToRefresh extends Component {
 PullToRefresh.defaultProps = {
     onRefresh: noop,
     autoResize: true,
-    contentContainerStyle: null
+    contentContainerStyle: null,
 };
 reactMixin(PullToRefresh.prototype, TimerMixin);
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+    },
 });

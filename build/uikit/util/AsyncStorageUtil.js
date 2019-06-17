@@ -4,7 +4,7 @@ import { AsyncStorage } from 'react-native';
  */
 const setItem = (key, value) => {
     return new Promise((resolve, reject) => {
-        AsyncStorage.setItem(key, value, (error) => {
+        AsyncStorage.setItem(key, value, error => {
             if (error) {
                 reject(`设置${key}失败${error}`);
             }
@@ -17,7 +17,7 @@ const setItem = (key, value) => {
 /**
  * 异步获取
  */
-const getItem = (key) => {
+const getItem = key => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(key, (error, result) => {
             if (error) {
@@ -31,5 +31,5 @@ const getItem = (key) => {
 };
 export default {
     setItem,
-    getItem
+    getItem,
 };

@@ -8,13 +8,21 @@ export default class Index extends Component {
     render() {
         const { onPress, placeholder } = this.props;
         return (<View style={styles.search}>
-                <TouchableOpacity onPress={onPress} style={styles.input}>
-                    <View style={{ width: 30, height: 40, alignItems: 'center', justifyContent: 'center', paddingTop: 3 }}>
-                        <Icon name={'antDesign|search1'} size={20} color={'#d4d4d4'}/>
-                    </View>
-                    <Text numberOfLines={1} style={styles.placeholder}>{placeholder}</Text>
-                </TouchableOpacity>
-            </View>);
+        <TouchableOpacity onPress={onPress} style={styles.input}>
+          <View style={{
+            width: 30,
+            height: 40,
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingTop: 3,
+        }}>
+            <Icon name={'antDesign|search1'} size={20} color={'#d4d4d4'}/>
+          </View>
+          <Text numberOfLines={1} style={styles.placeholder}>
+            {placeholder}
+          </Text>
+        </TouchableOpacity>
+      </View>);
     }
 }
 const styles = StyleSheet.create({
@@ -43,5 +51,5 @@ const styles = StyleSheet.create({
     placeholder: {
         color: '#d4d4d4',
         fontFamily: 'PingFangSC-Regular',
-    }
+    },
 });

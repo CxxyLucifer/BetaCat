@@ -29,15 +29,11 @@ export default class Scene extends React.Component {
     render() {
         if (this.props.pullToRefresh) {
             return (<PullToRefresh onModeChange={this.props.onModeChange} onRefresh={this.props.onPullToRefresh}>
-          <View style={[this.props.style, styles.container]}>
-            {this._renderWrapper()}
-          </View>
+          <View style={[this.props.style, styles.container]}>{this._renderWrapper()}</View>
         </PullToRefresh>);
         }
         //返回普通
-        return (<View style={[this.props.style, styles.container]}>
-        {this._renderWrapper()}
-      </View>);
+        return <View style={[this.props.style, styles.container]}>{this._renderWrapper()}</View>;
     }
     _renderWrapper() {
         if (this.props.backgroundImage) {
@@ -75,7 +71,7 @@ export default class Scene extends React.Component {
         }
         else if (props.header) {
             let brandName = props.hasBack || props.backOut ? null : props.header, title = props.hasBack || props.backOut ? props.header : null;
-            return (<Header brandName={brandName} leftTitle={title} onLeftMenuPress={this._onLeftMenuPress}/>);
+            return <Header brandName={brandName} leftTitle={title} onLeftMenuPress={this._onLeftMenuPress}/>;
         }
         else {
             //
@@ -105,18 +101,18 @@ Scene.defaultProps = {
     renderHeader: '',
     onBackHandler: null,
     isChangingView: false,
-    backOut: false
+    backOut: false,
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     wrapper: {
-        flex: 1
+        flex: 1,
     },
     wrapperImage: {
         width: Kit.Width,
-        height: Kit.Height
+        height: Kit.Height,
     },
     mask: {
         flex: 1,
@@ -124,8 +120,8 @@ const styles = StyleSheet.create({
         top: 0,
         backgroundColor: '#FFcccc04',
         width: Kit.Width,
-        height: Kit.Height
-    }
+        height: Kit.Height,
+    },
 });
 //bind Body
 Scene.Body = Body;

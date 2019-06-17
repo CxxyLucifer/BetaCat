@@ -22,7 +22,7 @@ export default (theme) => StyleSheet.create({
         width: 24,
         height: 24,
         marginTop: 2,
-        marginBottom: 4
+        marginBottom: 4,
     },
     barItemSelected: {},
     barItemTitle: {

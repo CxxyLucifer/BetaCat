@@ -12,8 +12,7 @@ export default {
     SHORT: 3,
     LONG: 8,
     show(content, duration, mask, multipleStyle) {
-        return notice(content, 'info', duration, () => {
-        }, mask, multipleStyle);
+        return notice(content, 'info', duration, () => { }, mask, multipleStyle);
     },
     info(content, duration, onClose, mask) {
         return notice(content, 'info', duration, onClose, mask);

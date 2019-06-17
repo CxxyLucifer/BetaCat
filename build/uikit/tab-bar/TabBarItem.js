@@ -10,15 +10,9 @@ export default class TabBarItem extends React.Component {
         <Text style={[styles.badgeText]}>{badge}</Text>
       </View>) : null;
         // icon
-        const source = selected && selectedIcon !== undefined
-            ? selectedIcon
-            : icon !== undefined
-                ? icon
-                : null;
+        const source = selected && selectedIcon !== undefined ? selectedIcon : icon !== undefined ? icon : null;
         const color = selected ? tintColor : unselectedTintColor;
-        const isIcon = source &&
-            source.type &&
-            source.type.displayName === 'Icon';
+        const isIcon = source && source.type && source.type.displayName === 'Icon';
         return (<TouchableWithoutFeedback onPress={onPress}>
         <View style={[styles.barItem, itemSelectedStyle]}>
           <View>

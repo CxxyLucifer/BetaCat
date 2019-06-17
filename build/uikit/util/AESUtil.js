@@ -6,17 +6,25 @@ let iv = CryptoJS.enc.Latin1.parse('liuhui1990170626');
  * @param {*} data
  */
 const encrypt = (data) => {
-    return CryptoJS.AES.encrypt(data, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.ZeroPadding }).toString();
+    return CryptoJS.AES.encrypt(data, key, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.ZeroPadding,
+    }).toString();
 };
 /**
  * 解密
  * @param {*} data
  */
 const decrypt = (data) => {
-    let decrypted = CryptoJS.AES.decrypt(data, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.ZeroPadding });
+    let decrypted = CryptoJS.AES.decrypt(data, key, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.ZeroPadding,
+    });
     return decrypted.toString(CryptoJS.enc.Utf8);
 };
 export default {
     encrypt,
-    decrypt
+    decrypt,
 };

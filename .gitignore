@@ -4,6 +4,6 @@ android/app/bin/
 android/app/build/outputs/
 ios/build/
 build/apps
-build/components
+build/uikit
 build/typings
 .idea/

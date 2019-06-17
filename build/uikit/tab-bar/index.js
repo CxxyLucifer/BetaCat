@@ -17,10 +17,7 @@ class TabBar extends React.Component {
         const newChildren = [];
         React.Children.map(children, (child, idx) => {
             if (content && selectedIndex === idx) {
-                newChildren.push(<View key={idx} style={[
-                    styles.contentItem,
-                    idx === selectedIndex ? styles.contentItemSelected : undefined,
-                ]}>
+                newChildren.push(<View key={idx} style={[styles.contentItem, idx === selectedIndex ? styles.contentItemSelected : undefined]}>
             {child.props.children}
           </View>);
             }
@@ -44,9 +41,7 @@ class TabBar extends React.Component {
         <WithTheme styles={this.props.styles} themeStyles={TabBarStyles}>
           {styles => (<View style={styles.tabbar}>
               <View style={styles.content}>{this.getPanes(styles, true)}</View>
-              <View style={[style, styles.tabs]}>
-                {this.getPanes(styles, false)}
-              </View>
+              <View style={[style, styles.tabs]}>{this.getPanes(styles, false)}</View>
             </View>)}
         </WithTheme>
       </SafeAreaView>);

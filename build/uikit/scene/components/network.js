@@ -6,14 +6,14 @@ import Text from '../../text';
 export default class NoNetwork extends React.Component {
     render() {
         return (<View style={styles.container}>
-				<View style={[styles.body]}>
-					<Text style={styles.bodyText}>喂喂，网断啦，连不上啦</Text>
-					<Text style={styles.bodyText}>快去检查网络</Text>
-					<Button style={styles.btn} size="middle" onPress={this.props.onPress}>
-						重新加载
-					</Button>
-				</View>
-			</View>);
+        <View style={[styles.body]}>
+          <Text style={styles.bodyText}>喂喂，网断啦，连不上啦</Text>
+          <Text style={styles.bodyText}>快去检查网络</Text>
+          <Button style={styles.btn} size="middle" onPress={this.props.onPress}>
+            重新加载
+          </Button>
+        </View>
+      </View>);
     }
 }
 NoNetwork.defaultProps = {
