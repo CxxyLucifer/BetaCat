@@ -2,6 +2,8 @@ import Toast from "../toast";
 import { Platform } from "react-native";
 import objectAssign from "object-assign";
 
+import { RequestParam } from './index.d';
+
 /**
  * fetch请求工具类
  *
@@ -9,16 +11,13 @@ import objectAssign from "object-assign";
  * @param {*} url
  * @param {*} param
  */
-const Fetch = (url: string, param?: any) => {
-  if (param && param["body"] && typeof param["body"] == "object") {
-    param["body"] = JSON.stringify(param["body"]);
+const Fetch = (url: string, param?: RequestParam) => {
+  if (param && param.body && typeof param.body == "object") {
+    param.body = JSON.stringify(param.body);
   }
 
   //判断是不是上传图片
-  const contentType =
-    param && param.isUpload
-      ? "multipart/form-data"
-      : "application/json; charset=utf-8";
+  const contentType = param && param.isUpload ? "multipart/form-data" : "application/json; charset=utf-8";
 
   let req = {
     method: "GET",
