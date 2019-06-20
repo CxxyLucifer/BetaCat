@@ -5,7 +5,7 @@
   "scripts": {
     "reset_cache": "npm start --reset-cache",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "clean": "rm -rf ./node_modules && yarn",
+    "reinstall": "rm -rf ./node_modules && yarn",
     "format": "./node_modules/.bin/prettier --write './src/**/*.{ts,tsx}'",
     "build_apk": "cd android && ./gradlew assembleRelease",
     "android": "node node_modules/react-native/local-cli/cli.js run-android && ./node_modules/.bin/tsc -w",
@@ -40,14 +40,23 @@
     "@types/react": "^16.8.19",
     "@types/react-native": "^0.57.62",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "babel-plugin-import": "^1.12.0",
     "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
     "husky": "^2.4.1",
     "jest": "^24.8.0",
+    "lint-staged": "^8.2.1",
     "metro-react-native-babel-preset": "^0.54.1",
-    "prettier": "1.18.2",
-    "pretty-quick": "^1.11.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "react-test-renderer": "16.8.3",
     "tslib": "^1.10.0",
     "typescript": "^3.5.2"
@@ -55,9 +64,16 @@
   "jest": {
     "preset": "react-native"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged" 
+      }
+    },
+    "lint-staged": {
+      "src/**/*.{jsx,txs,ts,js,json,css,md}": [
+        "prettier --write",
+        "eslint --fix", 
+        "git add" 
+      ]
     }
-  }
 }
