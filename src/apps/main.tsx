@@ -14,7 +14,7 @@ export default class Main extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'home',
+      selected: 'workspace',
     };
   }
 

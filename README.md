@@ -8,5 +8,5 @@
 brew install react-native-debugger
 
 # ReactNative 手动缓存清除
-rm -rf /tmp/metro-bundler-cache-_
-rm -rf /tmp/haste-map-react-native-packager-_
+rm -rf /tmp/metro-bundler-cache-*
+rm -rf /tmp/haste-map-react-native-packager-*
