@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   leftBack: {
     position: 'absolute',
-    top: 5,
+    top: Kit.isAndroid() ? 10 : Kit.isIphoneX() ? 38 : 20,
     left: 0,
     justifyContent: 'center',
     paddingLeft: 10,

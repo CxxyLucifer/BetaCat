@@ -86,7 +86,7 @@ export default class Index extends React.Component<any, any> {
 
     return (
       <AppContainer
-        ref={nav => nav && (this.navigation = nav)}
+        ref={(na:any) => na && (this.navigation = na._navigation)}
         onNavigationStateChange={(prevState, currentState) => {
           if (!currentState) {
             return;
@@ -128,7 +128,7 @@ export default class Index extends React.Component<any, any> {
    * 回上一个页面
    */
   _backToLast = () => {
-    this.navigation.goBack();
+    this.navigation.goBack(null);
   };
 
   /**

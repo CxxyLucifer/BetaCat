@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
-import { Scene, Theme, SwipeAction } from 'UIKit';
+import { Scene, Theme, SwipeAction, Toast } from 'UIKit';
 import { msg } from 'plume2';
 import { Icon } from 'UIcon';
 
 const data = [
-  {'name':'底部菜单','page':''},
-  {'name': '下拉刷新上拉加载更多', 'page': '' }
+  { 'name': '底部菜单','routeName':''},
+  { 'name': '下拉刷新上拉加载更多', 'routeName': 'PullRefreshListView' }
 ]
 
 export default class Index extends Component<any, any> {
@@ -42,7 +42,7 @@ export default class Index extends Component<any, any> {
         onOpen={() => console.log('open')}
         onClose={() => console.log('close')}
       >
-        <TouchableOpacity style={styles.itemView}>
+        <TouchableOpacity style={styles.itemView} onPress={() => this._onItemPress(item.routeName)}>
           <View style={styles.itemLeft}>
             <Text>{item.name}</Text>
           </View>
@@ -52,6 +52,13 @@ export default class Index extends Component<any, any> {
         </TouchableOpacity>
       </SwipeAction>
     )
+  }
+
+
+  _onItemPress=(routeName)=>{
+    msg.emit('route:goToNext',{
+      sceneName: routeName
+    });
   }
 
 }
