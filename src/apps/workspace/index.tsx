@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList} from 'react-native';
-import { Scene, Theme } from 'UIKit';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import { Scene, Theme, SwipeAction } from 'UIKit';
+import { msg } from 'plume2';
 import { Icon } from 'UIcon';
 
 const data = [
   {'name':'底部菜单','page':''},
-  { 'name': '下拉刷新上拉加载更多', 'page': '' }
+  {'name': '下拉刷新上拉加载更多', 'page': '' }
 ]
 
 export default class Index extends Component<any, any> {
@@ -14,22 +15,45 @@ export default class Index extends Component<any, any> {
       <Scene header={'工作台'} hasBack={false} style={styles.bg}>
         <FlatList
           data={data}
-          renderItem={({ item }) => {
-            return(
-              <View style={styles.itemView}>
-                <View style={styles.itemLeft}>
-                   <Text>{item.name}</Text>
-                </View>
-                <View style={styles.itemRight}>
-                   <Icon name={'antDesign|right'} size={24} color={'#a1a1a1'} />
-                </View>
-              </View>
-            )
-          }
-        }/>
+          renderItem={this._renderItem}/>
       </Scene>
     );
   }
+
+  _renderItem = ({ item }) => {
+    const right = [
+      {
+        text: '更多',
+        onPress: () => console.log('more'),
+        style: { backgroundColor: 'orange', color: 'white' },
+      },
+      {
+        text: '删除',
+        onPress: () => console.log('delete'),
+        style: { backgroundColor: 'red', color: 'white' },
+      },
+    ];
+
+    return(
+      <SwipeAction
+        autoClose
+        style={{ backgroundColor: 'transparent' }}
+        right={right}
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+      >
+        <TouchableOpacity style={styles.itemView}>
+          <View style={styles.itemLeft}>
+            <Text>{item.name}</Text>
+          </View>
+          <View style={styles.itemRight}>
+            <Icon name={'antDesign|right'} size={24} color={'#a1a1a1'} />
+          </View>
+        </TouchableOpacity>
+      </SwipeAction>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({

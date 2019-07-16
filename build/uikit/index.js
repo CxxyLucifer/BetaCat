@@ -1,6 +1,7 @@
 import Kit from './kit';
 import Toast from './toast';
 import TabBar from './tab-bar';
+import SwipeAction from './swipe-action';
 import Scene from './scene';
 import Search from './search';
 import Fetch from './fetch';
@@ -15,4 +16,4 @@ import { AJListView, AJRefreshView } from './listview';
 import AESUtil from './util/AESUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
-export { Kit, Toast, TabBar, Theme, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, EncryptUtil, AsyncStorageUtil, };
+export { Kit, Toast, TabBar, Theme, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, SwipeAction, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, EncryptUtil, AsyncStorageUtil, };

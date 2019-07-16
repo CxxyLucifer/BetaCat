@@ -1,6 +1,7 @@
 import Kit from './kit';
 import Toast from './toast';
 import TabBar from './tab-bar';
+import SwipeAction from './swipe-action';
 import Scene from './scene';
 import Search from './search';
 import Fetch from './fetch';
@@ -28,6 +29,7 @@ export {
   NoData,
   Drawer,
   MenuCard,
+  SwipeAction,
   PullToRefresh,
   LoadingSpinner,
   AJListView,
