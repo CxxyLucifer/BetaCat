@@ -32,7 +32,7 @@ class Icon extends Component {
 
     if (!CustomIcon) throw new Error(`没有找到匹配的{${name}}font库，请review代码！`)
     return (
-      <CustomIcon name={font} size={size} color={color} />
+      <CustomIcon name={font} size={size} color={color}/>
     )
   }
 }

@@ -1,8 +1,8 @@
+import * as tslib_1 from "tslib";
 /**
  * Created by syf on 2017/5/4
  * 组件和样式参考ant mobile的代码
  */
-import * as tslib_1 from "tslib";
 import React from 'react';
 import { TouchableHighlight, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 import buttonStyles from './style/index';

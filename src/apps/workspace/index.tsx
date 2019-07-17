@@ -5,7 +5,7 @@ import { msg } from 'plume2';
 import { Icon } from 'UIcon';
 
 const data = [
-  { 'name': '底部菜单','routeName':''},
+  { 'name': '弹出窗口', 'routeName':'PopUpModelDemo'},
   { 'name': '下拉刷新上拉加载更多', 'routeName': 'PullRefreshListView' }
 ]
 
