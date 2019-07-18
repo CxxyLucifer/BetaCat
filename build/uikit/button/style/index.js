@@ -1,118 +1,112 @@
-/**
- * Created by syf on 2017/5/4
- * 组件和样式参考ant mobile的代码
- */
-import Theme from '../../style/theme';
 import { StyleSheet } from 'react-native';
-export default StyleSheet.create({
+export default (theme) => StyleSheet.create({
     container: {
         flexDirection: 'row',
     },
     defaultHighlight: {
-        backgroundColor: Theme.button.defaultFillTap,
-        borderColor: Theme.colors.borderBase,
+        backgroundColor: theme.fill_tap,
+        borderColor: theme.border_color_base,
     },
     primaryHighlight: {
-        backgroundColor: Theme.button.primaryFillTap,
-        borderColor: Theme.button.primaryFillTap,
+        backgroundColor: theme.primary_button_fill_tap,
+        borderColor: theme.primary_button_fill,
     },
     ghostHighlight: {
-        backgroundColor: Theme.colors.fillBase,
-        borderColor: Theme.button.ghostColorTap,
+        backgroundColor: 'transparent',
+        borderColor: theme.ghost_button_fill_tap,
+    },
+    warningHighlight: {
+        backgroundColor: theme.warning_button_fill_tap,
+        borderColor: theme.warning_button_fill,
     },
     wrapperStyle: {
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: Theme.border.radiusSm,
-        borderWidth: Theme.border.widthSm,
+        borderRadius: theme.radius_md,
+        borderWidth: 1,
     },
-    normalRaw: {
-        height: Theme.button.height,
-        paddingLeft: Theme.button.spacing,
-        paddingRight: Theme.button.spacing,
-    },
-    middleRaw: {
-        height: Theme.button.heightMd,
-        paddingLeft: Theme.button.spacingMd,
-        paddingRight: Theme.button.spacingMd,
+    largeRaw: {
+        height: theme.button_height,
+        paddingLeft: theme.h_spacing_lg,
+        paddingRight: theme.h_spacing_lg,
     },
     smallRaw: {
-        height: Theme.button.heightSm,
-        paddingLeft: Theme.button.spacingSm,
-        paddingRight: Theme.button.spacingSm,
+        height: theme.button_height_sm,
+        paddingLeft: theme.h_spacing_sm,
+        paddingRight: theme.h_spacing_sm,
     },
     defaultRaw: {
-        // height: Theme.button.height,
-        backgroundColor: Theme.colors.fillBase,
-        borderColor: Theme.colors.borderBase,
+        backgroundColor: theme.fill_base,
+        borderColor: theme.border_color_base,
     },
     primaryRaw: {
-        backgroundColor: Theme.button.primaryFill,
-        borderColor: Theme.button.primaryFill,
+        backgroundColor: theme.primary_button_fill,
+        borderColor: theme.primary_button_fill,
     },
     ghostRaw: {
-        backgroundColor: Theme.colors.fillBase,
-        borderColor: Theme.button.ghostColor,
+        backgroundColor: 'transparent',
+        borderColor: theme.ghost_button_color,
     },
-    disabledRaw: {
-        // backgroundColor: Theme.colors.fillDisabled,
-        // borderColor: Theme.colors.fillDisabled,
-        color: Theme.colors.textDisabled,
+    warningRaw: {
+        backgroundColor: theme.warning_button_fill,
+        borderColor: theme.warning_button_fill,
     },
-    defaultDisabledText: {
-        color: Theme.colors.textDisabled,
+    defaultDisabledRaw: {
+        backgroundColor: theme.fill_disabled,
+        borderColor: theme.fill_disabled,
     },
-    primaryDisabled: {
-        backgroundColor: '#ddd',
-        borderColor: '#ddd',
+    primaryDisabledRaw: {
+        opacity: 0.4,
     },
-    primaryDisabledText: {
-        color: '#b8b8b8',
+    ghostDisabledRaw: {
+        borderColor: `${theme.color_text_base}1A`,
     },
-    ghostDisabled: {
-        backgroundColor: Theme.colors.fillBase,
-        borderColor: Theme.colors.borderBase,
-    },
-    ghostDisabledText: {
-        color: Theme.colors.textDisabled,
-    },
-    acrossRaw: {
-        width: '100%',
+    warningDisabledRaw: {
+        opacity: 0.4,
     },
     defaultHighlightText: {
-        color: Theme.colors.textBase,
+        color: theme.color_text_base,
     },
     primaryHighlightText: {
-        color: Theme.colors.textBaseInverse,
+        color: `${theme.color_text_base_inverse}4D`,
     },
     ghostHighlightText: {
-        color: Theme.button.ghostColorTap,
+        color: theme.ghost_button_fill_tap,
     },
-    normalRawText: {
-        fontSize: Theme.button.fontSize,
+    warningHighlightText: {
+        color: `${theme.color_text_base_inverse}4D`,
     },
-    middleRawText: {
-        fontSize: Theme.button.fontSizeMd,
+    largeRawText: {
+        fontSize: theme.button_font_size,
     },
     smallRawText: {
-        fontSize: Theme.button.fontSizeSm,
+        fontSize: theme.button_font_size_sm,
     },
     defaultRawText: {
-        color: Theme.colors.textBase,
+        color: theme.color_text_base,
     },
     primaryRawText: {
-        color: Theme.colors.textBaseInverse,
+        color: theme.color_text_base_inverse,
     },
     ghostRawText: {
-        color: Theme.button.ghostColor,
+        color: theme.ghost_button_color,
     },
-    disabledRawText: {
-        color: Theme.colors.textDisabled,
+    warningRawText: {
+        color: theme.color_text_base_inverse,
     },
-    iconRawText: {
-        paddingRight: Theme.spacing.horizontalSm,
+    defaultDisabledRawText: {
+        color: `${theme.color_text_base}4D`,
+    },
+    primaryDisabledRawText: {
+        color: `${theme.color_text_base_inverse}99`,
+    },
+    ghostDisabledRawText: {
+        color: `${theme.color_text_base}1A`,
+    },
+    warningDisabledRawText: {
+        color: `${theme.color_text_base_inverse}99`,
     },
     indicator: {
-        marginRight: Theme.spacing.horizontalMd,
+        marginRight: theme.h_spacing_md,
     },
 });

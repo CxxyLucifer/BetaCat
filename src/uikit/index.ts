@@ -1,6 +1,8 @@
 import Kit from './kit';
 import Toast from './toast';
 import Button from './button';
+// import Modal from './modal'; 
+import List from './list';
 import TabBar from './tab-bar';
 import SwipeAction from './swipe-action';
 import Scene from './scene';
@@ -12,7 +14,6 @@ import Carousel from './carousel';
 import MenuCard from './menucard';
 import NoData from './no-data';
 import Drawer from './drawer';
-import PopUpModel from './popup-model';
 import PullToRefresh from './pull-to-refresh';
 import LoadingSpinner from './loadingSpinner';
 import { AJListView, AJRefreshView } from './listview';
@@ -27,6 +28,8 @@ export {
   Button,
   TabBar,
   Theme,
+  // Modal,
+  List,
   Carousel,
   Scene,
   Search,
@@ -34,7 +37,6 @@ export {
   NoData,
   Drawer,
   MenuCard,
-  PopUpModel,
   SwipeAction,
   PullToRefresh,
   LoadingSpinner,

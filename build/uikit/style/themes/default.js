@@ -1,6 +1,12 @@
 const brandPrimary = '#108ee9';
 const brandPrimaryTap = '#1284d6';
 export default {
+    // 支付宝钱包默认主题
+    // https://github.com/ant-design/ant-design-mobile/wiki/设计变量表及命名规范
+    // 色彩, NOTE: must use `#000000` instead of `#000`
+    // https://facebook.github.io/react-native/docs/colors.html
+    // 8-digit-hex to 4-digit hex https://css-tricks.com/8-digit-hex-codes/
+    // https://www.chromestatus.com/feature/5685348285808640 chrome will support `#RGBA`
     // 文字色
     color_text_base: '#000000',
     color_text_base_inverse: '#ffffff',

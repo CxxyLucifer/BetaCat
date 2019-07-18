@@ -1,55 +1,32 @@
 import * as tslib_1 from "tslib";
-/**
- * Created by syf on 2017/5/4
- * 组件和样式参考ant mobile的代码
- */
+// tslint:disable:no-empty
 import React from 'react';
-import { TouchableHighlight, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { WithTheme } from '../style';
 import buttonStyles from './style/index';
-export default class QMButton extends React.Component {
+export default class Button extends React.Component {
     constructor(props) {
         super(props);
-        this.styles = buttonStyles;
-        this.onPress = (...arg) => {
-            let myState = this.state;
-            if (this.props.onPress) {
-                if (myState.clicking) {
-                    myState.clicking = false;
-                    this.props.onPress(...arg);
-                    setTimeout(() => {
-                        myState.clicking = true;
-                    }, 500);
-                }
-            }
-        };
         this.onPressIn = (...arg) => {
-            if (!this.props.disabled) {
-                this.setState({ pressIn: true });
-            }
+            this.setState({ pressIn: true });
             if (this.props.onPressIn) {
                 this.props.onPressIn(...arg);
             }
         };
         this.onPressOut = (...arg) => {
-            if (!this.props.disabled) {
-                this.setState({ pressIn: false });
-            }
+            this.setState({ pressIn: false });
             if (this.props.onPressOut) {
                 this.props.onPressOut(...arg);
             }
         };
         this.onShowUnderlay = (...arg) => {
-            if (!this.props.disabled) {
-                this.setState({ touchIte: true });
-            }
+            this.setState({ touchIt: true });
             if (this.props.onShowUnderlay) {
                 this.props.onShowUnderlay(...arg);
             }
         };
         this.onHideUnderlay = (...arg) => {
-            if (!this.props.disabled) {
-                this.setState({ touchIt: false });
-            }
+            this.setState({ touchIt: false });
             if (this.props.onHideUnderlay) {
                 this.props.onHideUnderlay(...arg);
             }
@@ -57,62 +34,52 @@ export default class QMButton extends React.Component {
         this.state = {
             pressIn: false,
             touchIt: false,
-            clicking: true,
         };
     }
     render() {
         // TODO: replace `TouchableHighlight` with `TouchableWithoutFeedback` in version 1.1.0
-        const _a = this.props, { size = 'normal', type = 'default', disabled, activeStyle, onPress, style, loading } = _a, restProps = tslib_1.__rest(_a, ["size", "type", "disabled", "activeStyle", "onPress", "style", "loading"]);
-        [
-            'activeOpacity',
-            'delayPressOut',
-            'underlayColor',
-            'onPress',
-            'onPressIn',
-            'onPressOut',
-            'onShowUnderlay',
-            'onHideUnderlay',
-        ].forEach(prop => {
-            if (restProps.hasOwnProperty(prop)) {
-                delete restProps[prop];
-            }
-        });
-        const styles = this.styles;
-        const textStyle = [
-            styles[`${size}RawText`],
-            styles[`${type}RawText`],
-            disabled && styles.disabledRawText && styles[`${type}DisabledText`],
-            this.state.pressIn && styles[`${type}HighlightText`],
-        ];
-        const wrapperStyle = [
-            styles.wrapperStyle,
-            styles[`${size}Raw`],
-            styles[`${type}Raw`],
-            disabled && styles.disabledRaw && styles[`${type}Disabled`],
-            this.state.pressIn && activeStyle && styles[`${type}Highlight`],
-            this.state.touchIt && activeStyle,
-            style,
-        ];
-        const underlayColor = StyleSheet.flatten(styles[activeStyle ? `${type}Highlight` : `${type}Raw`])
-            .backgroundColor;
-        const indicatorColor = StyleSheet.flatten(this.state.pressIn ? styles[`${type}HighlightText`] : styles[`${type}RawText`]).color;
-        return (<TouchableHighlight activeOpacity={1} delayPressOut={1} underlayColor={underlayColor} style={wrapperStyle} onPress={this.onPress} onPressIn={this.onPressIn} onPressOut={this.onPressOut} onShowUnderlay={this.onShowUnderlay} onHideUnderlay={this.onHideUnderlay} disabled={disabled} {...restProps}>
-        <View style={styles.container}>
-          {loading ? (<ActivityIndicator style={styles.indicator} animating color={indicatorColor} size="small"/>) : null}
-          <Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
-            {this.props.children}
-          </Text>
-        </View>
-      </TouchableHighlight>);
+        // for using setNativeProps to improve performance
+        const _a = this.props, { size = 'large', type = 'default', disabled, activeStyle, onPress, style, styles, loading } = _a, restProps = tslib_1.__rest(_a, ["size", "type", "disabled", "activeStyle", "onPress", "style", "styles", "loading"]);
+        return (<WithTheme themeStyles={buttonStyles} styles={styles}>
+        {_styles => {
+            const textStyle = [
+                _styles[`${size}RawText`],
+                _styles[`${type}RawText`],
+                disabled && _styles[`${type}DisabledRawText`],
+                this.state.pressIn && _styles[`${type}HighlightText`],
+            ];
+            const wrapperStyle = [
+                _styles.wrapperStyle,
+                _styles[`${size}Raw`],
+                _styles[`${type}Raw`],
+                disabled && _styles[`${type}DisabledRaw`],
+                this.state.pressIn && activeStyle && _styles[`${type}Highlight`],
+                activeStyle && this.state.touchIt && activeStyle,
+                style,
+            ];
+            const underlayColor = StyleSheet.flatten(activeStyle ? activeStyle : _styles[`${type}Highlight`]).backgroundColor;
+            const indicatorColor = StyleSheet.flatten(this.state.pressIn
+                ? _styles[`${type}HighlightText`]
+                : _styles[`${type}RawText`]).color;
+            return (<TouchableHighlight activeOpacity={0.4} {...restProps} style={wrapperStyle} disabled={disabled} underlayColor={underlayColor} onPress={(e) => onPress && onPress(e)} onPressIn={this.onPressIn} onPressOut={this.onPressOut} onShowUnderlay={this.onShowUnderlay} onHideUnderlay={this.onHideUnderlay}>
+              <View style={_styles.container}>
+                {loading ? (
+            // tslint:disable-next-line:jsx-no-multiline-js
+            <ActivityIndicator style={_styles.indicator} animating color={indicatorColor} size="small"/>) : null}
+                <Text style={textStyle}>{this.props.children}</Text>
+              </View>
+            </TouchableHighlight>);
+        }}
+      </WithTheme>);
     }
 }
-QMButton.defaultProps = {
+Button.defaultProps = {
+    pressIn: false,
     disabled: false,
-    activeStyle: {},
     loading: false,
-    onPress: (_x) => { },
-    onPressIn: (_x) => { },
-    onPressOut: (_x) => { },
-    onShowUnderlay: (_x) => { },
-    onHideUnderlay: (_x) => { },
+    onPress: (_) => { },
+    onPressIn: (_) => { },
+    onPressOut: (_) => { },
+    onShowUnderlay: (_) => { },
+    onHideUnderlay: (_) => { },
 };

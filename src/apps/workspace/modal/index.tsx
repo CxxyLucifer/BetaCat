@@ -6,17 +6,16 @@ import {
     View,
     TouchableOpacity
 } from 'react-native';
-import { Scene,Theme } from 'UIKit';
+import { Scene, Theme, Button} from 'UIKit';
 import { Icon } from 'UIcon';
-
 
 export default class Index extends Component<any,any> {
     constructor(props) {
         super(props);
         this.state = {
             animationType: 'none',//none slide fade
-            modalVisible: false,
             transparent: true,
+            modal1: false,
         };
     }
 
@@ -31,36 +30,43 @@ export default class Index extends Component<any,any> {
         return (
             <Scene header={'弹窗'} hasBack={true} style={styles.body}>
                 <View style={{ alignItems: 'center', flex: 1 }}>
-                    
+                    <Button type="primary" onPress={() => this._showModal('modal1')}>弹出</Button>
                     <Modal
                         animationType={this.state.animationType}
                         transparent={this.state.transparent}
-                        visible={this.state.modalVisible}
-                        onRequestClose={() => { this._setModalVisible(false) }}
+                        visible={this.state.modal1}
+                        onRequestClose={() => { this._onClose('modal1') }}
                     >
                         <View style={[styles.container, modalBackgroundStyle]}>
                             <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
                                 <View style={styles.heard}>
                                     <View style={styles.heardLeft}></View>
                                     <View style={styles.heardTitle}><Text>ModalDemo</Text></View>
-                                    <TouchableOpacity style={styles.heardRight} onPress={() => this._setModalVisible(false)} >
+                                    <TouchableOpacity style={styles.heardRight} onPress={() => this._onClose('modal1')} >
                                         <Icon name={'antDesign|closecircleo'} size={24} color={'#9b9b9b'} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
                     </Modal>
-                     <Text style={{ fontSize: 24}} onPress={this._setModalVisible.bind(this, true)}>弹出</Text>
+
                 </View>
             </Scene>
         );
     }
 
-    _setModalVisible = (visible) => {
-        this.setState({ modalVisible: visible });
+
+    _showModal = (key) => {
+        this.setState({
+            [key]: true,
+        });
+    }
+    _onClose = (key) => {
+        this.setState({
+            [key]: false,
+        });
     }
 }
-
 
 const styles = StyleSheet.create({
     body:{

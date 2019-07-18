@@ -1,79 +1,59 @@
-/**
- * Created by syf on 2017/5/4
- * 组件和样式参考ant mobile的代码
- */
+// tslint:disable:no-empty
 import React from 'react';
-import { TouchableHighlight, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
-import buttonStyles from './style/index';
-import PropsType from './propstype';
+import { ActivityIndicator, StyleProp, StyleSheet, Text, TouchableHighlight, TouchableHighlightProperties, View, ViewStyle } from 'react-native';
+import { WithTheme, WithThemeStyles } from '../style';
+import { ButtonPropsType } from './PropsType';
+import buttonStyles, { ButtonStyles } from './style/index';
 
-export default class QMButton extends React.Component<PropsType, any> {
-  styles = buttonStyles;
+export interface ButtonProps
+  extends ButtonPropsType,
+  WithThemeStyles<ButtonStyles>,
+  TouchableHighlightProperties {
+  activeStyle?: StyleProp<ViewStyle>;
+  onPress?: (_?: any) => void;
+}
+
+export default class Button extends React.Component<ButtonProps, any> {
   static defaultProps = {
+    pressIn: false,
     disabled: false,
-    activeStyle: {},
     loading: false,
-    onPress: (_x?: any) => {},
-    onPressIn: (_x?: any) => {},
-    onPressOut: (_x?: any) => {},
-    onShowUnderlay: (_x?: any) => {},
-    onHideUnderlay: (_x?: any) => {},
+
+    onPress: (_?: any) => { },
+    onPressIn: (_?: any) => { },
+    onPressOut: (_?: any) => { },
+    onShowUnderlay: (_?: any) => { },
+    onHideUnderlay: (_?: any) => { },
   };
 
-  constructor(props) {
+  constructor(props: ButtonProps) {
     super(props);
     this.state = {
       pressIn: false,
       touchIt: false,
-      clicking: true,
     };
   }
 
-  onPress = (...arg) => {
-    let myState: any = this.state;
-
-    if (this.props.onPress) {
-      if (myState.clicking) {
-        myState.clicking = false;
-        (this.props.onPress as any)(...arg);
-        setTimeout(() => {
-          myState.clicking = true;
-        }, 500);
-      }
-    }
-  };
-
-  onPressIn = (...arg) => {
-    if (!this.props.disabled) {
-      this.setState({ pressIn: true });
-    }
+  onPressIn = (...arg: any[]) => {
+    this.setState({ pressIn: true });
     if (this.props.onPressIn) {
       (this.props.onPressIn as any)(...arg);
     }
   };
-
-  onPressOut = (...arg) => {
-    if (!this.props.disabled) {
-      this.setState({ pressIn: false });
-    }
+  onPressOut = (...arg: any[]) => {
+    this.setState({ pressIn: false });
     if (this.props.onPressOut) {
       (this.props.onPressOut as any)(...arg);
     }
   };
-
-  onShowUnderlay = (...arg) => {
-    if (!this.props.disabled) {
-      this.setState({ touchIte: true });
-    }
+  onShowUnderlay = (...arg: any[]) => {
+    this.setState({ touchIt: true });
     if (this.props.onShowUnderlay) {
       (this.props.onShowUnderlay as any)(...arg);
     }
   };
-
-  onHideUnderlay = (...arg) => {
-    if (!this.props.disabled) {
-      this.setState({ touchIt: false });
-    }
+  onHideUnderlay = (...arg: any[]) => {
+    this.setState({ touchIt: false });
     if (this.props.onHideUnderlay) {
       (this.props.onHideUnderlay as any)(...arg);
     }
@@ -81,80 +61,77 @@ export default class QMButton extends React.Component<PropsType, any> {
 
   render() {
     // TODO: replace `TouchableHighlight` with `TouchableWithoutFeedback` in version 1.1.0
+    // for using setNativeProps to improve performance
     const {
-      size = 'normal',
+      size = 'large',
       type = 'default',
       disabled,
       activeStyle,
       onPress,
       style,
+      styles,
       loading,
       ...restProps
     } = this.props;
-
-    [
-      'activeOpacity',
-      'delayPressOut',
-      'underlayColor',
-      'onPress',
-      'onPressIn',
-      'onPressOut',
-      'onShowUnderlay',
-      'onHideUnderlay',
-    ].forEach(prop => {
-      if (restProps.hasOwnProperty(prop)) {
-        delete restProps[prop];
-      }
-    });
-
-    const styles = this.styles;
-    const textStyle = [
-      styles[`${size}RawText`],
-      styles[`${type}RawText`],
-      disabled && styles.disabledRawText && styles[`${type}DisabledText`],
-      this.state.pressIn && styles[`${type}HighlightText`],
-    ];
-
-    const wrapperStyle = [
-      styles.wrapperStyle,
-      styles[`${size}Raw`],
-      styles[`${type}Raw`],
-      disabled && styles.disabledRaw && styles[`${type}Disabled`],
-      this.state.pressIn && activeStyle && styles[`${type}Highlight`],
-      this.state.touchIt && activeStyle,
-      style,
-    ];
-
-    const underlayColor = (StyleSheet.flatten(styles[activeStyle ? `${type}Highlight` : `${type}Raw`]) as any)
-      .backgroundColor;
-
-    const indicatorColor = (StyleSheet.flatten(
-      this.state.pressIn ? styles[`${type}HighlightText`] : styles[`${type}RawText`],
-    ) as any).color;
-
     return (
-      <TouchableHighlight
-        activeOpacity={1}
-        delayPressOut={1}
-        underlayColor={underlayColor}
-        style={wrapperStyle}
-        onPress={this.onPress}
-        onPressIn={this.onPressIn}
-        onPressOut={this.onPressOut}
-        onShowUnderlay={this.onShowUnderlay}
-        onHideUnderlay={this.onHideUnderlay}
-        disabled={disabled}
-        {...restProps}
-      >
-        <View style={styles.container}>
-          {loading ? (
-            <ActivityIndicator style={styles.indicator} animating color={indicatorColor} size="small" />
-          ) : null}
-          <Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
-            {this.props.children}
-          </Text>
-        </View>
-      </TouchableHighlight>
+      <WithTheme themeStyles={buttonStyles} styles={styles}>
+        {_styles => {
+          const textStyle = [
+            _styles[`${size}RawText`],
+            _styles[`${type}RawText`],
+            disabled && _styles[`${type}DisabledRawText`],
+            this.state.pressIn && _styles[`${type}HighlightText`],
+          ];
+
+          const wrapperStyle = [
+            _styles.wrapperStyle,
+            _styles[`${size}Raw`],
+            _styles[`${type}Raw`],
+            disabled && _styles[`${type}DisabledRaw`],
+            this.state.pressIn && activeStyle && _styles[`${type}Highlight`],
+            activeStyle && this.state.touchIt && activeStyle,
+            style,
+          ];
+
+          const underlayColor = (StyleSheet.flatten(
+            activeStyle ? activeStyle : _styles[`${type}Highlight`],
+          ) as any).backgroundColor;
+
+          const indicatorColor = (StyleSheet.flatten(
+            this.state.pressIn
+              ? _styles[`${type}HighlightText`]
+              : _styles[`${type}RawText`],
+          ) as any).color;
+
+          return (
+            <TouchableHighlight
+              activeOpacity={0.4}
+              {...restProps}
+              style={wrapperStyle}
+              disabled={disabled}
+              underlayColor={underlayColor}
+              onPress={(e?: any) => onPress && onPress(e)}
+              onPressIn={this.onPressIn}
+              onPressOut={this.onPressOut}
+              onShowUnderlay={this.onShowUnderlay}
+              onHideUnderlay={this.onHideUnderlay}
+            >
+              <View style={_styles.container}>
+                {loading ? (
+                  // tslint:disable-next-line:jsx-no-multiline-js
+                  <ActivityIndicator
+                    style={_styles.indicator}
+                    animating
+                    color={indicatorColor}
+                    size="small"
+                  />
+                ) : null}
+                <Text style={textStyle}>{this.props.children}</Text>
+              </View>
+            </TouchableHighlight>
+          );
+        }}
+      </WithTheme>
     );
   }
 }

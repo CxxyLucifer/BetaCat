@@ -4,7 +4,9 @@ import defaultTheme from './themes/default';
 export const ThemeContext = React.createContext(defaultTheme);
 export const ThemeProvider = (props) => {
     const theme = Object.assign({}, defaultTheme, props.value);
-    return <ThemeContext.Provider value={theme}>{props.children}</ThemeContext.Provider>;
+    return (<ThemeContext.Provider value={theme}>
+      {props.children}
+    </ThemeContext.Provider>);
 };
 export const useTheme = (props = {}) => {
     const theme = useContext(ThemeContext);
@@ -25,7 +27,9 @@ export class WithTheme extends React.Component {
         };
     }
     render() {
-        return <ThemeContext.Consumer>{theme => this.props.children(this.getStyles(theme), theme)}</ThemeContext.Consumer>;
+        return (<ThemeContext.Consumer>
+        {theme => this.props.children(this.getStyles(theme), theme)}
+      </ThemeContext.Consumer>);
     }
 }
 WithTheme.defaultProps = {

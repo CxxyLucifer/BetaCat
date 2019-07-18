@@ -1,119 +1,147 @@
-/**
- * Created by syf on 2017/5/4
- * 组件和样式参考ant mobile的代码
- */
-import Theme from '../../style/theme';
-import { StyleSheet } from 'react-native';
-
-export default StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-  defaultHighlight: {
-    backgroundColor: Theme.button.defaultFillTap,
-    borderColor: Theme.colors.borderBase,
-  },
-  primaryHighlight: {
-    backgroundColor: Theme.button.primaryFillTap,
-    borderColor: Theme.button.primaryFillTap,
-  },
-  ghostHighlight: {
-    backgroundColor: Theme.colors.fillBase,
-    borderColor: Theme.button.ghostColorTap,
-  },
-  wrapperStyle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: Theme.border.radiusSm,
-    borderWidth: Theme.border.widthSm,
-  },
-  normalRaw: {
-    height: Theme.button.height,
-    paddingLeft: Theme.button.spacing,
-    paddingRight: Theme.button.spacing,
-  },
-  middleRaw: {
-    height: Theme.button.heightMd,
-    paddingLeft: Theme.button.spacingMd,
-    paddingRight: Theme.button.spacingMd,
-  },
-  smallRaw: {
-    height: Theme.button.heightSm,
-    paddingLeft: Theme.button.spacingSm,
-    paddingRight: Theme.button.spacingSm,
-  },
-  defaultRaw: {
-    // height: Theme.button.height,
-    backgroundColor: Theme.colors.fillBase,
-    borderColor: Theme.colors.borderBase,
-  },
-  primaryRaw: {
-    backgroundColor: Theme.button.primaryFill,
-    borderColor: Theme.button.primaryFill,
-  },
-  ghostRaw: {
-    backgroundColor: Theme.colors.fillBase,
-    borderColor: Theme.button.ghostColor,
-  },
-  disabledRaw: {
-    // backgroundColor: Theme.colors.fillDisabled,
-    // borderColor: Theme.colors.fillDisabled,
-    color: Theme.colors.textDisabled,
-  },
-  defaultDisabledText: {
-    color: Theme.colors.textDisabled,
-  },
-  primaryDisabled: {
-    backgroundColor: '#ddd',
-    borderColor: '#ddd',
-  },
-  primaryDisabledText: {
-    color: '#b8b8b8',
-  },
-  ghostDisabled: {
-    backgroundColor: Theme.colors.fillBase,
-    borderColor: Theme.colors.borderBase,
-  },
-  ghostDisabledText: {
-    color: Theme.colors.textDisabled,
-  },
-  acrossRaw: {
-    width: '100%',
-  },
-  defaultHighlightText: {
-    color: Theme.colors.textBase,
-  },
-  primaryHighlightText: {
-    color: Theme.colors.textBaseInverse,
-  },
-  ghostHighlightText: {
-    color: Theme.button.ghostColorTap,
-  },
-  normalRawText: {
-    fontSize: Theme.button.fontSize,
-  },
-  middleRawText: {
-    fontSize: Theme.button.fontSizeMd,
-  },
-  smallRawText: {
-    fontSize: Theme.button.fontSizeSm,
-  },
-  defaultRawText: {
-    color: Theme.colors.textBase,
-  },
-  primaryRawText: {
-    color: Theme.colors.textBaseInverse,
-  },
-  ghostRawText: {
-    color: Theme.button.ghostColor,
-  },
-  disabledRawText: {
-    color: Theme.colors.textDisabled,
-  },
-  iconRawText: {
-    paddingRight: Theme.spacing.horizontalSm,
-  },
-  indicator: {
-    marginRight: Theme.spacing.horizontalMd,
-  },
-});
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Theme } from '../../style';
+export interface ButtonStyles {
+  container: ViewStyle;
+  defaultHighlight: ViewStyle;
+  primaryHighlight: ViewStyle;
+  ghostHighlight: ViewStyle;
+  warningHighlight: ViewStyle;
+  wrapperStyle: ViewStyle;
+  largeRaw: ViewStyle;
+  smallRaw: ViewStyle;
+  defaultRaw: ViewStyle;
+  primaryRaw: ViewStyle;
+  ghostRaw: ViewStyle;
+  warningRaw: ViewStyle;
+  defaultDisabledRaw: ViewStyle;
+  primaryDisabledRaw: ViewStyle;
+  ghostDisabledRaw: ViewStyle;
+  warningDisabledRaw: ViewStyle;
+  defaultHighlightText: TextStyle;
+  primaryHighlightText: TextStyle;
+  ghostHighlightText: TextStyle;
+  warningHighlightText: TextStyle;
+  largeRawText: TextStyle;
+  smallRawText: TextStyle;
+  defaultRawText: TextStyle;
+  primaryRawText: TextStyle;
+  ghostRawText: TextStyle;
+  warningRawText: TextStyle;
+  defaultDisabledRawText: TextStyle;
+  primaryDisabledRawText: TextStyle;
+  ghostDisabledRawText: TextStyle;
+  warningDisabledRawText: TextStyle;
+  indicator: ViewStyle;
+}
+export default (theme: Theme) =>
+  StyleSheet.create<ButtonStyles>({
+    container: {
+      flexDirection: 'row',
+    },
+    defaultHighlight: {
+      backgroundColor: theme.fill_tap,
+      borderColor: theme.border_color_base,
+    },
+    primaryHighlight: {
+      backgroundColor: theme.primary_button_fill_tap,
+      borderColor: theme.primary_button_fill,
+    },
+    ghostHighlight: {
+      backgroundColor: 'transparent',
+      borderColor: theme.ghost_button_fill_tap,
+    },
+    warningHighlight: {
+      backgroundColor: theme.warning_button_fill_tap,
+      borderColor: theme.warning_button_fill,
+    },
+    wrapperStyle: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: theme.radius_md,
+      borderWidth: 1,
+    },
+    largeRaw: {
+      height: theme.button_height,
+      paddingLeft: theme.h_spacing_lg,
+      paddingRight: theme.h_spacing_lg,
+    },
+    smallRaw: {
+      height: theme.button_height_sm,
+      paddingLeft: theme.h_spacing_sm,
+      paddingRight: theme.h_spacing_sm,
+    },
+    defaultRaw: {
+      backgroundColor: theme.fill_base,
+      borderColor: theme.border_color_base,
+    },
+    primaryRaw: {
+      backgroundColor: theme.primary_button_fill,
+      borderColor: theme.primary_button_fill,
+    },
+    ghostRaw: {
+      backgroundColor: 'transparent',
+      borderColor: theme.ghost_button_color,
+    },
+    warningRaw: {
+      backgroundColor: theme.warning_button_fill,
+      borderColor: theme.warning_button_fill,
+    },
+    defaultDisabledRaw: {
+      backgroundColor: theme.fill_disabled,
+      borderColor: theme.fill_disabled,
+    },
+    primaryDisabledRaw: {
+      opacity: 0.4,
+    },
+    ghostDisabledRaw: {
+      borderColor: `${theme.color_text_base}1A`, // alpha 10%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    warningDisabledRaw: {
+      opacity: 0.4,
+    },
+    defaultHighlightText: {
+      color: theme.color_text_base,
+    },
+    primaryHighlightText: {
+      color: `${theme.color_text_base_inverse}4D`, // alpha 30%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    ghostHighlightText: {
+      color: theme.ghost_button_fill_tap,
+    },
+    warningHighlightText: {
+      color: `${theme.color_text_base_inverse}4D`, // alpha 30%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    largeRawText: {
+      fontSize: theme.button_font_size,
+    },
+    smallRawText: {
+      fontSize: theme.button_font_size_sm,
+    },
+    defaultRawText: {
+      color: theme.color_text_base,
+    },
+    primaryRawText: {
+      color: theme.color_text_base_inverse,
+    },
+    ghostRawText: {
+      color: theme.ghost_button_color,
+    },
+    warningRawText: {
+      color: theme.color_text_base_inverse,
+    },
+    defaultDisabledRawText: {
+      color: `${theme.color_text_base}4D`, // alpha 30%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    primaryDisabledRawText: {
+      color: `${theme.color_text_base_inverse}99`, // alpha 60%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    ghostDisabledRawText: {
+      color: `${theme.color_text_base}1A`, // alpha 10%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    warningDisabledRawText: {
+      color: `${theme.color_text_base_inverse}99`, // alpha 60%  https://codepen.io/chriscoyier/pen/XjbzAW
+    },
+    indicator: {
+      marginRight: theme.h_spacing_md,
+    },
+  });
