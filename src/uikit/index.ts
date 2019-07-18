@@ -1,7 +1,7 @@
 import Kit from './kit';
 import Toast from './toast';
 import Button from './button';
-// import Modal from './modal'; 
+import Modal from './modal'; 
 import List from './list';
 import TabBar from './tab-bar';
 import SwipeAction from './swipe-action';
@@ -9,6 +9,7 @@ import Scene from './scene';
 import Search from './search';
 import Fetch from './fetch';
 import noop from './noop';
+import Provider from './provider';
 import Theme from './style/theme';
 import Carousel from './carousel';
 import MenuCard from './menucard';
@@ -28,8 +29,9 @@ export {
   Button,
   TabBar,
   Theme,
-  // Modal,
+  Modal,
   List,
+  Provider,
   Carousel,
   Scene,
   Search,

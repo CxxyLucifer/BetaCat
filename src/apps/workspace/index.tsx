@@ -5,7 +5,8 @@ import { msg } from 'plume2';
 import { Icon } from 'UIcon';
 
 const data = [
-  { 'name': '弹出窗口', 'routeName':'ModalDemo'},
+  { 'name': '弹出窗口', 'routeName': 'ModalDemo' }, 
+  { 'name': 'AntDModal', 'routeName': 'AntDModal' }, 
   { 'name': '下拉刷新上拉加载更多', 'routeName': 'PullRefreshListView' }
 ]
 
