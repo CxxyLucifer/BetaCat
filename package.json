@@ -5,7 +5,7 @@
   "scripts": {
     "reset_cache": "npm start --reset-cache",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "reinstall": "rm -rf ./node_modules && yarn",
+    "clear": "rm -rf ./node_modules && yarn",
     "format": "./node_modules/.bin/prettier --write './src/**/*.{ts,tsx}'",
     "build_apk": "cd android && ./gradlew assembleRelease",
     "android": "node node_modules/react-native/local-cli/cli.js run-android && ./node_modules/.bin/tsc -w",

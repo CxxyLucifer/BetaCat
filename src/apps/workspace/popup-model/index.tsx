@@ -3,10 +3,10 @@ import {
     StyleSheet,
     Text,
     Modal,
-    PixelRatio,
-    View
+    View,
+    TouchableOpacity
 } from 'react-native';
-import { Scene } from 'UIKit';
+import { Scene,Theme } from 'UIKit';
 import { Icon } from 'UIcon';
 
 
@@ -31,6 +31,7 @@ export default class Index extends Component<any,any> {
         return (
             <Scene header={'弹窗'} hasBack={true} style={styles.body}>
                 <View style={{ alignItems: 'center', flex: 1 }}>
+                    
                     <Modal
                         animationType={this.state.animationType}
                         transparent={this.state.transparent}
@@ -39,18 +40,17 @@ export default class Index extends Component<any,any> {
                     >
                         <View style={[styles.container, modalBackgroundStyle]}>
                             <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-                                <Text
-                                    onPress={this._setModalVisible.bind(this, false)}
-                                    style={{ fontSize: 20, marginTop: 10 }}>
-                                    关闭
-                                </Text>
-                                <View>
-                                    <Icon onPress={() => this._setModalVisible(false)} name={'antDesign|closecircleo'} size={20} color={'#9b9b9b'} />
+                                <View style={styles.heard}>
+                                    <View style={styles.heardLeft}></View>
+                                    <View style={styles.heardTitle}><Text>ModalDemo</Text></View>
+                                    <TouchableOpacity style={styles.heardRight} onPress={() => this._setModalVisible(false)} >
+                                        <Icon name={'antDesign|closecircleo'} size={24} color={'#9b9b9b'} />
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
                     </Modal>
-                    <Text style={{ fontSize: 30, color: 'red' }} onPress={this._setModalVisible.bind(this, true)}>弹出</Text>
+                     <Text style={{ fontSize: 24}} onPress={this._setModalVisible.bind(this, true)}>弹出</Text>
                 </View>
             </Scene>
         );
@@ -65,90 +65,40 @@ export default class Index extends Component<any,any> {
 const styles = StyleSheet.create({
     body:{
         flex: 1,
+        backgroundColor: Theme.pages.content_default_bg,
     },
     container: {
         flex: 1,
         justifyContent: 'center',
-        padding: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     innerContainer: {
+        flexDirection:'column',
         borderRadius: 10,
         height: 400,
-        alignItems: 'center',
-
+        // alignItems: 'center',
+        // borderWidth: 1,
+        // borderColor: 'blue',
+    },
+    heard:{
+        flexDirection:'row',
         // borderWidth: 1,
         // borderColor: 'red',
     },
-    row: {
+    heardLeft: {
+        width:40,
+    },
+    heardTitle:{
+        flex:1,
         alignItems: 'center',
-
-        flex: 1,
-        flexDirection: 'row',
-        marginBottom: 20,
+        justifyContent:'center',
     },
-    rowTitle: {
-        flex: 1,
-        fontWeight: 'bold',
-    },
-    button: {
-        borderRadius: 5,
-        flex: 1,
-        height: 44,
-        alignSelf: 'stretch',
+    heardRight:{
+        width:40,
+        alignItems: 'flex-end',
         justifyContent: 'center',
-        overflow: 'hidden',
-    },
-    buttonText: {
-        fontSize: 18,
-        margin: 5,
-        textAlign: 'center',
-    },
-
-    page: {
-        flex: 1,
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-    },
-    zhifu: {
-        height: 150,
-    },
-
-    flex: {
-        flex: 1,
-    },
-    at: {
-        borderWidth: 1 / PixelRatio.get(),
-        width: 80,
-        marginLeft: 10,
-        marginRight: 10,
-        borderColor: '#18B7FF',
-        height: 1,
-        marginTop: 10
-
-    },
-    date: {
-        textAlign: 'center',
-        marginBottom: 5
-    },
-    station: {
-        fontSize: 20
-    },
-    mp10: {
-        marginTop: 5,
-    },
-    btn: {
-        width: 60,
-        height: 30,
-        borderRadius: 3,
-        backgroundColor: '#FFBA27',
-        padding: 5,
-    },
-    btn_text: {
-        lineHeight: 18,
-        textAlign: 'center',
-        color: '#fff',
-    },
+        // borderWidth: 1,
+        // borderColor: 'red',
+    }
 });
