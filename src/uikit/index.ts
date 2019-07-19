@@ -21,6 +21,7 @@ import PullToRefresh from './pull-to-refresh';
 import LoadingSpinner from './loadingSpinner';
 import { AJListView, AJRefreshView } from './listview';
 import AESUtil from './util/AESUtil';
+import PinYinUtil from './util/PinYinUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
 
@@ -49,6 +50,7 @@ export {
   AJListView,
   AJRefreshView,
   AESUtil,
+  PinYinUtil,
   EncryptUtil,
   AsyncStorageUtil,
 };

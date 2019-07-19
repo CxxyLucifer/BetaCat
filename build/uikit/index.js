@@ -21,6 +21,7 @@ import PullToRefresh from './pull-to-refresh';
 import LoadingSpinner from './loadingSpinner';
 import { AJListView, AJRefreshView } from './listview';
 import AESUtil from './util/AESUtil';
+import PinYinUtil from './util/PinYinUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
-export { Kit, noop, Toast, Button, TabBar, Theme, Modal, List, WingBlank, WhiteSpace, Provider, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, SwipeAction, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, EncryptUtil, AsyncStorageUtil, };
+export { Kit, noop, Toast, Button, TabBar, Theme, Modal, List, WingBlank, WhiteSpace, Provider, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, SwipeAction, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, PinYinUtil, EncryptUtil, AsyncStorageUtil, };
