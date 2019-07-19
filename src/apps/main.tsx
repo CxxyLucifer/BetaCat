@@ -5,6 +5,7 @@ import { TabBar, Theme } from 'UIKit';
 import { Icon } from 'UIcon';
 
 import Home from './home';
+import Contacts from './contacts';
 import WorkSpace from './workspace';
 import MessageList from './message/listview';
 
@@ -14,7 +15,7 @@ export default class Main extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'workspace',
+      selected: 'contacts',
     };
   }
 
@@ -25,9 +26,7 @@ export default class Main extends Component<any, any> {
       <MyTabBar style={styles.flex1} tintColor={Theme.colors.brandPrimary} barTintColor={Theme.colors.fillBase}>
         <MyTabBar.Item
           title="主页"
-          icon={
-            <Icon name={'myIcon|icon-home'} size={30} color={'#9b9b9b'} />
-          }
+          icon={<Icon name={'myIcon|icon-home'} size={30} color={'#9b9b9b'} />}
           selectedIcon={<Icon name={'myIcon|icon-home'} size={30} color={'#5c87f1'} />}
           onPress={this._handleSelect.bind(this, 'home')}
           selected={selected === 'home'}
@@ -35,6 +34,16 @@ export default class Main extends Component<any, any> {
           <SafeAreaView style={[styles.flex1, styles.bg]}>
             <Home />
           </SafeAreaView>
+        </MyTabBar.Item>
+
+        <MyTabBar.Item
+          title="通讯录"
+          icon={<Icon name={'antDesign|contacts'} size={26} color={'#9b9b9b'} />}
+          selectedIcon={<Icon name={'antDesign|contacts'} size={26} color={'#5c87f1'} />}
+          onPress={this._handleSelect.bind(this, 'contacts')}
+          selected={selected === 'contacts'}
+        >
+          <Contacts />
         </MyTabBar.Item>
 
         <MyTabBar.Item
