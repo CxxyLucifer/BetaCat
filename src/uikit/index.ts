@@ -9,6 +9,8 @@ import Scene from './scene';
 import Search from './search';
 import Fetch from './fetch';
 import noop from './noop';
+import WingBlank from './wing-blank';
+import WhiteSpace from './white-space';
 import Provider from './provider';
 import Theme from './style/theme';
 import Carousel from './carousel';
@@ -31,6 +33,8 @@ export {
   Theme,
   Modal,
   List,
+  WingBlank,
+  WhiteSpace,
   Provider,
   Carousel,
   Scene,

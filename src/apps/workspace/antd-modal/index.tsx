@@ -4,48 +4,106 @@ import {
     Text,
     View,
 } from 'react-native';
-import { Scene, Theme, Button, Modal, Provider} from 'UIKit';
+import { Scene, Theme, Button, Modal, Provider, WingBlank,WhiteSpace} from 'UIKit';
 
 export default class Index extends Component<any,any> {
     constructor(props) {
         super(props);
         this.state = {
+            visible: false,
             visible2: false,
+            visible3: false
         };
     }
 
     render() {
+        const footerButtons = [
+            { text: 'Cancel', onPress: () => console.log('cancel') },
+            { text: 'Ok', onPress: () => console.log('ok') },
+        ];
+
         return (
-            <Provider>
-                <Scene header={'弹窗'} hasBack={true} style={styles.body}>
+            <Scene header={'弹窗'} hasBack={true} style={styles.body}>
+                <Provider>
                     <View style={{ alignItems: 'center', flex: 1 }}>
-                        <Button onPress={() => this.setState({ visible2: true })}>
-                            popup
-                        </Button>
+                        <WingBlank>
+                            <WhiteSpace />
+                            <Button onPress={() => this._onShow('visible')}>
+                                showModal
+                            </Button>
+                            <WhiteSpace />
+                            <Button onPress={() => this._onShow('visible2')}>
+                                slideUp
+                            </Button>
+                            <WhiteSpace />
+                            <Button onPress={() => this._onShow('visible3')}>
+                                slideDown
+                            </Button>
+                        </WingBlank>
+
+                        <Modal
+                            title="Title"
+                            transparent
+                            onClose={() => this._onClose('visible')}
+                            maskClosable
+                            visible={this.state.visible}
+                            closable
+                            footer={footerButtons}
+                        >
+                            <View style={{ paddingVertical: 20 }}>
+                                <Text style={{ textAlign: 'center' }}>Content...</Text>
+                                <Text style={{ textAlign: 'center' }}>Content...</Text>
+                            </View>
+                            <Button type="primary" onPress={() => this._onClose('visible')}>
+                                close modal
+                            </Button>
+                        </Modal>
+
                         <Modal
                             popup
                             visible={this.state.visible2}
                             animationType="slide-up"
-                            onClose={this.onClose2}
+                            onClose={() => this._onClose('visible2')}
                         >
                             <View style={{ paddingVertical: 20, paddingHorizontal: 20 }}>
                                 <Text style={{ textAlign: 'center' }}>Content...</Text>
                                 <Text style={{ textAlign: 'center' }}>Content...</Text>
                             </View>
-                            <Button type="primary" onPress={this.onClose2}>
+                            <Button type="primary" onPress={() => this._onClose('visible2')}>
+                                close modal
+                            </Button>
+                        </Modal>
+
+                        <Modal
+                            popup
+                            visible={this.state.visible3}
+                            animationType="slide-down"
+                            onClose={() => this._onClose('visible3')}
+                        >
+                            <View style={{ paddingVertical: 20, paddingHorizontal: 20 }}>
+                                <Text style={{ textAlign: 'center' }}>Content...</Text>
+                                <Text style={{ textAlign: 'center' }}>Content...</Text>
+                            </View>
+                            <Button type="primary" onPress={() => this._onClose('visible3')}>
                                 close modal
                             </Button>
                         </Modal>
 
                     </View>
-                </Scene>
-            </Provider>
+                </Provider>
+            </Scene>
         );
     }
 
-    onClose2 = () => {
+    _onShow = (key) => {
         this.setState({
-            visible2: false,
+            [key]: true,
+        });
+    };
+
+    _onClose = (key) => {
+        this.setState({
+            [key]: false,
         });
     };
 }
