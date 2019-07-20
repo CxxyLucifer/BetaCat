@@ -12,7 +12,7 @@ import Application from './build/apps';
 export default class App extends Component {
   render() {
     return (
-      <Application initialRoute='SplashPage' />
+      <Application initialRoute='Main' />
     );
   }
 }

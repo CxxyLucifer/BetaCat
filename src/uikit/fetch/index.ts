@@ -65,6 +65,9 @@ const Fetch = (url: string, param?: RequestParam) => {
         }
       })
       .catch(error => {
+        if (__DEV__) {
+          console.log('========= 请求失败:',error)
+        }
         clearTimeout(timeoutId);
         Toast.fail('请求失败，请稍后重试');
         reject(error);
