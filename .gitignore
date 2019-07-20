@@ -2,6 +2,7 @@ node_modules/
 android/app/build/
 android/app/bin/
 android/app/build/outputs/
+android/.gradle/
 ios/build/
 build/apps
 build/uikit
