@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { View,
+import { 
+  View,
   Text,
   Dimensions,
   StyleSheet,
@@ -9,12 +10,25 @@ import { View,
   Image,
   TouchableOpacity
 } from 'react-native';
-import { Content } from 'native-base';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
-import { PinYinUtil, Scene, Fetch, Theme, Config, NoData} from 'UIKit';
-import { itemProps } from './index.d';
+import { PinYinUtil, Scene, Theme, NoData, Toast} from 'UIKit';
+import { queryContactList } from './webapi';
 
-export default class Example extends PureComponent<any, any> {
+export interface itemProps {
+  avatar?: string;
+  department?: string;
+  email?: string;
+  mobile?: string;
+  name?: string;
+}
+
+export interface sectionDataProps {
+  key?: string;
+  title?: string;
+  data?: Array<itemProps>;
+}
+
+export default class Index extends PureComponent<any, any> {
   _sectionList: any;
   constructor(props) {
     super(props);
@@ -36,21 +50,21 @@ export default class Example extends PureComponent<any, any> {
 
     return (
       <Scene header={'通讯录'} hasBack={false} style={styles.container}>
-        <Content contentContainerStyle={styles.content}>
+        <View style={styles.content}>
           {
             sections.length ? 
-            <SectionList
-              ref={sectionView => (this._sectionList = sectionView)}
-              renderSectionHeader={this._renderSectionHeader}
-              ItemSeparatorComponent={() =>
-                <View style={styles.horizontalLine} />
-              }
-              sections={sections}
-              keyExtractor={(item, index) => item + index}
-              getItemLayout={this._getItemLayout}
-              ListEmptyComponent={() => <NoData />}
-              renderItem={({ item, index }) => this._renderItem(item, index)}
-            /> : <View/>
+              <SectionList
+                ref={sectionView => (this._sectionList = sectionView)}
+                renderSectionHeader={this._renderSectionHeader}
+                ItemSeparatorComponent={() =>
+                  <View style={styles.horizontalLine} />
+                }
+                sections={sections}
+                keyExtractor={(item, index) => item + index}
+                getItemLayout={this._getItemLayout}
+                ListEmptyComponent={() => <NoData />}
+                renderItem={({ item, index }) => this._renderItem(item, index)}
+              /> : <View/>
           }
           {
             letterArr.length ?
@@ -66,7 +80,7 @@ export default class Example extends PureComponent<any, any> {
                 />
               </View> : <View/>
           }
-        </Content>
+        </View>
       </Scene>
     );
   }
@@ -87,51 +101,56 @@ export default class Example extends PureComponent<any, any> {
     );
   }
 
-
   _renderItem(item, index){
     return(
       <TouchableOpacity style={styles.contactItem} activeOpacity={0.75}>
-            <Image source={require('../../img/default_avatar.png')} style={{height:40, width:40}} />
-              <View style={styles.basicInfo}>
-                <View>
-                    <Text style={styles.nameStyle}>{item.name}</Text>
-                    <Text style={{fontSize:12}}>{item.department}</Text>
-                    <Text style={{fontSize:12}}>{item.roleName}</Text>
-                </View>
-                <View style={styles.contactInfo}>
-                    
-                </View>
-            </View>
-        </TouchableOpacity>
-      );
+          <Image source={require('../../img/default_avatar.png')} style={{height:40, width:40}} />
+            <View style={styles.basicInfo}>
+              <View>
+                  <Text style={styles.nameStyle}>{item.name}</Text>
+                  <Text style={{fontSize:12}}>{item.department}</Text>
+                  <Text style={{fontSize:12}}>{item.roleName}</Text>
+              </View>
+              <View style={styles.contactInfo}>
+                  
+              </View>
+          </View>
+      </TouchableOpacity>
+    );
   }
 
   _onSectionselect = (key) => {
     this._sectionList.scrollToLocation({ animated: false, sectionIndex: key, itemIndex: 0, viewPosition:0});
   };
 
-  _queryContactList= async ()=> {
-    const { data } = await Fetch(Config.HOST + '/queryAddressBook', { method:'post'});
-    const dataList: Array<itemProps> = data.list || [];
+  _queryContactList = ()=> {
+    Toast.loading('加载中...',0);
+    queryContactList().then((res) => {
+      Toast.hide();
+      const { data } = res;
+      const dataList: Array<itemProps> = data.list || [];
 
-    let sections = [];
-    let letterArr: Array<string> = [];
+      let sections: Array<sectionDataProps> = [];
+      let letterArr: Array<string> = [];
 
-    dataList.map((item,index)=>{
-      const firstLetter = PinYinUtil.getFirstLetter(item.name);
-      if(letterArr.indexOf(firstLetter) == -1){
-        letterArr.push(firstLetter);
-      }
-    })
-    letterArr.sort();
-
-    letterArr.map((item, index) => {
-      const data = dataList.filter((obj)=>{
-        return PinYinUtil.getFirstLetter(obj.name) == item;
+      dataList.map((item, index) => {
+        const firstLetter = PinYinUtil.getFirstLetter(item.name);
+        if (letterArr.indexOf(firstLetter) == -1) {
+          letterArr.push(firstLetter);
+        }
       })
-      sections.push({ key: item, title: item, data }); 
+      letterArr.sort();
+
+      letterArr.map((item, index) => {
+        const data = dataList.filter((obj) => {
+          return PinYinUtil.getFirstLetter(obj.name) == item;
+        })
+        sections.push({ key: item, title: item, data });
+      })
+      this.setState({ letterArr, sections });
+    }).catch((err)=>{
+      Toast.hide();
     })
-    this.setState({ letterArr, sections});
   }
 }
 
@@ -183,7 +202,7 @@ const styles = StyleSheet.create({
     position: 'absolute', 
     width: 26, right: 0, 
     backgroundColor: 'rgba(0,0,0,0.3)', 
-    borderRadius: 10, 
+    borderRadius: 20, 
     paddingTop: 5, 
     paddingBottom: 5
   },

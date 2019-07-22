@@ -23,7 +23,6 @@ export default class Example extends Component<any, any> {
     try {
       let pageLimit = 14;
       const skip = (page - 1) * pageLimit;
-
       let rowData = Array.from({ length: pageLimit }, (value, index) => `item -> ${index + skip}`);
 
       if (page > 4) {
