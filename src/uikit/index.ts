@@ -1,4 +1,5 @@
 import Kit from './kit';
+import Config from './config';
 import Toast from './toast';
 import Button from './button';
 import Modal from './modal'; 
@@ -27,6 +28,7 @@ import AsyncStorageUtil from './util/AsyncStorageUtil';
 
 export {
   Kit,
+  Config,
   noop,
   Toast,
   Button,

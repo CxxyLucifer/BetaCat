@@ -1,4 +1,5 @@
 import Kit from './kit';
+import Config from './config';
 import Toast from './toast';
 import Button from './button';
 import Modal from './modal';
@@ -24,4 +25,4 @@ import AESUtil from './util/AESUtil';
 import PinYinUtil from './util/PinYinUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
-export { Kit, noop, Toast, Button, TabBar, Theme, Modal, List, WingBlank, WhiteSpace, Provider, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, SwipeAction, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, PinYinUtil, EncryptUtil, AsyncStorageUtil, };
+export { Kit, Config, noop, Toast, Button, TabBar, Theme, Modal, List, WingBlank, WhiteSpace, Provider, Carousel, Scene, Search, Fetch, NoData, Drawer, MenuCard, SwipeAction, PullToRefresh, LoadingSpinner, AJListView, AJRefreshView, AESUtil, PinYinUtil, EncryptUtil, AsyncStorageUtil, };
