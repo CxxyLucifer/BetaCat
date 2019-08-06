@@ -25,6 +25,7 @@ import AESUtil from './util/AESUtil';
 import PinYinUtil from './util/PinYinUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
+import RSAUtil from './util/RSAUtil';
 
 export {
   Kit,
@@ -55,4 +56,5 @@ export {
   PinYinUtil,
   EncryptUtil,
   AsyncStorageUtil,
+  RSAUtil,
 };

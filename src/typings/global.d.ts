@@ -47,3 +47,5 @@ declare module 'TextInputState' {
 declare module 'crypto-js';
 
 declare module 'UIcon';
+
+declare module 'jsencrypt';
