@@ -6,6 +6,7 @@ import Modal from './modal';
 import List from './list';
 import TabBar from './tab-bar';
 import SwipeAction from './swipe-action';
+import ActionSheet from './action-sheet';
 import Scene from './scene';
 import Search from './search';
 import Fetch from './fetch';
@@ -39,6 +40,7 @@ export {
   List,
   WingBlank,
   WhiteSpace,
+  ActionSheet,
   Provider,
   Carousel,
   Scene,
