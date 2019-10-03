@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import Application from './build/apps';
+import Application from './src/apps';
 
 export default class App extends Component {
   render() {
