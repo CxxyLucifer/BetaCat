@@ -24,7 +24,19 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+  
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>LocationWhenInUseUsage</string>
+  
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>请求添加至相册</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>请求访问相册</string>
+  <key>NSCameraUsageDescription</key>
+  <string>请求访问相机</string>
+  
+  
+	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -27,6 +27,7 @@ import PinYinUtil from './util/PinYinUtil';
 import EncryptUtil from './util/EncryptUtil';
 import AsyncStorageUtil from './util/AsyncStorageUtil';
 import RSAUtil from './util/RSAUtil';
+import ImagePicker from './image-picker';
 
 export {
   Kit,
@@ -59,4 +60,5 @@ export {
   EncryptUtil,
   AsyncStorageUtil,
   RSAUtil,
+  ImagePicker,
 };

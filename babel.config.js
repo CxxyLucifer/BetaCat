@@ -7,7 +7,7 @@ module.exports = {
         "alias": {
           "UIcon": "./src/icon",
           "UIKit": "./src/uikit",
-          "img": "./build/img"
+          "img": "./src/img"
         }
       }
     ]
